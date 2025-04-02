@@ -1,0 +1,21 @@
+footer {
+  background-image: linear-gradient(to right, #6d0909, #7f1010);
+}
+
+input {
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* Social Media Icons */
+i {
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+i:hover {
+  opacity: 0.75;
+}
