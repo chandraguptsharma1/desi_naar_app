@@ -1,42 +1,28 @@
 <section class="bg-[#F8F5EE] py-10 px-4">
   <div class="container mx-auto">
-    <!-- Section Title -->
-    <div class="mb-6 text-center">
-      <h2 class="text-4xl font-bold uppercase tracking-wide">
-        COLLECTION LIST
-      </h2>
-      <!-- <a
-        href="#"
-        class="text-lg text-black underline hover:text-gray-600 transition"
-        >View all collections</a
-      > -->
-    </div>
-
-    <!-- Collection Grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <div
         *ngFor="let collection of collections"
         class="relative group cursor-pointer"
       >
         <!-- Collection Image -->
-        <div class="overflow-hidden rounded-md">
+        <div class="overflow-hidden rounded-md relative">
           <img
             [src]="collection.image"
             [alt]="collection.name"
             class="w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
-        </div>
 
-        <!-- Collection Name & Arrow -->
-        <!-- <div
-          class="absolute bottom-4 left-4 right-4 text-white text-lg font-semibold flex justify-between items-center"
-        >
-          <span>{{ collection.name }}</span>
-          <span
-            class="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            >→</span
+          <!-- Overlay Content -->
+          <div
+            class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-center"
           >
-        </div> -->
+            <h3 class="text-lg font-semibold tracking-wide">
+              {{ collection.name }}
+            </h3>
+            <i class="fas fa-arrow-right ml-2 text-lg"></i>
+          </div>
+        </div>
       </div>
     </div>
   </div>

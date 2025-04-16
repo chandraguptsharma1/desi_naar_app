@@ -9,9 +9,18 @@ declare var bootstrap: any; // Declare the bootstrap object
 export class BannerComponent {
   activeIndex: number = 0; // Tracks the active slide
   carouselItems = [
-    { image: "https://blog.g3fashion.com/wp-content/uploads/2022/06/mens-kurta-styles.jpg" },
-    { image: "https://m.media-amazon.com/images/S/aplus-media-library-service-media/5b091f7f-dea1-4aee-b5a9-2c621e78f29e.__CR0,0,970,600_PT0_SX970_V1___.png" },
-    { image: "https://www.bonsoir.co.in/cdn/shop/articles/Latest_Kurta_Pajama_Sets_for_Diwali.jpg?v=1663581986" }
+    {
+      image:
+        'https://cityvibes.in/cdn/shop/articles/Artboard_6banner.png?v=1713168340&width=2048',
+    },
+    {
+      image:
+        'https://cityvibes.in/cdn/shop/articles/Artboard_6banner.png?v=1713168340&width=2048',
+    },
+    {
+      image:
+        'https://cityvibes.in/cdn/shop/articles/Artboard_6banner.png?v=1713168340&width=2048',
+    },
   ];
   indicators = new Array(this.carouselItems.length); // Create indicators for the number of items
 
@@ -26,6 +35,8 @@ export class BannerComponent {
   }
 
   prevSlide() {
-    this.activeIndex = (this.activeIndex - 1 + this.carouselItems.length) % this.carouselItems.length; // Loop back to last slide
+    this.activeIndex =
+      (this.activeIndex - 1 + this.carouselItems.length) %
+      this.carouselItems.length; // Loop back to last slide
   }
 }

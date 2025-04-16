@@ -4,10 +4,10 @@
 </div>
 
 <!-- Main Navbar -->
-<nav class="bg-white shadow-md border-b border-gray-200">
+<!-- <nav class="bg-white shadow-md border-b border-gray-200">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center py-4">
-      <!-- Hamburger menu for mobile -->
+
       <div class="lg:hidden">
         <button
           (click)="toggleMenu()"
@@ -29,14 +29,14 @@
         </button>
       </div>
 
-      <!-- Logo (Centered on all screens) -->
+
       <div class="flex-grow text-center">
         <div class="font-bold text-lg text-green-900 tracking-wider">
           DesiNar
         </div>
       </div>
 
-      <!-- Right icons -->
+
       <div class="flex items-center space-x-4">
         <button class="text-green-900">
           <svg
@@ -54,30 +54,11 @@
             />
           </svg>
         </button>
-        <!-- <button class="relative text-green-900">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.4 5M17 13l1.4 5M6 18h12"
-            />
-          </svg>
-          <span
-            class="absolute top-0 right-0 inline-block w-4 h-4 text-xs text-white bg-black rounded-full text-center"
-            >0</span
-          >
-        </button> -->
+
       </div>
     </div>
 
-    <!-- Mobile Menu (Dropdown) -->
+
     <div
       *ngIf="menuOpen"
       class="absolute left-0 right-0 bg-white shadow-lg z-10 lg:hidden flex flex-col items-center py-4 space-y-4"
@@ -89,4 +70,87 @@
       <a href="#" class="hover:text-green-900">Contact Us</a>
     </div>
   </div>
-</nav>
+</nav> -->
+
+<header
+  class="w-full border-b border-gray-200 bg-white px-6 py-3 lg:px-10 lg:py-4 flex items-center justify-between relative"
+>
+  <!-- Mobile Left Icons (Visible only on mobile) -->
+  <div class="flex items-center gap-4 lg:hidden">
+    <i
+      class="fas fa-bars text-gray-500 text-lg cursor-pointer"
+      (click)="toggleMenu()"
+    ></i>
+  </div>
+
+  <!-- Center Logo -->
+  <div class="text-center flex-1">
+    <h1 class="text-2xl font-serif tracking-widest leading-none">DHRUV</h1>
+    <span class="text-xs tracking-[0.5em] font-light">VAISH</span>
+  </div>
+
+  <!-- Mobile Right Icons (only for mobile) -->
+  <div class="flex items-center gap-4 text-gray-500 text-lg lg:hidden">
+    <i class="fas fa-shopping-cart hover:text-black cursor-pointer"></i>
+  </div>
+
+  <!-- Full Nav for Larger Screens (Web Only) -->
+  <div
+    class="hidden lg:flex justify-between items-center absolute top-0 left-0 w-full px-10 py-4"
+  >
+    <!-- Left Menu Links -->
+    <div class="flex items-center gap-8 flex-1 justify-start">
+      <div class="relative group cursor-pointer">
+        <span class="text-xs uppercase font-medium tracking-wide">Shop</span>
+        <i class="fa-solid fa-caret-down text-xs ml-1"></i>
+      </div>
+      <div class="relative group cursor-pointer">
+        <span class="text-xs uppercase font-medium tracking-wide"
+          >Look Book</span
+        >
+        <i class="fa-solid fa-caret-down text-xs ml-1"></i>
+      </div>
+      <div class="cursor-pointer">
+        <span class="text-xs uppercase font-medium tracking-wide">Bespoke</span>
+      </div>
+    </div>
+
+    <!-- Desktop Right Icons -->
+    <div class="flex items-center gap-6 text-gray-500 text-lg">
+      <i class="fas fa-shopping-cart hover:text-black cursor-pointer"></i>
+    </div>
+  </div>
+</header>
+
+<!-- Sidebar Backdrop -->
+<div
+  class="fixed inset-0 bg-black/40 z-40"
+  *ngIf="menuOpen"
+  (click)="toggleMenu()"
+></div>
+
+<!-- Sidebar Drawer -->
+<aside
+  class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-50 transform transition-transform duration-300"
+  [ngClass]="{
+    '-translate-x-full': !menuOpen,
+    'translate-x-0': menuOpen
+  }"
+>
+  <div class="p-6 flex flex-col gap-6">
+    <h2 class="text-lg font-semibold text-gray-800">User</h2>
+    <a href="#" class="hover:text-green-700" (click)="toggleMenu()">All</a>
+    <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
+      >New Arrival</a
+    >
+    <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
+      >Categories</a
+    >
+    <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
+      >Collections</a
+    >
+    <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
+      >Contact Us</a
+    >
+  </div>
+</aside>

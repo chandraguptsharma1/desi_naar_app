@@ -24,6 +24,5 @@ export class CollectionListComponent {
       name: 'SHERWANI SET',
       image: 'https://i.ibb.co/4gfFkqnF/collection4.png',
     },
-    
   ];
 }
