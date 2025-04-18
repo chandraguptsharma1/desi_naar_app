@@ -3,75 +3,6 @@
   Buy 2 get 5% off | Use code: OVER5 & Buy 3 get 10% off | Use code: OVER10
 </div>
 
-<!-- Main Navbar -->
-<!-- <nav class="bg-white shadow-md border-b border-gray-200">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center py-4">
-
-      <div class="lg:hidden">
-        <button
-          (click)="toggleMenu()"
-          class="text-green-900 focus:outline-none"
-        >
-          <svg
-            class="h-6 w-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-      </div>
-
-
-      <div class="flex-grow text-center">
-        <div class="font-bold text-lg text-green-900 tracking-wider">
-          DesiNar
-        </div>
-      </div>
-
-
-      <div class="flex items-center space-x-4">
-        <button class="text-green-900">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 18a7.5 7.5 0 006.15-3.35z"
-            />
-          </svg>
-        </button>
-
-      </div>
-    </div>
-
-
-    <div
-      *ngIf="menuOpen"
-      class="absolute left-0 right-0 bg-white shadow-lg z-10 lg:hidden flex flex-col items-center py-4 space-y-4"
-    >
-      <a href="#" class="hover:text-green-900">All</a>
-      <a href="#" class="hover:text-green-900">New Arrival</a>
-      <a href="#" class="hover:text-green-900">Categories</a>
-      <a href="#" class="hover:text-green-900">Collections</a>
-      <a href="#" class="hover:text-green-900">Contact Us</a>
-    </div>
-  </div>
-</nav> -->
-
 <header
   class="w-full border-b border-gray-200 bg-white px-6 py-3 lg:px-10 lg:py-4 flex items-center justify-between relative"
 >
@@ -85,8 +16,8 @@
 
   <!-- Center Logo -->
   <div class="text-center flex-1">
-    <h1 class="text-2xl font-serif tracking-widest leading-none">DHRUV</h1>
-    <span class="text-xs tracking-[0.5em] font-light">VAISH</span>
+    <h1 class="text-2xl font-serif tracking-widest leading-none">Desi Naar</h1>
+    <!-- <span class="text-xs tracking-[0.5em] font-light">VAISH</span> -->
   </div>
 
   <!-- Mobile Right Icons (only for mobile) -->
@@ -101,17 +32,17 @@
     <!-- Left Menu Links -->
     <div class="flex items-center gap-8 flex-1 justify-start">
       <div class="relative group cursor-pointer">
-        <span class="text-xs uppercase font-medium tracking-wide">Shop</span>
+        <span class="text-xs uppercase font-medium tracking-wide">New Arrival</span>
         <i class="fa-solid fa-caret-down text-xs ml-1"></i>
       </div>
-      <div class="relative group cursor-pointer">
-        <span class="text-xs uppercase font-medium tracking-wide"
-          >Look Book</span
+      <div class="relative group cursor-pointer" >
+        <span class="text-xs uppercase font-medium tracking-wide" (click)="productpage()"
+          >Collection</span
         >
         <i class="fa-solid fa-caret-down text-xs ml-1"></i>
       </div>
       <div class="cursor-pointer">
-        <span class="text-xs uppercase font-medium tracking-wide">Bespoke</span>
+        <span class="text-xs uppercase font-medium tracking-wide">Contact Us</span>
       </div>
     </div>
 
@@ -138,16 +69,16 @@
   }"
 >
   <div class="p-6 flex flex-col gap-6">
-    <h2 class="text-lg font-semibold text-gray-800">User</h2>
-    <a href="#" class="hover:text-green-700" (click)="toggleMenu()">All</a>
+    <h2 class="text-lg font-bold text-gray-800">user</h2>
+    <a  class="hover:text-green-700" (click)="openproduct()">All</a>
     <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
       >New Arrival</a
     >
     <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
-      >Categories</a
+      >Category</a
     >
     <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
-      >Collections</a
+      >Collection</a
     >
     <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
       >Contact Us</a
