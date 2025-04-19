@@ -8,8 +8,7 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-
-  constructor(private router:Router){}
+  constructor(private router: Router) {}
   // Make sure menuOpen is set to false initially to keep the menu hidden
   menuOpen = false;
 
@@ -18,14 +17,13 @@ export class HeaderComponent {
     this.menuOpen = !this.menuOpen;
   }
 
-  openproduct(){
-    console.log("route to product poge")
+  openproduct() {
+    console.log('route to product poge');
     // this.menuOpen = !this.menuOpen;
-    this.router.navigateByUrl("/P")
-
+    this.router.navigate(['/products']);
   }
 
-  productpage(){
-    this.router.navigate(['/products'])
+  productpage() {
+    this.router.navigate(['/products']);
   }
 }

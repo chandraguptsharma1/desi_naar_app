@@ -6,7 +6,10 @@
         class="relative group cursor-pointer"
       >
         <!-- Collection Image -->
-        <div class="overflow-hidden rounded-md relative">
+        <div
+          class="overflow-hidden rounded-md relative"
+          (click)="productpage()"
+        >
           <img
             [src]="collection.image"
             [alt]="collection.name"

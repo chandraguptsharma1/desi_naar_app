@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-collection-list',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './collection-list.component.scss',
 })
 export class CollectionListComponent {
+  constructor(private router: Router) {}
+
   collections = [
     {
       name: 'DESIGNER KURTA SET',
@@ -25,4 +28,9 @@ export class CollectionListComponent {
       image: 'https://i.ibb.co/4gfFkqnF/collection4.png',
     },
   ];
+
+  productpage() {
+    console.log('product page');
+    this.router.navigate(['/products']);
+  }
 }

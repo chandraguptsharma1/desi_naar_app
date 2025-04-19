@@ -31,6 +31,6 @@ import { FooterComponent } from './components/footer/footer.component';
     FooterComponent,
   ],
   imports: [CommonModule, HomeRoutingModule],
-  exports: [HeaderComponent],
+  exports: [HeaderComponent, FooterComponent],
 })
 export class HomeModule {}
