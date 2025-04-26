@@ -19,11 +19,12 @@ export class HeaderComponent {
 
   openproduct() {
     console.log('route to product poge');
-    // this.menuOpen = !this.menuOpen;
+    this.menuOpen = !this.menuOpen;
     this.router.navigate(['/products']);
   }
 
   productpage() {
+    this.menuOpen = !this.menuOpen;
     this.router.navigate(['/products']);
   }
 }
