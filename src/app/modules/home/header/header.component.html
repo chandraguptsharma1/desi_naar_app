@@ -32,17 +32,23 @@
     <!-- Left Menu Links -->
     <div class="flex items-center gap-8 flex-1 justify-start">
       <div class="relative group cursor-pointer">
-        <span class="text-xs uppercase font-medium tracking-wide">New Arrival</span>
+        <span class="text-xs uppercase font-medium tracking-wide"
+          >New Arrival</span
+        >
         <i class="fa-solid fa-caret-down text-xs ml-1"></i>
       </div>
-      <div class="relative group cursor-pointer" >
-        <span class="text-xs uppercase font-medium tracking-wide" (click)="productpage()"
+      <div class="relative group cursor-pointer">
+        <span
+          class="text-xs uppercase font-medium tracking-wide"
+          (click)="productpage()"
           >Collection</span
         >
         <i class="fa-solid fa-caret-down text-xs ml-1"></i>
       </div>
       <div class="cursor-pointer">
-        <span class="text-xs uppercase font-medium tracking-wide">Contact Us</span>
+        <span class="text-xs uppercase font-medium tracking-wide"
+          >Contact Us</span
+        >
       </div>
     </div>
 
@@ -70,21 +76,17 @@
 >
   <div class="p-6 flex flex-col gap-6">
     <h2 class="text-lg font-bold text-gray-800">user</h2>
-    <a  class="hover:text-green-700" (click)="openproduct()">All</a>
+    <a class="hover:text-green-700" (click)="openproduct()">All</a>
     <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
       >New Arrival</a
     >
-    <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
-      >Category</a
-    >
+    <a href="#" class="hover:text-green-700" (click)="toggleMenu()">Category</a>
     <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
       >Collection</a
     >
     <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
       >Contact Us</a
     >
-    <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
-    >Sign In</a
-  >
+    <a class="hover:text-green-700" (click)="Login()">Sign In</a>
   </div>
 </aside>

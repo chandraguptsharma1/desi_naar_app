@@ -27,4 +27,8 @@ export class HeaderComponent {
     this.menuOpen = !this.menuOpen;
     this.router.navigate(['/products']);
   }
+
+  Login() {
+    this.router.navigate(['/auth']);
+  }
 }
