@@ -4,8 +4,12 @@ import { Component } from '@angular/core';
   selector: 'app-admin',
   standalone: false,
   templateUrl: './admin.component.html',
-  styleUrl: './admin.component.scss'
+  styleUrl: './admin.component.scss',
 })
 export class AdminComponent {
+  sidebarOpen = true;
 
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
 }

@@ -7,7 +7,7 @@ import { AdminLayoutComponent } from './layout/admin-layout/admin-layout.compone
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { ListProductsComponent } from './pages/products/list-products/list-products.component';
 import { AddProductComponent } from './pages/products/add-product/add-product.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,11 +15,8 @@ import { AddProductComponent } from './pages/products/add-product/add-product.co
     AdminLayoutComponent,
     SidebarComponent,
     ListProductsComponent,
-    AddProductComponent
+    AddProductComponent,
   ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule
-  ]
+  imports: [CommonModule, ReactiveFormsModule, AdminRoutingModule],
 })
-export class AdminModule { }
+export class AdminModule {}
