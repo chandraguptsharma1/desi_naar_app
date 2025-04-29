@@ -1,30 +1,127 @@
-<section class="bg-[#F8F5EE] py-10 px-4">
-  <div class="container mx-auto">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div
-        *ngFor="let collection of collections"
-        class="relative group cursor-pointer"
-      >
-        <!-- Collection Image -->
-        <div
-          class="overflow-hidden rounded-md relative"
-          (click)="productpage()"
-        >
-          <img
-            [src]="collection.image"
-            [alt]="collection.name"
-            class="w-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
+<section class="py-12 bg-white">
+  <div class="container mx-auto px-4">
+    <!-- Heading -->
+    <h2
+      class="text-center text-sm font-semibold uppercase tracking-widest mb-12"
+    >
+      Shop By Category
+    </h2>
 
-          <!-- Overlay Content -->
-          <div
-            class="absolute inset-0 bg-black/40 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white text-center"
+    <!-- Categories Grid -->
+    <div
+      class="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-10 justify-items-center"
+    >
+      <!-- Category Card 1 -->
+      <div
+        class="relative group w-[150px] sm:w-[180px] md:w-[220px] h-[220px] overflow-hidden"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1602810313332-9ed7b57a97dc?auto=format&fit=crop&w=600&q=80"
+          alt="Sherwani"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div
+          class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 group-hover:bg-opacity-30 transition"
+        >
+          <span
+            class="text-white text-sm sm:text-base font-semibold tracking-widest text-center"
+            >SHERWANI</span
           >
-            <h3 class="text-lg font-semibold tracking-wide">
-              {{ collection.name }}
-            </h3>
-            <i class="fas fa-arrow-right ml-2 text-lg"></i>
-          </div>
+        </div>
+      </div>
+
+      <!-- Category Card 2 -->
+      <div
+        class="relative group w-[150px] sm:w-[180px] md:w-[220px] h-[220px] overflow-hidden"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1618354691249-2fc90d92c1e0?auto=format&fit=crop&w=600&q=80"
+          alt="Bandhgala"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div
+          class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 group-hover:bg-opacity-30 transition"
+        >
+          <span
+            class="text-white text-sm sm:text-base font-semibold tracking-widest text-center"
+            >BANDHGALA</span
+          >
+        </div>
+      </div>
+
+      <!-- Category Card 3 -->
+      <div
+        class="relative group w-[150px] sm:w-[180px] md:w-[220px] h-[220px] overflow-hidden"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1605251463789-bb04af3f78f0?auto=format&fit=crop&w=600&q=80"
+          alt="Jawahar Jackets"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div
+          class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 group-hover:bg-opacity-30 transition"
+        >
+          <span
+            class="text-white text-sm sm:text-base font-semibold tracking-widest text-center"
+            >JAWAHAR JACKETS</span
+          >
+        </div>
+      </div>
+
+      <!-- Category Card 4 -->
+      <div
+        class="relative group w-[150px] sm:w-[180px] md:w-[220px] h-[220px] overflow-hidden"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1589571894960-20bbe2828d1d?auto=format&fit=crop&w=600&q=80"
+          alt="Kurtas"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div
+          class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 group-hover:bg-opacity-30 transition"
+        >
+          <span
+            class="text-white text-sm sm:text-base font-semibold tracking-widest text-center"
+            >KURTAS</span
+          >
+        </div>
+      </div>
+
+      <!-- Category Card 5 -->
+      <div
+        class="relative group w-[150px] sm:w-[180px] md:w-[220px] h-[220px] overflow-hidden"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1600185366135-1e1eaaf6b7f1?auto=format&fit=crop&w=600&q=80"
+          alt="Shirts"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div
+          class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 group-hover:bg-opacity-30 transition"
+        >
+          <span
+            class="text-white text-sm sm:text-base font-semibold tracking-widest text-center"
+            >SHIRTS</span
+          >
+        </div>
+      </div>
+
+      <!-- Category Card 6 -->
+      <div
+        class="relative group w-[150px] sm:w-[180px] md:w-[220px] h-[220px] overflow-hidden"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1581579185169-08df9cc9c24e?auto=format&fit=crop&w=600&q=80"
+          alt="Coats and Jackets"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div
+          class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20 group-hover:bg-opacity-30 transition"
+        >
+          <span
+            class="text-white text-sm sm:text-base font-semibold tracking-widest text-center"
+            >COATS AND JACKETS</span
+          >
         </div>
       </div>
     </div>

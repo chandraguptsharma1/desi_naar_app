@@ -1,92 +1,194 @@
-<!-- Top Offer Bar -->
-<div class="w-full bg-green-900 text-white text-xs text-center py-2 px-4">
-  Buy 2 get 5% off | Use code: OVER5 & Buy 3 get 10% off | Use code: OVER10
-</div>
-
 <header
-  class="w-full border-b border-gray-200 bg-white px-6 py-3 lg:px-10 lg:py-4 flex items-center justify-between relative"
+  class="bg-white border-b border-gray-300 py-4 relative z-40 sticky top-0"
 >
-  <!-- Mobile Left Icons (Visible only on mobile) -->
-  <div class="flex items-center gap-4 lg:hidden">
-    <i
-      class="fas fa-bars text-gray-500 text-lg cursor-pointer"
-      (click)="toggleMenu()"
-    ></i>
+  <div class="container-fluid mx-auto flex items-center justify-between px-4">
+    <!-- Left Section -->
+    <div class="flex items-center space-x-4">
+      <!-- Hamburger (Mobile Only) -->
+      <button
+        class="md:hidden text-gray-700 text-2xl focus:outline-none"
+        (click)="toggleDrawer()"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Search Icon (working) -->
+      <button
+        (click)="toggleSearch()"
+        class="text-gray-500 text-lg hover:opacity-75"
+      >
+        <i class="fas fa-search"></i>
+      </button>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex space-x-6 text-sm font-semibold uppercase">
+        <!-- Shop -->
+        <div class="group relative">
+          <a href="#" class="hover:underline flex items-center space-x-1">
+            <span>Shop</span>
+            <i class="fas fa-chevron-down text-xs"></i>
+          </a>
+          <div
+            class="absolute left-0 mt-2 w-56 bg-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300"
+          >
+            <ul class="py-2">
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
+                  >Sherwanis</a
+                >
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
+                  >Bandhgalas</a
+                >
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
+                  >Jawahar Jackets</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Look Book -->
+        <div class="group relative">
+          <a href="#" class="hover:underline flex items-center space-x-1">
+            <span>Look Book</span>
+            <i class="fas fa-chevron-down text-xs"></i>
+          </a>
+        </div>
+
+        <!-- Bespoke -->
+        <a href="#" class="hover:underline">Bespoke</a>
+      </nav>
+    </div>
+
+    <!-- Center Logo -->
+    <div class="text-center">
+      <h1 class="text-2xl font-serif tracking-widest">DHRUV</h1>
+      <span class="text-xs tracking-[0.5em]">VAISH</span>
+    </div>
+
+    <!-- Right Section -->
+    <div class="flex items-center space-x-4 text-gray-500 text-lg">
+      <a href="#" class="hover:opacity-75">
+        <i class="fas fa-user"></i>
+      </a>
+      <a href="#" class="hover:opacity-75">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </div>
   </div>
 
-  <!-- Center Logo -->
-  <div class="text-center flex-1">
-    <h1 class="text-2xl font-serif tracking-widest leading-none">Desi Naar</h1>
-    <!-- <span class="text-xs tracking-[0.5em] font-light">VAISH</span> -->
-  </div>
-
-  <!-- Mobile Right Icons (only for mobile) -->
-  <div class="flex items-center gap-4 text-gray-500 text-lg lg:hidden">
-    <i class="fas fa-shopping-cart hover:text-black cursor-pointer"></i>
-  </div>
-
-  <!-- Full Nav for Larger Screens (Web Only) -->
-  <div
-    class="hidden lg:flex justify-between items-center absolute top-0 left-0 w-full px-10 py-4"
-  >
-    <!-- Left Menu Links -->
-    <div class="flex items-center gap-8 flex-1 justify-start">
-      <div class="relative group cursor-pointer">
-        <span class="text-xs uppercase font-medium tracking-wide"
-          >New Arrival</span
-        >
-        <i class="fa-solid fa-caret-down text-xs ml-1"></i>
+  <!-- Side Drawer and Overlay -->
+  <div *ngIf="isDrawerOpen" class="fixed inset-0 z-50 flex">
+    <!-- Drawer -->
+    <div
+      class="w-4/5 bg-white p-6 flex flex-col h-full transform transition-transform duration-300"
+      [ngClass]="{
+        '-translate-x-full': !isDrawerVisible,
+        'translate-x-0': isDrawerVisible
+      }"
+    >
+      <!-- Close Button -->
+      <div class="flex justify-between items-center mb-6">
+        <button (click)="toggleDrawer()" class="text-2xl text-gray-700">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
-      <div class="relative group cursor-pointer">
-        <span
-          class="text-xs uppercase font-medium tracking-wide"
-          (click)="productpage()"
-          >Collection</span
-        >
-        <i class="fa-solid fa-caret-down text-xs ml-1"></i>
-      </div>
-      <div class="cursor-pointer">
-        <span class="text-xs uppercase font-medium tracking-wide"
-          >Contact Us</span
-        >
+
+      <!-- Menu Links -->
+      <nav class="space-y-4 text-sm font-semibold uppercase flex-1">
+        <div>
+          <div
+            class="flex justify-between items-center cursor-pointer"
+            (click)="toggleShop()"
+          >
+            <span>Shop</span>
+            <i
+              class="fas"
+              [ngClass]="{ 'fa-plus': !isShopOpen, 'fa-minus': isShopOpen }"
+            ></i>
+          </div>
+          <div
+            *ngIf="isShopOpen"
+            class="ml-4 mt-2 space-y-2 text-gray-600 lowercase font-normal"
+          >
+            <a href="#" class="block hover:underline">Sherwanis</a>
+            <a href="#" class="block hover:underline">Bandhgalas</a>
+            <a href="#" class="block hover:underline">Jawahar Jackets</a>
+            <a href="#" class="block hover:underline">Kurtas</a>
+          </div>
+        </div>
+
+        <div>
+          <div
+            class="flex justify-between items-center cursor-pointer"
+            (click)="toggleLookBook()"
+          >
+            <span>Look Book</span>
+            <i
+              class="fas"
+              [ngClass]="{
+                'fa-plus': !isLookBookOpen,
+                'fa-minus': isLookBookOpen
+              }"
+            ></i>
+          </div>
+          <div
+            *ngIf="isLookBookOpen"
+            class="ml-4 mt-2 space-y-2 text-gray-600 lowercase font-normal"
+          >
+            <a href="#" class="block hover:underline">Summer Collection</a>
+            <a href="#" class="block hover:underline">Wedding Edit</a>
+          </div>
+        </div>
+
+        <div>
+          <a href="#" class="hover:underline block">Bespoke</a>
+        </div>
+      </nav>
+
+      <!-- Social Media Icons -->
+      <div class="flex space-x-4 mt-8">
+        <a href="#" class="text-gray-700 text-2xl">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" class="text-gray-700 text-2xl">
+          <i class="fab fa-instagram"></i>
+        </a>
       </div>
     </div>
 
-    <!-- Desktop Right Icons -->
-    <div class="flex items-center gap-6 text-gray-500 text-lg">
-      <i class="fas fa-shopping-cart hover:text-black cursor-pointer"></i>
+    <!-- Dark Overlay -->
+    <div
+      class="flex-1 bg-slate-500 bg-opacity-30 transition-opacity duration-500"
+      (click)="toggleDrawer()"
+    ></div>
+  </div>
+
+  <!-- Search Overlay -->
+  <div
+    *ngIf="isSearchOpen"
+    class="fixed inset-0 bg-slate-500 bg-opacity-70 z-50 flex items-start justify-center pt-6 transition-all duration-300"
+  >
+    <div
+      class="w-full max-w-xl bg-white rounded-lg mx-4 flex items-center px-4 py-3 shadow-lg relative animate-slide-down"
+    >
+      <i class="fas fa-search text-gray-400 text-lg mr-3"></i>
+      <input
+        type="text"
+        placeholder="What are you looking for?"
+        class="flex-grow outline-none text-base text-gray-800 placeholder-gray-400"
+        autofocus
+      />
+      <button
+        (click)="toggleSearch()"
+        class="absolute right-4 top-3 text-gray-400 text-xl"
+      >
+        <i class="fas fa-times"></i>
+      </button>
     </div>
   </div>
 </header>
-
-<!-- Sidebar Backdrop -->
-<div
-  class="fixed inset-0 bg-black/40 z-40"
-  *ngIf="menuOpen"
-  (click)="toggleMenu()"
-></div>
-
-<!-- Sidebar Drawer -->
-<aside
-  class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-50 transform transition-transform duration-300"
-  [ngClass]="{
-    '-translate-x-full': !menuOpen,
-    'translate-x-0': menuOpen
-  }"
->
-  <div class="p-6 flex flex-col gap-6">
-    <h2 class="text-lg font-bold text-gray-800">user</h2>
-    <a class="hover:text-green-700" (click)="openproduct()">All</a>
-    <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
-      >New Arrival</a
-    >
-    <a href="#" class="hover:text-green-700" (click)="toggleMenu()">Category</a>
-    <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
-      >Collection</a
-    >
-    <a href="#" class="hover:text-green-700" (click)="toggleMenu()"
-      >Contact Us</a
-    >
-    <a class="hover:text-green-700" (click)="Login()">Sign In</a>
-  </div>
-</aside>

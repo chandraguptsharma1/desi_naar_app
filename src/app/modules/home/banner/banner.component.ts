@@ -7,36 +7,47 @@ declare var bootstrap: any; // Declare the bootstrap object
   styleUrl: './banner.component.scss',
 })
 export class BannerComponent {
-  activeIndex: number = 0; // Tracks the active slide
+  activeIndex: number = 0;
+
   carouselItems = [
     {
       image:
         'https://cityvibes.in/cdn/shop/articles/Artboard_6banner.png?v=1713168340&width=2048',
+      desktopTitle: 'NEW COLLECTION',
+      mobileTitle: 'NEW COLLECTION',
+      buttonText: 'SHOP NOW',
     },
     {
       image:
         'https://cityvibes.in/cdn/shop/articles/Artboard_6banner.png?v=1713168340&width=2048',
+      desktopTitle: 'FESTIVE EDIT',
+      mobileTitle: 'FESTIVE EDIT',
+      buttonText: 'SHOP',
     },
     {
       image:
         'https://cityvibes.in/cdn/shop/articles/Artboard_6banner.png?v=1713168340&width=2048',
+      desktopTitle: 'SUMMER SPECIAL',
+      mobileTitle: 'SUMMER VIBES',
+      buttonText: 'EXPLORE',
     },
   ];
-  indicators = new Array(this.carouselItems.length); // Create indicators for the number of items
+
+  indicators = new Array(this.carouselItems.length);
 
   ngOnInit(): void {
     setInterval(() => {
-      this.nextSlide(); // Automatically go to next slide every 3 seconds
+      this.nextSlide();
     }, 3000);
   }
 
   nextSlide() {
-    this.activeIndex = (this.activeIndex + 1) % this.carouselItems.length; // Loop back to first slide
+    this.activeIndex = (this.activeIndex + 1) % this.carouselItems.length;
   }
 
   prevSlide() {
     this.activeIndex =
       (this.activeIndex - 1 + this.carouselItems.length) %
-      this.carouselItems.length; // Loop back to last slide
+      this.carouselItems.length;
   }
 }

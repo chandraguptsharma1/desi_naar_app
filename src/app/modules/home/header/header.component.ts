@@ -9,26 +9,51 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   constructor(private router: Router) {}
-  // Make sure menuOpen is set to false initially to keep the menu hidden
-  menuOpen = false;
+  isDrawerOpen = false;
+  isDrawerVisible = false;
+  isShopOpen = false;
+  isLookBookOpen = false;
+  isSearchOpen = false;
 
-  // Toggle the state of menuOpen when the hamburger icon is clicked
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
+  toggleDrawer() {
+    if (!this.isDrawerOpen) {
+      this.isDrawerOpen = true;
+      setTimeout(() => {
+        this.isDrawerVisible = true;
+      }, 10);
+    } else {
+      this.isDrawerVisible = false;
+      setTimeout(() => {
+        this.isDrawerOpen = false;
+      }, 300);
+    }
+    this.isShopOpen = false;
+    this.isLookBookOpen = false;
   }
 
-  openproduct() {
-    console.log('route to product poge');
-    this.menuOpen = !this.menuOpen;
-    this.router.navigate(['/products']);
+  toggleShop() {
+    this.isShopOpen = !this.isShopOpen;
   }
 
-  productpage() {
-    this.menuOpen = !this.menuOpen;
-    this.router.navigate(['/products']);
+  toggleLookBook() {
+    this.isLookBookOpen = !this.isLookBookOpen;
   }
 
-  Login() {
-    this.router.navigate(['/auth']);
+  toggleSearch() {
+    this.isSearchOpen = !this.isSearchOpen;
   }
+  // openproduct() {
+  //   console.log('route to product poge');
+  //   this.menuOpen = !this.menuOpen;
+  //   this.router.navigate(['/products']);
+  // }
+
+  // productpage() {
+  //   this.menuOpen = !this.menuOpen;
+  //   this.router.navigate(['/products']);
+  // }
+
+  // Login() {
+  //   this.router.navigate(['/auth']);
+  // }
 }
