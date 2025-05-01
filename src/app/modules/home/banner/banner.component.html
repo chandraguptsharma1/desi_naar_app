@@ -12,9 +12,16 @@
     >
       <!-- Image + Overlay -->
       <div class="relative w-full">
-        <img [src]="item.image" alt="Slide Image" class="d-block w-100" />
+        <picture>
+          <source [srcset]="item.mobileImage" media="(max-width: 768px)" />
+          <img
+            [src]="item.desktopImage"
+            alt="Slide Image"
+            class="d-block w-100"
+          />
+        </picture>
 
-        <!-- Desktop overlay -->
+        <!-- Desktop Overlay -->
         <div
           class="hidden md:flex flex-col absolute left-12 bottom-16 text-white max-w-sm"
         >
@@ -28,12 +35,12 @@
           </button>
         </div>
 
-        <!-- ✅ Indicator Dots inside image -->
+        <!-- Indicator Dots -->
         <div
           class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
         >
           <div
-            *ngFor="let indicator of indicators; let j = index"
+            *ngFor="let indicator of carouselItems; let j = index"
             class="w-2 h-2 rounded-full bg-white transition-opacity duration-300"
             [class.opacity-100]="activeIndex === j"
             [class.opacity-30]="activeIndex !== j"
@@ -55,7 +62,7 @@
     </div>
   </div>
 
-  <!-- Left and Right controls -->
+  <!-- Controls -->
   <button
     class="carousel-control-prev"
     type="button"
