@@ -1,4 +1,4 @@
-<header class="w-full bg-gradient-to-r text-slate-500 py-4 px-2 top-0 z-50">
+<header class="w-full bg-gradient-to-r text-gray-700 py-4 px-2 top-0 z-50">
   <div class="max-w-screen-2xl mx-auto flex items-center justify-between">
     <!-- Left: Logo & Hamburger -->
     <div class="flex items-center space-x-4">
@@ -8,7 +8,7 @@
       </button>
 
       <!-- Logo -->
-      <div class="text-lg font-light tracking-widest font-serif uppercase">
+      <div class="text-lg font-bold  tracking-widest  uppercase">
         DESI NAAR
       </div>
     </div>
@@ -25,7 +25,7 @@
     </nav>
 
     <!-- Right Icons -->
-    <div class="flex items-center space-x-4 text-slate-500 text-lg">
+    <div class="flex items-center space-x-4 text-gray-400 text-lg">
       <button class="hover:opacity-75" (click)="toggleSearch()">
         <i class="fas fa-search"></i>
       </button>
@@ -58,7 +58,12 @@
       <nav class="space-y-4 text-sm font-semibold uppercase flex-1">
         <!-- Shop -->
         <div>
-          <div
+          <a href="#" class="hover:opacity-80">ALL</a>
+          <a href="#" class="hover:opacity-80">NEW ARRIVAL</a>
+          <a href="#" class="hover:opacity-80">CATEGORY</a>
+          <a href="#" class="hover:opacity-80">COLLECTION</a>
+          <a href="#" class="hover:opacity-80">CONTACT US </a>
+          <!-- <div
             class="flex justify-between items-center cursor-pointer"
             (click)="toggleShop()"
           >
@@ -76,7 +81,7 @@
             <a href="#" class="block hover:underline">Bandhgalas</a>
             <a href="#" class="block hover:underline">Jawahar Jackets</a>
             <a href="#" class="block hover:underline">Kurtas</a>
-          </div>
+          </div> -->
         </div>
 
         <!-- Look Book -->
