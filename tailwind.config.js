@@ -1,7 +1,11 @@
 module.exports = {
   content: ["./src/**/*.{html,ts}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        bahnschrift: ['BahnschriftSemiBoldCondensed', 'sans-serif'],
+      },
+    }
   },
   plugins: [],
 };
