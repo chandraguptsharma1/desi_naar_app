@@ -12,7 +12,7 @@ export class BannerComponent {
   carouselItems = [
     {
       desktopImage:
-        'https://lh6.googleusercontent.com/proxy/5i49jUVl9uK4XiEsqbfhLOVpx8tXKGsY0i_WzMVc6vISfABh_sNg5aHogLo3BnVni-UXDqSnJJNPtUQkv5-40MZBm4qJOoxawwqbUm-R29C-0x7qTgv5JQmupgQ9PjII',
+        'https://i.ibb.co/35d9rBnv/Whats-App-Image-2025-05-03-at-21-34-02-1.jpg',
       mobileImage:
         'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/collageImages/Picture4.jpg',
       desktopTitle: 'Luxury Drapes',
@@ -21,7 +21,7 @@ export class BannerComponent {
     },
     {
       desktopImage:
-        'https://lh3.googleusercontent.com/proxy/KHKv0uh7_ijjbuVh_5OsN5yiFVZAVtRzhBG6ug1Voq4wG5q14673cKPk13_eJcu5yit5TR4Bjg8Mcl9VvgSsNs-CS5L5SMrGQO2FQvK3cgfR4E9pl3NSwdgXUnzxUhsPwUFxlOXryy7xGAqy3fP54NhFUv9OlbkT24JYMJmJ',
+        'https://i.ibb.co/cSrxJZSv/Whats-App-Image-2025-05-03-at-21-34-02.jpg',
       mobileImage:
         'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/collageImages/Picture5.jpg',
       desktopTitle: 'Festive Styles',
@@ -30,7 +30,7 @@ export class BannerComponent {
     },
     {
       desktopImage:
-        'https://lh6.googleusercontent.com/proxy/khBGxJ_zk_kwwOFBKmkGcrW4Rv-03rBPr4ODgJkTMOHZ07iWv3FZltVQrtJL4hSphWrf8xbzz6qgiQ62_3hRQh9i1qk27LNtU1C1uG117H9ZUZvUZVrtDYxiiK3RlqQ',
+        'https://i.ibb.co/wZfgzZ4n/Whats-App-Image-2025-05-03-at-21-34-01.jpg',
       mobileImage:
         'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/collageImages/Picture6.jpg',
       desktopTitle: 'Elegant Ethnicwear',
