@@ -48,10 +48,10 @@ export class HeaderComponent {
   //   this.router.navigate(['/products']);
   // }
 
-  // productpage() {
-  //   this.menuOpen = !this.menuOpen;
-  //   this.router.navigate(['/products']);
-  // }
+  productpage() {
+    this.isDrawerOpen = !this.isDrawerOpen;
+    this.router.navigate(['/products']);
+  }
 
   // Login() {
   //   this.router.navigate(['/auth']);

@@ -15,3 +15,6 @@ i {
 i:hover {
   opacity: 0.75;
 }
+input::placeholder {
+  color: #e1e2e4; /* Change to your desired color */
+}
