@@ -5,35 +5,37 @@ import { ProductService } from './Services/product.service';
   selector: 'app-products',
   standalone: false,
   templateUrl: './products.component.html',
-  styleUrl: './products.component.scss'
+  styleUrl: './products.component.scss',
 })
 export class ProductsComponent implements OnInit {
-  products:any[]=[]
+  products: any[] = [];
   currentImageIndex: { [productId: string]: number } = {};
 
-  constructor(private product:ProductService){}
+  constructor(private product: ProductService) {}
 
   ngOnInit(): void {
-    this.getAllProduct()
+    this.getAllProduct();
   }
 
-  getAllProduct(){
-    this.product.getAllProduct().subscribe((res:any)=>{
-      console.log("Product list",res)
+  getAllProduct() {
+    console.log('product list');
+    this.product.getAllProduct().subscribe((res: any) => {
+      console.log('Product list', res);
       this.products = res.data;
 
       // Initialize carousel index and auto scroll for each product
-    this.products.forEach((product: any) => {
-      this.currentImageIndex[product._id] = 0;
+      this.products.forEach((product: any) => {
+        this.currentImageIndex[product._id] = 0;
 
-      if (product.imageUrls.length > 1) {
-        setInterval(() => {
-          this.currentImageIndex[product._id] =
-            (this.currentImageIndex[product._id] + 1) % product.imageUrls.length;
-        }, 2500); // 👈 Change image every 2.5 sec
-      }
+        if (product.imageUrls.length > 1) {
+          setInterval(() => {
+            this.currentImageIndex[product._id] =
+              (this.currentImageIndex[product._id] + 1) %
+              product.imageUrls.length;
+          }, 2500); // 👈 Change image every 2.5 sec
+        }
+      });
     });
-    })
   }
   // products = [
   //   {
@@ -74,4 +76,3 @@ export class ProductsComponent implements OnInit {
   //   }
   // ];
 }
-  
