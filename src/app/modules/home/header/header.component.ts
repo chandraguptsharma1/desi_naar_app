@@ -49,7 +49,6 @@ export class HeaderComponent {
   // }
 
   productpage() {
-    this.isDrawerOpen = !this.isDrawerOpen;
     this.router.navigate(['/products']);
   }
 
