@@ -42,7 +42,7 @@ export class ProductsComponent implements OnInit {
       id: 1,
       title: 'Nike Air MX Super 2500 - Red',
       imageUrls:
-        'https://5.imimg.com/data5/SELLER/Default/2022/5/EG/NS/QR/19885899/whatsapp-image-2022-05-06-at-5-28-49-pm.jpeg',
+        'https://i.ibb.co/b5rMtFy8/11.jpg',
       price: 449,
       originalPrice: 699,
       rating: 5.0,
@@ -52,7 +52,7 @@ export class ProductsComponent implements OnInit {
       id: 2,
       title: 'Adidas Cloudfoam Pro',
       imageUrls:
-        'https://5.imimg.com/data5/SELLER/Default/2022/5/EG/NS/QR/19885899/whatsapp-image-2022-05-06-at-5-28-49-pm.jpeg',
+        'https://i.ibb.co/0RHTf8pm/10.jpg',
       price: 299,
       originalPrice: 449,
       rating: 4.5,
@@ -62,7 +62,7 @@ export class ProductsComponent implements OnInit {
       id: 3,
       title: 'Puma Revolution',
       imageUrls:
-        'https://5.imimg.com/data5/SELLER/Default/2022/5/EG/NS/QR/19885899/whatsapp-image-2022-05-06-at-5-28-49-pm.jpeg',
+        'https://i.ibb.co/KjxYN0jQ/9.jpg',
       price: 189,
       originalPrice: 299,
       rating: 4.7,
@@ -72,7 +72,78 @@ export class ProductsComponent implements OnInit {
       id: 4,
       title: 'New Balance 327',
       imageUrls:
-        'https://5.imimg.com/data5/SELLER/Default/2022/5/EG/NS/QR/19885899/whatsapp-image-2022-05-06-at-5-28-49-pm.jpeg',
+        'https://i.ibb.co/ym0XQykd/8.jpg',
+      price: 169,
+      originalPrice: 239,
+      rating: 4.8,
+      discountText: '29% OFF',
+    },
+    {
+      id: 4,
+      title: 'New Balance 327',
+      imageUrls:
+        'https://i.ibb.co/GfCFwKst/7.jpg',
+      price: 169,
+      originalPrice: 239,
+      rating: 4.8,
+      discountText: '29% OFF',
+    },
+    {
+      id: 4,
+      title: 'New Balance 327',
+      imageUrls:
+        'https://i.ibb.co/yFLCfcth/6.jpg',
+      price: 169,
+      originalPrice: 239,
+      rating: 4.8,
+      discountText: '29% OFF',
+    },
+    {
+      id: 4,
+      title: 'New Balance 327',
+      imageUrls:
+        'https://i.ibb.co/gL8tXxnW/5.jpg',
+      price: 169,
+      originalPrice: 239,
+      rating: 4.8,
+      discountText: '29% OFF',
+    },
+    {
+      id: 4,
+      title: 'New Balance 327',
+      imageUrls:
+        'https://i.ibb.co/GfCFwKst/7.jpg',
+      price: 169,
+      originalPrice: 239,
+      rating: 4.8,
+      discountText: '29% OFF',
+    },
+   
+    {
+      id: 4,
+      title: 'New Balance 327',
+      imageUrls:
+        'https://i.ibb.co/G4RqxLTd/3.jpg',
+      price: 169,
+      originalPrice: 239,
+      rating: 4.8,
+      discountText: '29% OFF',
+    },
+    {
+      id: 4,
+      title: 'New Balance 327',
+      imageUrls:
+        'https://i.ibb.co/vxk3S1Bv/2.jpg',
+      price: 169,
+      originalPrice: 239,
+      rating: 4.8,
+      discountText: '29% OFF',
+    },
+    {
+      id: 4,
+      title: 'New Balance 327',
+      imageUrls:
+        'https://i.ibb.co/PvmFh0tg/1.jpg',
       price: 169,
       originalPrice: 239,
       rating: 4.8,
@@ -80,3 +151,23 @@ export class ProductsComponent implements OnInit {
     },
   ];
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
