@@ -1,482 +1,143 @@
-<!-- <app-header></app-header> -->
-<!-- Top Bar -->
-<div
-  class="w-full bg-green-900 text-white text-sm flex items-center justify-center py-1"
->
-  CUSTOM TAILORED LEATHER FOR TODAY'S
-</div>
+<div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-2 gap-10">
+  <!-- Left: Product Image and Thumbnails -->
+  <div>
+    <img
+      [src]="mainImage"
+      alt="Main product"
+      class="w-full object-cover border"
+    />
 
-<!-- Main Navbar -->
-<nav class="w-full border-b border-gray-300 bg-white shadow-md">
-  <div
-    class="container mx-auto flex flex-col items-center justify-center py-4 px-6"
-  >
-    <!-- Center: Logo and Menu -->
-    <div class="flex flex-col items-center space-y-2">
-      <!-- Logo -->
-      <div class="text-center">
-        <div class="flex justify-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-7 w-7 text-green-900"
-            viewBox="0 0 20 20"
+    <div class="mt-4 flex space-x-2">
+      <img
+        *ngFor="let img of product.images"
+        [src]="img"
+        alt="Thumbnail"
+        class="w-20 h-28 object-cover border cursor-pointer hover:border-black"
+      />
+    </div>
+  </div>
+
+  <!-- Right: Product Info -->
+  <div class="space-y-6">
+    <div>
+      <h2 class="text-2xl font-semibold">{{ product.title }}</h2>
+      <p class="text-lg text-gray-600 font-medium">
+        Rs. {{ product.price | number : "1.0-2" }}
+      </p>
+    </div>
+
+    <div class="text-sm text-gray-600">
+      <p><strong>SKU:</strong> {{ product.sku }}</p>
+    </div>
+
+    <div>
+      <label class="block font-medium mb-1">Size:</label>
+      <div class="flex space-x-2">
+        <button
+          *ngFor="let size of product.sizes"
+          class="px-3 py-1 border hover:bg-gray-100"
+        >
+          {{ size }}
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <label class="block font-medium mb-1">Color:</label>
+      <div class="flex space-x-2">
+        <button
+          *ngFor="let color of product.colors"
+          class="px-3 py-1 border hover:bg-gray-100"
+        >
+          {{ color }}
+        </button>
+      </div>
+    </div>
+
+    <div class="flex flex-col space-y-3">
+      <button class="bg-black text-white px-6 py-2">Add to Cart</button>
+      <button class="border px-6 py-2 hover:bg-gray-100">Buy It Now</button>
+    </div>
+
+    <!-- Icon Section -->
+    <div
+      class="flex justify-between items-center pb-3 border-b border-gray-300 text-sm text-gray-700 text-center"
+    >
+      <!-- Fitting Guide -->
+      <div class="flex flex-col  items-center flex-1">
+        <svg
+          class="svg-icon icon-shirt"
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="24"
+          viewBox="0 0 25 24"
+        >
+          <title>Shirt Icon</title>
+
+          <path
             fill="currentColor"
-          >
-            <path
-              d="M2.166 10.93l2.72-6.19a.75.75 0 011.35-.09l3.246 4.868 3.246-4.868a.75.75 0 011.35.09l2.72 6.19A.75.75 0 0116 11.25h-1v2.75a.75.75 0 01-.75.75h-8.5A.75.75 0 015 14v-2.75H4a.75.75 0 01-.834-.32z"
-            />
-          </svg>
-        </div>
-        <div class="font-bold text-lg text-green-900 tracking-wider">
-          DesiNar
-        </div>
+            fill-rule="evenodd"
+            d="M3.622 3.512L1.94 8.66 5.25 9.818V7.5a.75.75 0 1 1 1.5 0v13.75h12.367V7.5a.75.75 0 0 1 1.5 0v2.322l3.368-1.163-1.736-5.145a18.37 18.37 0 0 0-1.747-.82c-1.063-.43-2.368-.838-3.618-.926-.141.28-.357.65-.664 1.022-.637.772-1.698 1.585-3.287 1.585-1.588 0-2.65-.813-3.286-1.585a5.474 5.474 0 0 1-.664-1.022c-1.25.088-2.556.497-3.618.927a18.377 18.377 0 0 0-1.743.817zM22.867 3l.38-.646.24.141 2.395 7.096-5.265 1.818V22.75H5.25V11.407L.06 9.59l2.315-7.093.245-.143L3 3l-.38-.646.001-.001.003-.002.01-.006.033-.019.122-.068a19.876 19.876 0 0 1 2.012-.953C6.07.79 7.792.25 9.468.25h.542l.169.511.004.012.023.06a3.977 3.977 0 0 0 .598 1.001c.447.542 1.12 1.041 2.13 1.041 1.011 0 1.684-.499 2.13-1.04a3.972 3.972 0 0 0 .622-1.062l.004-.01.169-.513h.542c1.676 0 3.398.541 4.665 1.055a19.88 19.88 0 0 1 2.012.953l.123.068.033.02.01.005.002.002h.002l-.38.647z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        <span class="pt-2">Fitting guide</span>
       </div>
 
-      <!-- Navigation Links -->
-      <ul
-        class="flex flex-wrap justify-center space-x-6 text-gray-700 text-sm font-medium"
-      >
-        <li><a href="#" class="hover:text-green-900">New Arrivals</a></li>
-        <li><a href="#" class="hover:text-green-900">Shop All</a></li>
-        <li><a href="#" class="hover:text-green-900">Categories</a></li>
-        <li><a href="#" class="hover:text-green-900">Collections</a></li>
-        <li><a href="#" class="hover:text-green-900">Celebrity Closet</a></li>
-        <li><a href="#" class="hover:text-green-900">Creations</a></li>
-        <li><a href="#" class="hover:text-green-900">Store Locator</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+      <!-- Vertical Divider -->
+      <div class="w-px h-10 bg-gray-300"></div>
 
-<section class="bg-[#F8F5EE] py-10 px-6 lg:px-12">
-  <div
-    class="container mx-auto max-w-screen-xl grid grid-cols-1 lg:grid-cols-2 gap-12"
-  >
-    <!-- Left: Product Images -->
-    <div>
-      <div class="grid grid-cols-2 gap-4">
-        <img
-          *ngFor="let image of product.images"
-          [src]="image"
-          [alt]="product.name"
-          class="w-full h-auto rounded-md object-cover transition-transform duration-300 hover:scale-105"
-        />
-
-        <!-- Product Details Sections -->
-      </div>
-      <div class="mt-10 border-t border-gray-300">
-        <!-- Description -->
-        <div class="border-b border-gray-300">
-          <button
-            (click)="toggleSection('description')"
-            class="w-full text-left py-4 flex justify-between items-center"
-          >
-            <span class="font-bold text-lg">DESCRIPTION</span>
-            <span class="text-xl">{{ isOpen.description ? "−" : "+" }}</span>
-          </button>
-          <div *ngIf="isOpen.description" class="pb-4 text-gray-700 px-2">
-            Designed for festive occasions, this kurta boasts resham and
-            sequinned embroidery. With two pockets and pure viscose lining, it
-            offers elegance and comfort. Paired with an ivory Patiala and a
-            heavily embroidered dupatta, this set exudes charm.
-          </div>
-        </div>
-
-        <!-- Extra Details -->
-        <div class="border-b border-gray-300">
-          <button
-            (click)="toggleSection('extraDetails')"
-            class="w-full text-left py-4 flex justify-between items-center"
-          >
-            <span class="font-bold text-lg">EXTRA DETAILS</span>
-            <span class="text-xl">{{ isOpen.extraDetails ? "−" : "+" }}</span>
-          </button>
-          <div *ngIf="isOpen.extraDetails" class="pb-4 text-gray-700 px-2">
-            <p class="font-bold text-center">
-              COD AVAILABLE UNDER Rs 5000/- ONLY
-            </p>
-            <p>
-              <b>Buy 2 get 5% off</b> | Use code: OVER5 &
-              <b>Buy 3 get 10% off</b> | Use code: OVER10 (Applicable at
-              checkout)
-            </p>
-            <p>Product above Rs 5000/- have sizes up to 6XL</p>
-            <p class="text-blue-600 underline">
-              For any Queries or Customisation, contact on WhatsApp (Click here)
-            </p>
-          </div>
-        </div>
-
-        <!-- Visit Our Store -->
-        <div class="border-b border-gray-300">
-          <button
-            (click)="toggleSection('visitStore')"
-            class="w-full text-left py-4 flex justify-between items-center"
-          >
-            <span class="font-bold text-lg">VISIT OUR STORE</span>
-            <span class="text-xl">{{ isOpen.visitStore ? "−" : "+" }}</span>
-          </button>
-          <div *ngIf="isOpen.visitStore" class="pb-4 text-gray-700 px-2">
-            <p class="font-bold">SCHEDULE AN APPOINTMENT AT OUR STORE</p>
-            <p>
-              Shop No. 6, Santushti Shopping Complex, Tejas Camp, Air Force
-              Station, Chanakyapuri, New Delhi-110003
-            </p>
-            <p class="text-blue-600 underline">Book Now</p>
-          </div>
-        </div>
-
-        <!-- Additional Information -->
-        <div class="border-b border-gray-300">
-          <button
-            (click)="toggleSection('additionalInfo')"
-            class="w-full text-left py-4 flex justify-between items-center"
-          >
-            <span class="font-bold text-lg">ADDITIONAL INFORMATION</span>
-            <span class="text-xl">{{ isOpen.additionalInfo ? "−" : "+" }}</span>
-          </button>
-          <div *ngIf="isOpen.additionalInfo" class="pb-4 text-gray-700 px-2">
-            <p>
-              <b>Kalpraag</b> is a registered brand of
-              <b>Shripal Rakesh Kumar Jain</b>
-            </p>
-            <p>
-              <b>Manufactured & Packed By</b> - Shripal Rakesh Kumar Jain, Delhi
-            </p>
-            <p>
-              <b>Address:</b> Shop No. 6, Santushti Shopping Complex, Tejas
-              Camp, Air Force Station, Chanakyapuri, New Delhi-110003
-            </p>
-            <p><b>Customer support:</b> supportdesinaar.com | +919717102471</p>
-            <p><b>Product-weight:</b> approx 1.5 kg - 1.8 Kg.</p>
-            <p><b>Courier Package dimensions:</b> 91 x 76 x 12 cm.</p>
-            <p><b>Country of Origin:</b> India</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right: Product Details (1/3 width) -->
-    <div class="w-full max-w-[28rem]">
-      <p class="text-xs bg-red-600 text-white px-2 py-1 inline-block font-bold">
-        UP TO {{ product.discount }}
-      </p>
-      <h1 class="text-2xl font-bold mt-2">{{ product.name }}</h1>
-      <p class="text-xs text-gray-600">
-        {{ product.brand }} SKU: {{ product.sku }}
-      </p>
-
-      <!-- Price Section -->
-      <div class="mt-2">
-        <p class="text-gray-500 line-through text-sm">
-          {{ product.originalPrice }}
-        </p>
-        <p class="text-xl font-bold">
-          {{ product.discountedPrice }}
-          <span class="text-sm text-red-600">({{ product.discount }})</span>
-        </p>
-      </div>
-
-      <hr class="border-t border-gray-300 my-4" />
-      <!-- Shipping & Availability -->
-      <div class="flex space-x-2 mt-4">
-        <!-- 24hrs Dispatch Available -->
-        <div
-          class="flex items-center border border-black px-3 py-2 rounded-md text-sm font-medium"
+      <!-- Email -->
+      <div class="flex flex-col  items-center flex-1">
+        <svg
+          class="svg-icon icon-mail"
+          xmlns="http://www.w3.org/2000/svg"
+          width="27"
+          height="20"
+          fill="none"
+          viewBox="0 0 27 22"
         >
-          <span class="mr-2 text-lg">🚚</span>
-          <span>24hrs Dispatch Available</span>
-        </div>
+          <title>Mail Icon</title>
 
-        <!-- Shipping Internationally -->
-        <div
-          class="flex items-center border border-black px-3 py-2 rounded-md text-sm font-medium"
+          <path
+            fill="currentColor"
+            fill-rule="evenodd"
+            transform="translate(0 1)"
+            d="M1.458 1.5h24.084v17H1.458v-17zM0 0H27v20H0V0zm3.461 4.608l9.72 7.222.427.317.427-.317 9.72-7.222-.854-1.216-9.293 6.905-9.293-6.905-.854 1.216z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        <span  class="pt-2">Email us about this product</span>
+      </div>
+
+      <!-- Vertical Divider -->
+      <div class="w-px h-10 bg-gray-300"></div>
+
+      <!-- Share -->
+      <div class="flex flex-col items-center flex-1">
+        <svg
+          class="svg-icon icon-share"
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="21"
+          fill="none"
+          viewBox="0 0 18 21"
         >
-          <span class="mr-2 text-lg">✈️</span>
-          <span>Shipping Internationally</span>
-        </div>
-      </div>
+          <title>Share Icon</title>
 
-      <!-- Size Selection -->
-      <div class="mt-6">
-        <h3 class="text-xs font-semibold">Size:</h3>
-        <div class="grid grid-cols-3 gap-2 mt-2">
-          <button
-            *ngFor="let size of product.sizes"
-            class="border border-gray-500 px-2 py-1 text-xs rounded-md hover:bg-black hover:text-white"
-          >
-            {{ size }}
-          </button>
-        </div>
-      </div>
-
-      <!-- Quantity Selector -->
-      <div class="mt-6">
-        <h3 class="text-xs font-semibold">Quantity</h3>
-        <div class="flex items-center space-x-4 mt-2">
-          <button (click)="decreaseQuantity()" class="px-2 py-1 border text-sm">
-            -
-          </button>
-          <span class="text-sm">{{ quantity }}</span>
-          <button (click)="increaseQuantity()" class="px-2 py-1 border text-sm">
-            +
-          </button>
-        </div>
-      </div>
-
-      <!-- Add to Bag & Buy Now Buttons -->
-      <div class="mt-6 space-y-3">
-        <button
-          class="w-full py-2 border border-black text-black text-sm font-semibold rounded-md hover:bg-gray-100"
-        >
-          ADD TO BAG
-        </button>
-        <button
-          class="w-full py-2 bg-black text-white text-sm font-semibold rounded-md hover:bg-gray-800"
-        >
-          BUY IT NOW
-        </button>
-      </div>
-      <div class="rounded-md mt-6">
-        <!-- Free Shipping Info -->
-        <div class="border p-4 rounded-md bg-[#FAF7F2]">
-          <p class="text-sm">
-            <span class="font-semibold">Free Shipping to</span>
-            <select class="border-none text-black font-semibold bg-transparent">
-              <option>India</option>
-              <option>USA</option>
-              <option>UK</option>
-            </select>
-          </p>
-          <p class="text-xs mt-1 text-gray-700">
-            Order within the next
-            <span class="font-bold text-black"
-              >12Hours 50Minutes 30Seconds</span
-            >
-            for dispatch today, and you'll receive your package between
-            <span class="font-bold text-black">Feb 25 and Feb 27</span>
-          </p>
-        </div>
-
-        <!-- Order Status Timeline -->
-        <div
-          class="grid grid-cols-3 gap-2 text-center border mt-3 p-3 rounded-md"
-        >
-          <div>
-            <span class="inline-block text-lg">✔️</span>
-            <p class="text-xs font-bold mt-1">Ordered</p>
-            <p class="text-xs text-gray-500">Feb 20</p>
-          </div>
-          <div>
-            <span class="inline-block text-lg">🚚</span>
-            <p class="text-xs font-bold mt-1">Order Ready</p>
-            <p class="text-xs text-gray-500">Feb 22 - Feb 23</p>
-          </div>
-          <div>
-            <span class="inline-block text-lg">📍</span>
-            <p class="text-xs font-bold mt-1">Estimated Delivery</p>
-            <p class="text-xs text-gray-500">Feb 25 - Feb 27</p>
-          </div>
-        </div>
-
-        <!-- Carbon Neutral Shipping -->
-        <div class="flex items-center mt-3">
-          <span class="inline-block text-lg">🌱</span>
-          <p class="text-xs ml-2 text-gray-700">
-            Your order ships carbon neutral
-          </p>
-        </div>
-
-        <!-- Product Details List -->
-        <div class="border mt-4 rounded-md">
-          <div class="flex items-center px-4 py-3 border-b">
-            <span class="text-lg">🎨</span>
-            <p class="text-sm ml-3">
-              Color: <span class="font-semibold">Black</span>
-            </p>
-          </div>
-          <div class="flex items-center px-4 py-3 border-b">
-            <span class="text-lg">🧵</span>
-            <p class="text-sm ml-3">
-              Fabric: <span class="font-semibold">Georgette</span>
-            </p>
-          </div>
-          <div class="flex items-center px-4 py-3 border-b">
-            <span class="text-lg">✨</span>
-            <p class="text-sm ml-3">Resham and sequined embroidery</p>
-          </div>
-          <div class="flex items-center px-4 py-3">
-            <span class="text-lg">📦</span>
-            <p class="text-sm ml-3">
-              Pack Contain:
-              <span class="font-semibold">1 Kurta :: Patiyala :: Dupatta</span>
-            </p>
-          </div>
-        </div>
-
-        <!-- Share Option -->
-        <div class="flex items-center mt-4 text-gray-700 cursor-pointer">
-          <span class="text-lg">📢</span>
-          <p class="text-sm ml-2">SHARE</p>
-        </div>
+          <path
+            fill="currentColor"
+            fill-rule="evenodd"
+            d="M9.545.56L9 0l-.545.56-5.143 5.286 1.09 1.122L8.23 3.035V15.45H9.77V3.035l3.826 3.933 1.091-1.122L9.545.561zM0 11.75V21h18v-9.25h-1.543v7.664H1.543V11.75H0z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+        <span  class="pt-2">Share this</span>
       </div>
     </div>
+
+    <p class="text-sm pt-2 text-gray-700">
+      {{ product.description }}
+    </p>
   </div>
-</section>
-
-<section class="bg-[#F8F5EE] py-10 px-4">
-  <div class="container mx-auto">
-    <h2 class="text-3xl font-bold mb-6">RECOMMENDED PRODUCTS</h2>
-
-    <!-- Product Carousel Wrapper -->
-    <div class="relative">
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
-      >
-        <div *ngFor="let product of recommendedProducts" class="relative">
-          <div class="relative group">
-            <img
-              [src]="product.image"
-              [alt]="product.name"
-              class="w-full object-cover rounded-md transition-transform duration-300 hover:scale-105"
-            />
-
-            <!-- Choose Options Button -->
-            <div
-              class="absolute bottom-0 left-0 right-0 bg-white/80 text-center py-2 opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <button class="text-sm font-semibold tracking-wide">
-                CHOOSE OPTIONS
-              </button>
-            </div>
-          </div>
-
-          <!-- Product Details -->
-          <div class="text-center mt-2">
-            <h3 class="text-sm font-semibold">{{ product.name }}</h3>
-            <p class="text-gray-700">{{ product.price }}</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Navigation Arrows -->
-      <button
-        class="absolute left-0 top-1/2 -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-md"
-      >
-        ←
-      </button>
-      <button
-        class="absolute right-0 top-1/2 -translate-y-1/2 bg-black text-white p-3 rounded-full shadow-md"
-      >
-        →
-      </button>
-    </div>
-  </div>
-</section>
-
-<footer class="bg-[#6D0909] text-white py-10 px-6">
-  <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-    <!-- Column 1: Brand Info -->
-    <div>
-      <h3 class="font-bold uppercase">
-        Desi Naar: A Weaving Experience of Elegance, To Embrace the Heritage
-      </h3>
-      <p class="mt-2 text-sm">
-        Welcome to desinaar, where stories of heritage, craftsmanship, and
-        elegance intertwine to create a symphony of fashion for men. Just as the
-        first rays of dawn bring light to the world, our brand illuminates the
-        beauty of tradition in the realm of contemporary design.
-      </p>
-    </div>
-
-    <!-- Column 2: Address -->
-    <div>
-      <h3 class="font-bold uppercase">Address</h3>
-      <p class="text-sm mt-2">
-        Shop No.6, Santushti Shopping Complex, Tejas Camp, Air Force Station,
-        Chanakyapuri, New Delhi-110003
-      </p>
-      <p class="text-sm">
-        <strong>Email:</strong>
-        <a href="" class="underline">supportdesinaar.com</a>
-      </p>
-      <p class="text-sm">
-        <strong>Contact:</strong>
-        <a href="" class="underline">+91 7488333223</a>
-      </p>
-      <p class="text-sm mt-2">
-        <strong>Call support timings:</strong><br />
-        7 Days Open <br />
-        10am to 8:30pm
-      </p>
-    </div>
-
-    <!-- Column 3: Company Links -->
-    <div>
-      <h3 class="font-bold uppercase">Company</h3>
-      <ul class="mt-2 space-y-1 text-sm">
-        <li><a href="#" class="hover:underline">About Us</a></li>
-        <li><a href="#" class="hover:underline">FAQs</a></li>
-        <li><a href="#" class="hover:underline">Contact Us</a></li>
-        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
-        <li><a href="#" class="hover:underline">Terms and Conditions</a></li>
-        <li><a href="#" class="hover:underline">Return & Refund Policy</a></li>
-        <li><a href="#" class="hover:underline">Terms of Service</a></li>
-        <li><a href="#" class="hover:underline">Store Locator</a></li>
-      </ul>
-    </div>
-
-    <!-- Column 4: Links -->
-    <div>
-      <h3 class="font-bold uppercase">Links</h3>
-      <ul class="mt-2 space-y-1 text-sm">
-        <li><a href="#" class="hover:underline">Sherwani</a></li>
-        <li><a href="#" class="hover:underline">Designer Kurta Set</a></li>
-        <li><a href="#" class="hover:underline">Real Mirror Work</a></li>
-        <li><a href="#" class="hover:underline">Indowestern</a></li>
-        <li><a href="#" class="hover:underline">Kurta Jacket Set</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Newsletter & Social Links -->
-  <div
-    class="container mx-auto mt-6 border-t border-gray-500 pt-6 flex flex-col md:flex-row items-center justify-between"
-  >
-    <!-- Newsletter Subscription -->
-    <div class="w-full md:w-1/3">
-      <h3 class="font-bold uppercase">Newsletter</h3>
-      <div class="mt-2 flex items-center border-b border-gray-300 pb-1">
-        <input
-          type="email"
-          placeholder="Your email"
-          class="bg-transparent text-white w-full outline-none px-2 text-sm"
-        />
-        <button class="ml-2 text-sm uppercase hover:underline">
-          Subscribe
-        </button>
-      </div>
-    </div>
-
-    <!-- Social Media Icons -->
-    <div class="flex space-x-4 mt-4 md:mt-0">
-      <a href="#" class="hover:opacity-75"
-        ><i class="fab fa-facebook-f text-lg"></i
-      ></a>
-      <a href="#" class="hover:opacity-75"
-        ><i class="fab fa-instagram text-lg"></i
-      ></a>
-    </div>
-  </div>
-
-  <!-- Copyright -->
-  <div
-    class="container mx-auto text-center mt-6 text-sm border-t border-gray-500 pt-4"
-  >
-    Copyright 2025, Desinar. All rights reserved.
-    <br />
-    See our <a href="#" class="underline">terms of use</a> and
-    <a href="#" class="underline">privacy notice</a>. <br />
-    Powered by Shopify
-  </div>
-</footer>
+</div>

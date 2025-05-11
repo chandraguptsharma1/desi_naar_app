@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from './Services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -11,7 +12,7 @@ export class ProductsComponent implements OnInit {
   // products: any[] = [];
   currentImageIndex: { [productId: string]: number } = {};
 
-  constructor(private product: ProductService) {}
+  constructor(private product: ProductService,private router:Router) {}
 
   ngOnInit(): void {
     // this.getAllProduct();
@@ -150,6 +151,10 @@ export class ProductsComponent implements OnInit {
       discountText: '29% OFF',
     },
   ];
+
+  productDetails(){
+    this.router.navigate(['/products/detail'])
+  }
 }
 
 

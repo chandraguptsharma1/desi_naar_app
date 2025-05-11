@@ -8,40 +8,23 @@ import { Component } from '@angular/core';
 })
 export class DetailsComponent {
   product = {
-    name: 'RUDRA BLACK KURTA SET',
-    brand: 'Kalpraaq',
-    sku: 'KPD-ELEPH-BLK',
-    originalPrice: 'Rs.22,424.00',
-    discountedPrice: 'Rs.19,499.00',
-    discount: '13% off',
-    availability: '24hrs Dispatch Available',
-    shipping: 'Shipping Internationally',
+    title: 'Criss Cross Front Open Sherwani',
+    price: 63995.0,
+    sku: 'DD048331',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: ['NAVY', 'BLACK', 'LONDON GDF'],
     images: [
-      'https://i.ibb.co/gbGG9PsX/product1.png',
-      'https://i.ibb.co/gbGG9PsX/product1.png',
-      'https://i.ibb.co/gbGG9PsX/product1.png',
-      'https://i.ibb.co/gbGG9PsX/product1.png',
-      'https://i.ibb.co/gbGG9PsX/product1.png',
-      'https://i.ibb.co/gbGG9PsX/product1.png',
+      'https://i.ibb.co/b5rMtFy8/11.jpg',
+      'https://i.ibb.co/0RHTf8pm/10.jpg',
+      'https://i.ibb.co/KjxYN0jQ/9.jpg',
+      'https://i.ibb.co/ym0XQykd/8.jpg',
+      'https://i.ibb.co/GfCFwKst/7.jpg',
     ],
-    sizes: [
-      'XS/34',
-      'S/36',
-      'M/38',
-      'L/40',
-      'XL/42',
-      'XXL/44',
-      '3XL/46',
-      '4XL/48',
-      '5XL/50',
-      '6XL/52',
-    ],
-    estimatedDelivery: {
-      orderDate: 'Feb 20',
-      orderReady: 'Feb 22 - Feb 23',
-      deliveryDate: 'Feb 25 - Feb 27',
-    },
+    description:
+      'Silk front open sherwani with pintucks and highlighted pocket centric design',
   };
+
+  mainImage = this.product.images[0];
 
   quantity = 1;
 

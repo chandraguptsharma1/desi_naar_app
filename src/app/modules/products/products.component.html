@@ -4,7 +4,7 @@
     class="group relative w-full bg-white rounded-md overflow-hidden cursor-pointer"
   >
     <!-- Image Wrapper -->
-    <div class="relative w-full">
+    <div class="relative w-full" (click)="productDetails()">
       <img
         [src]="product.imageUrls"
         [alt]="product.title"
