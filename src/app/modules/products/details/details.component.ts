@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './details.component.scss',
 })
 export class DetailsComponent {
+  isFabricOpen: boolean = true;
+   isDescriptionOpen: boolean = true;
+   isDeliveryOpen: boolean = true;
+
+
   product = {
     title: 'Criss Cross Front Open Sherwani',
     price: 63995.0,
@@ -84,4 +89,8 @@ export class DetailsComponent {
       url: '/product/aarv-wine-kurta',
     },
   ];
+
+
+
+
 }

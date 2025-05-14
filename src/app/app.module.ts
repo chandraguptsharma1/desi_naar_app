@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeModule } from './modules/home/home.module';
+import { RegistrationComponent } from './module/auth/registration/registration.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, RegistrationComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

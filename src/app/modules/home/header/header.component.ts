@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,6 +8,13 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  @HostListener('document:click', ['$event.target'])
+onClickOutside(targetElement: HTMLElement) {
+  const clickedInside = targetElement.closest('.relative');
+  if (!clickedInside) {
+    this.isUserMenuOpen = false;
+  }
+}
   constructor(private router: Router) {}
   isDrawerOpen = false;
   isDrawerVisible = false;
@@ -52,7 +59,24 @@ export class HeaderComponent {
     this.router.navigate(['/products']);
   }
 
-  // Login() {
-  //   this.router.navigate(['/auth']);
-  // }
+  Login() {
+    this.router.navigate(['/auth']);
+  }
+
+  register(){
+    this.router.navigate(['/auth/registration'])
+  }
+
+  isLoggedIn = false; // toggle this based on actual login logic
+isUserMenuOpen = false;
+
+toggleUserMenu() {
+  this.isUserMenuOpen = !this.isUserMenuOpen;
+}
+
+logout() {
+  this.isLoggedIn = false;
+  this.isUserMenuOpen = false;
+  // perform actual logout logic
+}
 }
