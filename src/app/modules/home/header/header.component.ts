@@ -64,7 +64,7 @@ onClickOutside(targetElement: HTMLElement) {
   }
 
   register(){
-    this.router.navigate(['/auth/registration'])
+    this.router.navigate(['/register'])
   }
 
   isLoggedIn = false; // toggle this based on actual login logic
@@ -78,5 +78,9 @@ logout() {
   this.isLoggedIn = false;
   this.isUserMenuOpen = false;
   // perform actual logout logic
+}
+
+cartPage(){
+  this.router.navigate(['/cart'])
 }
 }
