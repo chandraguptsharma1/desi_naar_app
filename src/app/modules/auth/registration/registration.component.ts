@@ -9,28 +9,29 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-registration',
   standalone: false,
   templateUrl: './registration.component.html',
-  styleUrl: './registration.component.scss'
+  styleUrl: './registration.component.scss',
 })
 export class RegistrationComponent {
-loginForm: FormGroup;
+  registration: FormGroup;
   loading: boolean = false;
   errorMessage: string = '';
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient,
     private loginService: AuthService,
     private router: Router,
     private toastr: ToastrService
   ) {
-    this.loginForm = this.fb.group({
+    this.registration = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
 
   login() {
-    if (this.loginForm.invalid) {
+    if (this.registration.invalid) {
       this.errorMessage = 'Please fill all fields correctly.';
       return;
     }
@@ -38,7 +39,7 @@ loginForm: FormGroup;
     this.loading = true;
     this.errorMessage = '';
 
-    this.loginService.loginuser(this.loginForm.value).subscribe({
+    this.loginService.loginuser(this.registration.value).subscribe({
       next: (response: any) => {
         if (response.status === 200) {
           console.log('Login Response:', response);
