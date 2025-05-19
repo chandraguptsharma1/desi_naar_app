@@ -8,6 +8,8 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { ListProductsComponent } from './pages/products/list-products/list-products.component';
 import { AddProductComponent } from './pages/products/add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     SidebarComponent,
     ListProductsComponent,
     AddProductComponent,
+   
   ],
-  imports: [CommonModule, ReactiveFormsModule, AdminRoutingModule],
+  imports: [CommonModule, ReactiveFormsModule, AdminRoutingModule ,NgSelectModule,
+      ],
 })
 export class AdminModule {}
