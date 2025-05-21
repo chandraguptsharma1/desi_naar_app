@@ -152,7 +152,8 @@ export class ProductsComponent implements OnInit {
   // },
   // ];
 
-  productDetails() {
+  productDetails(product:any) {
+    sessionStorage.setItem('selectedProduct', JSON.stringify(product));
     this.router.navigate(['/products/detail']);
   }
 }

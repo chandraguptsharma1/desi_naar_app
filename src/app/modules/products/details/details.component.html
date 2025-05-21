@@ -110,18 +110,18 @@
 
       <div *ngIf="isFabricOpen" class="mt-4">
         <ul class="list-disc list-inside text-sm text-[#595858] space-y-1">
-          <li>Fabric: Anarkali - Crepe, Pant - Crepe, Dupatta - Georgette</li>
-          <li>Color: Orange</li>
-          <li>Work Type: Hand Embellishments, Pearl Embroidery</li>
-          <li>Delivery Timeline: 20 Working Days</li>
-          <li>Set Includes: Anarkali, pant, Dupatta (Set of 3 components)</li>
-          <li>Kurta length - 48", Pants Length - 36"</li>
+          <li>Fabric: {{product?.fabricCare?.fabric}}</li>
+          <li>Color: {{product?.fabricCare?.color}}</li>
+          <li>Work Type: {{product?.fabricCare?.workType}}</li>
+          <li>Delivery Timeline: {{product?.fabricCare?.deliveryTimeline}} Working Days</li>
+          <li>Set Includes: {{product?.fabricCare?.setIncludes}}</li>
+          <li>Kurta length - {{product?.fabricCare?.kurtaLength}}", Pants Length - {{product?.fabricCare?.pantsLength}}"</li>
           <li>
             In every size, the top and bottom lengths are an additional half
             inch.
           </li>
-          <li>Wash: Dry Clean Only</li>
-          <li>Style Code: KEOAR2507</li>
+          <li>Wash: {{product?.fabricCare?.washCare}}</li>
+          <li>Style Code: {{product?.fabricCare?.styleCode}}</li>
         </ul>
       </div>
     </div>
@@ -136,11 +136,11 @@
 
   <div *ngIf="isDeliveryOpen" class="mt-4">
     <ul class="list-disc list-inside text-sm text-[#595858] space-y-1">
-      <li>Free Shipping For All Orders Within India</li>
-      <li>Flat INR 3,000 Shipping Fees For All International Orders</li>
-      <li>Domestic Deliveries Take 2-3 Working Days Post Dispatch</li>
-      <li>International Deliveries Take 5-7 Working Days Post Dispatch</li>
-      <li>No Returns/Exchanges.</li>
+      <li>{{product?.deliveryAndReturns?.domesticShipping}} Shipping For All Orders Within India</li>
+      <li>Flat INR {{product?.deliveryAndReturns?.internationalShipping}} Shipping Fees For All International Orders</li>
+      <li>Domestic Deliveries Take {{product?.deliveryAndReturns?.domesticTime}} Working Days Post Dispatch</li>
+      <li>International Deliveries Take {{product?.deliveryAndReturns?.internationalTime}} Working Days Post Dispatch</li>
+      <li>{{product?.deliveryAndReturns?.returnPolicy}}.</li>
     </ul>
     <p class="text-sm text-[#595858] mt-4">
       The colors seen in the image may vary from the actual product due to different computer screen resolutions and displays.

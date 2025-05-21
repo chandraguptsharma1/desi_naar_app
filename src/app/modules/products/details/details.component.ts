@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-details',
@@ -6,30 +6,44 @@ import { Component } from '@angular/core';
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnInit {
+  productData: any;
+  product:any
   isFabricOpen: boolean = true;
-   isDescriptionOpen: boolean = true;
-   isDeliveryOpen: boolean = true;
+  isDescriptionOpen: boolean = true;
+  isDeliveryOpen: boolean = true;
+  mainImage:any
+
+  ngOnInit(){
+  
+    this.productData = sessionStorage.getItem('selectedProduct');
+    if (this.productData) {
+      this.product = JSON.parse(this.productData);
+      console.log("product details",this.product)
+      this.mainImage = this.product.images[0];
+    }
+  }
 
 
-  product = {
-    title: 'Criss Cross Front Open Sherwani',
-    price: 63995.0,
-    sku: 'DD048331',
-    sizes: ['S', 'M', 'L', 'XL'],
-    colors: ['NAVY', 'BLACK', 'LONDON GDF'],
-    images: [
-      'https://i.ibb.co/b5rMtFy8/11.jpg',
-      'https://i.ibb.co/0RHTf8pm/10.jpg',
-      'https://i.ibb.co/KjxYN0jQ/9.jpg',
-      'https://i.ibb.co/ym0XQykd/8.jpg',
-      'https://i.ibb.co/GfCFwKst/7.jpg',
-    ],
-    description:
-      'Silk front open sherwani with pintucks and highlighted pocket centric design',
-  };
 
-  mainImage = this.product.images[0];
+  // product = {
+  //   title: 'Criss Cross Front Open Sherwani',
+  //   price: 63995.0,
+  //   sku: 'DD048331',
+  //   sizes: ['S', 'M', 'L', 'XL'],
+  //   colors: ['NAVY', 'BLACK', 'LONDON GDF'],
+  //   images: [
+  //     'https://i.ibb.co/b5rMtFy8/11.jpg',
+  //     'https://i.ibb.co/0RHTf8pm/10.jpg',
+  //     'https://i.ibb.co/KjxYN0jQ/9.jpg',
+  //     'https://i.ibb.co/ym0XQykd/8.jpg',
+  //     'https://i.ibb.co/GfCFwKst/7.jpg',
+  //   ],
+  //   description:
+  //     'Silk front open sherwani with pintucks and highlighted pocket centric design',
+  // };
+
+  
 
   quantity = 1;
 
@@ -90,7 +104,8 @@ export class DetailsComponent {
     },
   ];
 
-
-
+   ngOnDestroy() {
+    sessionStorage.removeItem('selectedProduct');
+  }
 
 }
