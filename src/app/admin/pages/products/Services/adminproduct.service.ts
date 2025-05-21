@@ -14,4 +14,8 @@ export class AdminproductService {
       productData
     );
   }
+
+  getProduct() {
+    return this.http.get(environment.baseUrl + '/products/getProduct');
+  }
 }

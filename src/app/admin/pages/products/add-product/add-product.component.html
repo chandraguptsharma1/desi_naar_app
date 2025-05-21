@@ -2,26 +2,39 @@
   <h2 class="text-2xl font-semibold text-gray-700 mb-6">Add New Product</h2>
 
   <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()" class="space-y-6">
-
     <!-- Title -->
     <div>
-      <label class="block mb-2 text-sm font-medium text-gray-700">Product Title</label>
-      <input type="text" formControlName="title" placeholder="Enter Product Title"
-        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+      <label class="block mb-2 text-sm font-medium text-gray-700"
+        >Product Title</label
+      >
+      <input
+        type="text"
+        formControlName="title"
+        placeholder="Enter Product Title"
+        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+      />
     </div>
 
     <!-- SKU -->
     <div>
       <label class="block mb-2 text-sm font-medium text-gray-700">SKU</label>
-      <input type="text" formControlName="sku" placeholder="Enter SKU"
-        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+      <input
+        type="text"
+        formControlName="sku"
+        placeholder="Enter SKU"
+        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+      />
     </div>
 
     <!-- Price -->
     <div>
       <label class="block mb-2 text-sm font-medium text-gray-700">Price</label>
-      <input type="number" formControlName="price" placeholder="Enter Price"
-        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+      <input
+        type="number"
+        formControlName="price"
+        placeholder="Enter Price"
+        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+      />
     </div>
 
     <!-- Sizes -->
@@ -32,93 +45,275 @@
         <option *ngFor="let size of sizeOptions" [value]="size">{{ size }}</option>
       </select> -->
       <ng-select
-  [items]="sizeOptions"
-  formControlName="sizes"
-  [multiple]="true"
-  placeholder="Select sizes"
- class="w-full border border-gray-300 rounded-md shadow-sm text-sm"
->
-</ng-select>
+        [items]="sizeOptions"
+        formControlName="sizes"
+        [multiple]="true"
+        placeholder="Select sizes"
+        class="w-full"
+      >
+      </ng-select>
     </div>
-  
+
     <!-- Colors -->
     <div>
       <label class="block mb-2 text-sm font-medium text-gray-700">Colors</label>
-     <ng-select
-  [items]="colorOptions"
-  bindLabel=""
-  formControlName="colors"
-  [multiple]="true"
-  placeholder="Select colors"
-  class="w-full"
->
-</ng-select>
 
+      <input
+        type="text"
+        formControlName="colors"
+        placeholder="e.g. Red"
+        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+      />
     </div>
 
-    <!-- Fabric Care (Group) -->
-    <div formGroupName="fabricCare">
-      <label class="block mb-2 text-sm font-medium text-gray-700">Fabric Care</label>
+    <!-- Fabric, Fit & Care Section -->
+    <div formGroupName="fabricCare" class="space-y-4">
+      <h3 class="text-lg font-semibold text-gray-800 mt-6">
+        Fabric, Fit & Care
+      </h3>
+
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <input type="text" placeholder="Fabric (e.g. Cotton)" formControlName="fabric"
-          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400" />
-        <input type="text" placeholder="Wash Care (e.g. Hand wash)" formControlName="washCare"
-          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-700"
+            >Fabric</label
+          >
+          <input
+            type="text"
+            formControlName="fabric"
+            placeholder="e.g. Crepe"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-700"
+            >Color</label
+          >
+          <input
+            type="text"
+            formControlName="color"
+            placeholder="e.g. Orange"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-700"
+            >Work Type</label
+          >
+          <input
+            type="text"
+            formControlName="workType"
+            placeholder="e.g. Pearl Embroidery"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-700"
+            >Delivery Timeline</label
+          >
+          <input
+            type="text"
+            formControlName="deliveryTimeline"
+            placeholder="e.g. 20 Working Days"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-700"
+            >Set Includes</label
+          >
+          <input
+            type="text"
+            formControlName="setIncludes"
+            placeholder="e.g. Anarkali, Pant, Dupatta"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-700"
+            >Kurta Length</label
+          >
+          <input
+            type="text"
+            formControlName="kurtaLength"
+            placeholder="e.g. 48”"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-700"
+            >Pants Length</label
+          >
+          <input
+            type="text"
+            formControlName="pantsLength"
+            placeholder="e.g. 36”"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-700"
+            >Wash Care</label
+          >
+          <input
+            type="text"
+            formControlName="washCare"
+            placeholder="e.g. Dry Clean Only"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-700"
+            >Style Code</label
+          >
+          <input
+            type="text"
+            formControlName="styleCode"
+            placeholder="e.g. KEOAR2507"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <label class="block mb-1 text-sm font-medium text-gray-700"
+          >Additional Notes</label
+        >
+        <textarea
+          formControlName="additionalNotes"
+          placeholder="e.g. In every size, the top and bottom lengths are an additional half inch."
+          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+        ></textarea>
       </div>
     </div>
 
-    <!-- Delivery & Returns (Group) -->
-    <div formGroupName="deliveryAndReturns">
-      <label class="block mb-2 text-sm font-medium text-gray-700">Delivery & Returns</label>
+    <!-- Delivery & Returns Section -->
+    <div formGroupName="deliveryAndReturns" class="space-y-4 mt-8">
+      <h3 class="text-lg font-semibold text-gray-800">Delivery & Returns</h3>
+
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <input type="text" placeholder="Delivery (e.g. 5-7 days)" formControlName="delivery"
-          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400" />
-        <input type="text" placeholder="Return (e.g. 7-day return)" formControlName="return"
-          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-700"
+            >Domestic Shipping</label
+          >
+          <input
+            type="text"
+            formControlName="domesticShipping"
+            placeholder="e.g. Free shipping in India"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-700"
+            >International Shipping</label
+          >
+          <input
+            type="text"
+            formControlName="internationalShipping"
+            placeholder="e.g. INR 3,000 for international"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-700"
+            >Domestic Delivery Time</label
+          >
+          <input
+            type="text"
+            formControlName="domesticTime"
+            placeholder="e.g. 2–3 Working Days"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium text-gray-700"
+            >International Delivery Time</label
+          >
+          <input
+            type="text"
+            formControlName="internationalTime"
+            placeholder="e.g. 5–7 Working Days"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <label class="block mb-1 text-sm font-medium text-gray-700"
+          >Return Policy</label
+        >
+        <input
+          type="text"
+          formControlName="returnPolicy"
+          placeholder="e.g. No Returns/Exchanges"
+          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+        />
       </div>
     </div>
 
     <!-- Images -->
-   <!-- Images -->
-<div>
-  <label class="block mb-2 text-sm font-medium text-gray-700">Product Images</label>
-  <input
-    type="file"
-    (change)="onImageChange($event)"
-    multiple
-    accept="image/*"
-    class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
-  />
+    <!-- Images -->
+    <div>
+      <h3 class="mt-10 mb-1 text-lg font-semibold text-gray-800">
+        Product Images
+      </h3>
 
-  <p *ngIf="imageError" class="text-sm text-red-600 mt-2">{{ imageError }}</p>
+      <input
+        type="file"
+        (change)="onImageChange($event)"
+        multiple
+        accept="image/*"
+        class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+      />
 
-  <!-- Preview -->
-  <div *ngIf="imagePreviews.length > 0" class="flex flex-wrap gap-4 mt-4">
-    <div
-      *ngFor="let img of imagePreviews; let i = index"
-      class="relative w-24 h-24 rounded-md overflow-hidden border"
-    >
-      <img [src]="img" alt="Preview" class="w-full h-full object-cover" />
-      <button
-        type="button"
-        (click)="removeImage(i)"
-        class="absolute top-1 right-1 w-5 h-5 flex items-center justify-center text-xs bg-red-600 text-white rounded-full hover:bg-red-700"
-      >
-        ×
-      </button>
+      <p *ngIf="imageError" class="text-sm text-red-600 mt-2">
+        {{ imageError }}
+      </p>
+
+      <!-- Preview -->
+      <div *ngIf="imagePreviews.length > 0" class="flex flex-wrap gap-4 mt-4">
+        <div
+          *ngFor="let img of imagePreviews; let i = index"
+          class="relative w-24 h-24 rounded-md overflow-hidden border"
+        >
+          <img [src]="img" alt="Preview" class="w-full h-full object-cover" />
+          <button
+            type="button"
+            (click)="removeImage(i)"
+            class="absolute top-1 right-1 w-5 h-5 flex items-center justify-center text-xs bg-red-600 text-white rounded-full hover:bg-red-700"
+          >
+            ×
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
 
     <!-- Submit -->
     <div class="pt-4">
-      <button type="submit" [disabled]="addProductForm.invalid || loading"
-        class="w-full flex justify-center items-center gap-2 bg-[#595858] text-white py-3 rounded-md focus:outline-none focus:ring-2">
+      <button
+        type="submit"
+        [disabled]="addProductForm.invalid || loading"
+        class="w-full flex justify-center items-center gap-2 bg-[#595858] text-white py-3 rounded-md focus:outline-none focus:ring-2"
+      >
         <span *ngIf="!loading">Submit Product</span>
-        <svg *ngIf="loading" class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
-          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+        <svg
+          *ngIf="loading"
+          class="w-5 h-5 animate-spin"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+          ></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8v8z"
+          ></path>
         </svg>
       </button>
     </div>

@@ -12,7 +12,7 @@ import { AdminproductService } from '../Services/adminproduct.service';
 export class AddProductComponent {
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
-   addProductForm: FormGroup;
+  addProductForm: FormGroup;
   loading = false;
   imagePreviews: string[] = [];
   selectedFiles: File[] = [];
@@ -21,7 +21,10 @@ export class AddProductComponent {
   sizeOptions = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
   colorOptions = ['Red', 'Blue', 'Green', 'Black', 'White'];
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private adminProductService: AdminproductService
+  ) {
     this.addProductForm = this.fb.group({
       title: ['', Validators.required],
       sku: ['', Validators.required],
@@ -30,29 +33,41 @@ export class AddProductComponent {
       colors: [[], Validators.required],
       fabricCare: this.fb.group({
         fabric: [''],
-        washCare: ['']
+        color: [''],
+        workType: [''],
+        deliveryTimeline: [''],
+        setIncludes: [''],
+        kurtaLength: [''],
+        pantsLength: [''],
+        washCare: [''],
+        styleCode: [''],
+        additionalNotes: [''],
       }),
       deliveryAndReturns: this.fb.group({
-        delivery: [''],
-        return: ['']
-      })
+        domesticShipping: [''],
+        internationalShipping: [''],
+        domesticTime: [''],
+        internationalTime: [''],
+        returnPolicy: [''],
+      }),
     });
   }
 
- onImageChange(event: any): void {
-  const files: FileList = event.target.files;
-  this.imagePreviews = [];
-  this.selectedFiles = [];
-  if (files.length > 0) {
-    Array.from(files).forEach(file => {
-      this.selectedFiles.push(file);
-      const reader = new FileReader();
-      reader.onload = (e: any) => this.imagePreviews.push(e.target.result);
-      reader.readAsDataURL(file);
-    });
-  }
-}
+  onImageChange(event: any): void {
+    const files: FileList = event.target.files;
 
+    if (files && files.length > 0) {
+      Array.from(files).forEach((file: File) => {
+        this.selectedFiles.push(file);
+
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.imagePreviews.push(e.target.result);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+  }
 
   removeImage(index: number): void {
     this.selectedFiles.splice(index, 1);
@@ -71,13 +86,35 @@ export class AddProductComponent {
     formData.append('sizes', JSON.stringify(formValue.sizes));
     formData.append('colors', JSON.stringify(formValue.colors));
     formData.append('fabricCare', JSON.stringify(formValue.fabricCare));
-    formData.append('deliveryAndReturns', JSON.stringify(formValue.deliveryAndReturns));
+    formData.append(
+      'deliveryAndReturns',
+      JSON.stringify(formValue.deliveryAndReturns)
+    );
 
     this.selectedFiles.forEach((file: File) => {
       formData.append('images', file);
     });
 
     // Send formData to API here
-    console.log('Uploading product:', formData);
+    for (const pair of formData.entries()) {
+      console.log(`${pair[0]}:`, pair[1]);
+    }
+
+    this.loading = true;
+    this.adminProductService.addproduct(formData).subscribe({
+      next: (response) => {
+        console.log('✅ Product uploaded successfully:', response);
+        this.loading = false;
+        // Optional: Reset form
+        this.addProductForm.reset();
+        this.imagePreviews = [];
+        this.selectedFiles = [];
+        if (this.fileInput) this.fileInput.nativeElement.value = '';
+      },
+      error: (err) => {
+        console.error('❌ Upload failed:', err);
+        this.loading = false;
+      },
+    });
   }
 }
