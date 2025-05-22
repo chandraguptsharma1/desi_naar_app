@@ -1,3 +1,8 @@
+<app-center-loader
+  [show]="loading"
+  message="Fetching products..."
+></app-center-loader>
+
 <div class="mx-auto max-w-screen-xl px-4 sm:px-8">
   <div class="flex flex-col sm:flex-row items-center justify-between pb-6">
     <h2 class="text-2xl font-semibold text-gray-700">Products List</h2>
@@ -39,6 +44,7 @@
           <th class="px-5 py-3 text-left">Colors</th>
           <th class="px-5 py-3 text-left">Fabric</th>
           <th class="px-5 py-3 text-left">Wash Care</th>
+          <th class="px-5 py-3 text-left">Action</th>
         </tr>
       </thead>
       <tbody class="text-gray-700">
@@ -91,7 +97,32 @@
           <td class="px-5 py-4 text-sm">{{ product.fabricCare?.fabric }}</td>
 
           <!-- Wash Care -->
-          <td class="px-5 py-4 text-sm">{{ product.fabricCare?.washCare }}</td>
+          <td class="px-5 py-4 text-sm">
+            {{ product.fabricCare?.washCare }}
+          </td>
+          <td class="px-5 py-4 text-sm">
+            <div class="flex gap-2">
+              <button
+                (click)="editProduct(product)"
+                class="rounded px-3 py-1 bg-yellow-500 text-white text-xs hover:bg-yellow-600 transition"
+              >
+                Edit
+              </button>
+              <button
+                (click)="deleteProduct(product)"
+                class="rounded px-3 py-1 bg-red-500 text-white text-xs hover:bg-red-600 transition"
+              >
+                Delete
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="!loading && products.length === 0">
+          <td colspan="10" class="text-center py-4">
+            <div class="flex flex-col items-center justify-center">
+              <p class="text-gray-500 text-sm">No products found.</p>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>

@@ -18,4 +18,11 @@ export class AdminproductService {
   getProduct() {
     return this.http.get(environment.baseUrl + '/products/getProduct');
   }
+
+  deleteProduct(productId: any) {
+    return this.http.post(
+      environment.baseUrl + `/products/deleteProduct/${productId}`,
+      ''
+    );
+  }
 }

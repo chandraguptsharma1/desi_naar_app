@@ -10,6 +10,7 @@ import { AddProductComponent } from './pages/products/add-product/add-product.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { BrowserModule } from '@angular/platform-browser';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,9 +19,13 @@ import { BrowserModule } from '@angular/platform-browser';
     SidebarComponent,
     ListProductsComponent,
     AddProductComponent,
-   
   ],
-  imports: [CommonModule, ReactiveFormsModule, AdminRoutingModule ,NgSelectModule,
-      ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    AdminRoutingModule,
+    NgSelectModule,
+    SharedModule,
+  ],
 })
 export class AdminModule {}

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminproductService } from '../Services/adminproduct.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -12,8 +13,9 @@ import { AdminproductService } from '../Services/adminproduct.service';
 export class AddProductComponent {
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
 
+  loading: boolean = false;
   addProductForm: FormGroup;
-  loading = false;
+
   imagePreviews: string[] = [];
   selectedFiles: File[] = [];
   imageError = '';
@@ -23,7 +25,8 @@ export class AddProductComponent {
 
   constructor(
     private fb: FormBuilder,
-    private adminProductService: AdminproductService
+    private adminProductService: AdminproductService,
+    private router: Router
   ) {
     this.addProductForm = this.fb.group({
       title: ['', Validators.required],
@@ -75,6 +78,7 @@ export class AddProductComponent {
   }
 
   onSubmit(): void {
+    this.loading = true;
     if (this.addProductForm.invalid) return;
 
     const formValue = this.addProductForm.value;
@@ -100,16 +104,18 @@ export class AddProductComponent {
       console.log(`${pair[0]}:`, pair[1]);
     }
 
-    this.loading = true;
     this.adminProductService.addproduct(formData).subscribe({
-      next: (response) => {
-        console.log('✅ Product uploaded successfully:', response);
-        this.loading = false;
-        // Optional: Reset form
-        this.addProductForm.reset();
-        this.imagePreviews = [];
-        this.selectedFiles = [];
-        if (this.fileInput) this.fileInput.nativeElement.value = '';
+      next: (response: any) => {
+        if (response.statusCode == 201) {
+          console.log('✅ Product uploaded successfully:', response);
+          this.loading = false;
+          // Optional: Reset form
+          this.addProductForm.reset();
+          this.imagePreviews = [];
+          this.selectedFiles = [];
+          if (this.fileInput) this.fileInput.nativeElement.value = '';
+          this.router.navigate(['/admin']);
+        }
       },
       error: (err) => {
         console.error('❌ Upload failed:', err);
