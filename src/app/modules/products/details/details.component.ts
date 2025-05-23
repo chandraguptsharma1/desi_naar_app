@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../Services/product.service';
 
 @Component({
   selector: 'app-details',
@@ -13,6 +14,8 @@ export class DetailsComponent implements OnInit {
   isDescriptionOpen: boolean = true;
   isDeliveryOpen: boolean = true;
   mainImage:any
+
+  constructor(private productServices:ProductService){}
 
   ngOnInit(){
   
@@ -108,4 +111,9 @@ export class DetailsComponent implements OnInit {
     sessionStorage.removeItem('selectedProduct');
   }
 
+    addToCart(){
+    this.productServices.addCart(this.product._id).subscribe((res)=>{
+     console.log("card added",res)
+    })
+  }
 }

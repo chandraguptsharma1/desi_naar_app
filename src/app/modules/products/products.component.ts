@@ -12,7 +12,7 @@ export class ProductsComponent implements OnInit {
   products: any[] = [];
   currentImageIndex: { [productId: string]: number } = {};
 
-  constructor(private product: ProductService, private router: Router) {}
+  constructor(private productServices: ProductService, private router: Router) {}
 
   ngOnInit(): void {
     this.getAllProduct();
@@ -20,7 +20,7 @@ export class ProductsComponent implements OnInit {
 
   getAllProduct() {
     console.log('product list');
-    this.product.getAllProduct().subscribe((res: any) => {
+    this.productServices.getAllProduct().subscribe((res: any) => {
       console.log('Product list', res);
       this.products = res.data;
 
@@ -156,4 +156,6 @@ export class ProductsComponent implements OnInit {
     sessionStorage.setItem('selectedProduct', JSON.stringify(product));
     this.router.navigate(['/products/detail']);
   }
+
+
 }

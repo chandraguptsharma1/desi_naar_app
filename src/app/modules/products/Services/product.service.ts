@@ -12,4 +12,8 @@ export class ProductService {
   getAllProduct(){
     return this.http.get(environment.baseUrl + '/products/getProduct');
   }
+
+  addCart(productID:any){
+    return this.http.post(environment.baseUrl + `/cart/saveCart/${productID}`,'')
+  }
 }
