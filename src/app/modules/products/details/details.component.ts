@@ -9,25 +9,22 @@ import { ProductService } from '../Services/product.service';
 })
 export class DetailsComponent implements OnInit {
   productData: any;
-  product:any
+  product: any;
   isFabricOpen: boolean = true;
   isDescriptionOpen: boolean = true;
   isDeliveryOpen: boolean = true;
-  mainImage:any
+  mainImage: any;
 
-  constructor(private productServices:ProductService){}
+  constructor(private productServices: ProductService) {}
 
-  ngOnInit(){
-  
+  ngOnInit() {
     this.productData = sessionStorage.getItem('selectedProduct');
     if (this.productData) {
       this.product = JSON.parse(this.productData);
-      console.log("product details",this.product)
-      this.mainImage = this.product.images[0];
+      console.log('product details', this.product);
+      this.mainImage = this.product.imageUrls[0];
     }
   }
-
-
 
   // product = {
   //   title: 'Criss Cross Front Open Sherwani',
@@ -45,8 +42,6 @@ export class DetailsComponent implements OnInit {
   //   description:
   //     'Silk front open sherwani with pintucks and highlighted pocket centric design',
   // };
-
-  
 
   quantity = 1;
 
@@ -107,13 +102,45 @@ export class DetailsComponent implements OnInit {
     },
   ];
 
-   ngOnDestroy() {
+  ngOnDestroy() {
     sessionStorage.removeItem('selectedProduct');
   }
 
-    addToCart(){
-    this.productServices.addCart(this.product._id).subscribe((res)=>{
-     console.log("card added",res)
-    })
+  addToCart() {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      // ✅ Logged in user — send to backend
+      this.productServices.addCart(this.product._id).subscribe({
+        next: (res) => {
+          console.log('🛒 Cart added for logged-in user:', res);
+        },
+        error: (err) => {
+          console.error('❌ Error adding to cart:', err);
+        },
+      });
+    } else {
+      // ❌ Guest user — Save in sessionStorage
+
+      // Check existing guest cart
+      const guestCart = sessionStorage.getItem('guestCart');
+      let guestItems = guestCart ? JSON.parse(guestCart) : [];
+
+      // Check if product already exists (avoid duplicates)
+      const exists = guestItems.find(
+        (item: any) => item._id === this.product._id
+      );
+
+      if (!exists) {
+        guestItems.push({
+          ...this.product,
+          quantity: this.quantity,
+        });
+        sessionStorage.setItem('guestCart', JSON.stringify(guestItems));
+        console.log('🛒 Product added to guest cart:', guestItems);
+      } else {
+        console.log('⚠️ Product already in guest cart.');
+      }
+    }
   }
 }

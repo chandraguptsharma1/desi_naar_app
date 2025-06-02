@@ -11,4 +11,8 @@ export class AuthService {
   loginuser(logindata: any) {
     return this.http.post(environment.baseUrl + '/users/login', logindata);
   }
+
+  register(userData:any){
+    return this.http.post(environment.baseUrl + `/users/register`,userData);
+  }
 }

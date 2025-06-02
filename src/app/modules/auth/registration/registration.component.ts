@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './registration.component.scss',
 })
 export class RegistrationComponent {
-  registration: FormGroup;
+  registerForm: FormGroup;
   loading: boolean = false;
   errorMessage: string = '';
 
@@ -22,7 +22,7 @@ export class RegistrationComponent {
     private router: Router,
     private toastr: ToastrService
   ) {
-    this.registration = this.fb.group({
+    this.registerForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -30,8 +30,8 @@ export class RegistrationComponent {
     });
   }
 
-  login() {
-    if (this.registration.invalid) {
+  register() {
+    if (this.registerForm.invalid) {
       this.errorMessage = 'Please fill all fields correctly.';
       return;
     }
@@ -39,20 +39,11 @@ export class RegistrationComponent {
     this.loading = true;
     this.errorMessage = '';
 
-    this.loginService.loginuser(this.registration.value).subscribe({
+    this.loginService.register(this.registerForm.value).subscribe({
       next: (response: any) => {
-        if (response.status === 200) {
-          console.log('Login Response:', response);
+        if (response.status === 201) {
 
-          // Save token and user details
-          localStorage.setItem('token', response.data.token);
-          localStorage.setItem('user', JSON.stringify(response.data.user));
-
-          // Show success toast
-          this.toastr.success('Login successful!', 'Success');
-
-          // Redirect to dashboard (example path)
-          this.router.navigate(['/admin']);
+          this.router.navigate(['/auth']);
         } else {
           this.toastr.error(response.message || 'Login failed.', 'Error');
         }

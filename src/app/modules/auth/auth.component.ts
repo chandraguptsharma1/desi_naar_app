@@ -49,8 +49,14 @@ export class AuthComponent {
           // Show success toast
           this.toastr.success('Login successful!', 'Success');
 
+          if(response?.user?.role == "admin"){
+             this.router.navigate(['/admin']);
+          }else{
+            this.router.navigate(['/products']);
+          }
+
           // Redirect to dashboard (example path)
-          this.router.navigate(['/admin']);
+          
         } else {
           this.toastr.error(response.message || 'Login failed.', 'Error');
         }
