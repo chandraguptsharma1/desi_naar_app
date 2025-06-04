@@ -11,16 +11,23 @@ import { Router } from '@angular/router';
 export class ProductsComponent implements OnInit {
   products: any[] = [];
   currentImageIndex: { [productId: string]: number } = {};
+  collectionType:any
 
   constructor(private productServices: ProductService, private router: Router) {}
 
   ngOnInit(): void {
+    
+    this.collectionType = sessionStorage.getItem('collectionType');
+    console.log('collectionType', this.collectionType);
     this.getAllProduct();
   }
 
+
+
   getAllProduct() {
     console.log('product list');
-    this.productServices.getAllProduct().subscribe((res: any) => {
+     let cleanCollectionType = this.collectionType?.replace(/"/g, '').trim();
+    this.productServices.getAllProduct(cleanCollectionType).subscribe((res: any) => {
       console.log('Product list', res);
       this.products = res.data;
 

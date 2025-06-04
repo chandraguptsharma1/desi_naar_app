@@ -9,14 +9,15 @@
 
     <!-- Categories Grid -->
     <div
-      class="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-10 justify-items-center"
+      class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-10 justify-items-center"
     >
       <!-- Category Card 1 -->
       <div
+      (click)="productpage('Rutuba')"
         class="relative group w-[260px] sm:w-[220px] md:w-[260px] lg:w-[300px] overflow-hidden"
       >
         <img
-          src="https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/collageImages/Picture1.jpg"
+          src="https://i.ibb.co/XfQ1sPRk/10.jpg"
           alt="Sherwani"
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -25,17 +26,18 @@
         >
           <span
             class="text-white text-lg sm:text-base font-bold tracking-widest text-center"
-            >Collection 1</span
+            >Rutuba</span
           >
         </div>
       </div>
 
       <!-- Category Card 2 -->
       <div
+      (click)="productpage('Riwayat')"
         class="relative group w-[260px] sm:w-[220px] md:w-[260px] lg:w-[300px] overflow-hidden"
       >
         <img
-          src="https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/collageImages/Picture2.jpg"
+          src="https://i.ibb.co/Pzrs4tC6/5.jpg"
           alt="Bandhgala"
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
@@ -44,29 +46,12 @@
         >
           <span
             class="text-white text-lg sm:text-base font-bold tracking-widest text-center"
-            >Collection 2</span
+            >Riwayat</span
           >
         </div>
       </div>
 
-      <!-- Category Card 3 -->
-      <div
-        class="relative group w-[260px] sm:w-[220px] md:w-[260px] lg:w-[300px] overflow-hidden"
-      >
-        <img
-          src="https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/collageImages/Picture3.jpg"
-          alt="Jawahar Jackets"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-        <div
-          class="absolute inset-0 flex items-center justify-center  bg-opacity-20 group-hover:bg-opacity-30 transition"
-        >
-          <span
-            class="text-white text-lg sm:text-base font-bold tracking-widest text-center"
-            >Collection 3</span
-          >
-        </div>
-      </div>
+     
     </div>
   </div>
 </section>

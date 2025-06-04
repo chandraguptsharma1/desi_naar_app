@@ -56,6 +56,7 @@ onClickOutside(targetElement: HTMLElement) {
   // }
 
   productpage() {
+    sessionStorage.setItem('collectionType', JSON.stringify(""));
     this.router.navigate(['/products']);
   }
 

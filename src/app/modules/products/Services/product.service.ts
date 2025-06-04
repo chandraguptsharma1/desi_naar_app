@@ -9,8 +9,8 @@ export class ProductService {
 
   constructor(private http:HttpClient) { }
 
-  getAllProduct(){
-    return this.http.get(environment.baseUrl + '/products/getProduct');
+  getAllProduct(collectionType:any){
+    return this.http.get(environment.baseUrl + `/products/getProduct?collectionType=${collectionType}`);
   }
 
   addCart(productID:any){

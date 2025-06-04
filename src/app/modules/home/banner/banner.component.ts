@@ -12,11 +12,11 @@ export class BannerComponent {
   carouselItems = [
     {
       desktopImage:
-        'https://i.ibb.co/35d9rBnv/Whats-App-Image-2025-05-03-at-21-34-02-1.jpg',
+        'https://i.ibb.co/prn045mk/Gray-Minimalist-New-Collection-Banner.png',
       mobileImage:
         'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/collageImages/Picture4.jpg',
-      desktopTitle: 'Luxury Drapes',
-      mobileTitle: 'Drapes for All Occasions',
+      desktopTitle: '',
+      mobileTitle: '',
       buttonText: 'Explore Now',
     },
     {
