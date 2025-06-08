@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ProductService } from '../Services/product.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-details',
@@ -8,40 +9,109 @@ import { ProductService } from '../Services/product.service';
   styleUrl: './details.component.scss',
 })
 export class DetailsComponent implements OnInit {
+  @ViewChild('mainImg') mainImg!: ElementRef;
+  
   productData: any;
   product: any;
   isFabricOpen: boolean = true;
   isDescriptionOpen: boolean = true;
   isDeliveryOpen: boolean = true;
-  mainImage: any;
+  mainImage: string = '';
+  allImages: string[] = [];
+  isZoomed: boolean = false;
+  zoomPosition = { x: 0, y: 0 };
+  zoomStyle = {};
+  zoomScale = 2.5;
+  videoUrl: SafeResourceUrl | null = null;
+  showVideo: boolean = false;
 
-  constructor(private productServices: ProductService) {}
+  constructor(
+    private productServices: ProductService,
+    private sanitizer: DomSanitizer
+  ) {}
 
   ngOnInit() {
     this.productData = sessionStorage.getItem('selectedProduct');
     if (this.productData) {
       this.product = JSON.parse(this.productData);
       console.log('product details', this.product);
-      this.mainImage = this.product.imageUrls[0];
+      
+      this.allImages = [
+        ...(this.product.imageUrls || []),
+        ...(this.product.detailImages || [])
+      ].filter(img => img);
+      
+      if (this.allImages.length > 0) {
+        this.mainImage = this.allImages[0];
+      }
+
+      // Handle video URL
+      if (this.product.videoUrl) {
+        const videoId = this.extractGoogleDriveFileId(this.product.videoUrl);
+        if (videoId) {
+          const embedUrl = `https://drive.google.com/file/d/${videoId}/preview`;
+          this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+        }
+      }
     }
   }
 
-  // product = {
-  //   title: 'Criss Cross Front Open Sherwani',
-  //   price: 63995.0,
-  //   sku: 'DD048331',
-  //   sizes: ['S', 'M', 'L', 'XL'],
-  //   colors: ['NAVY', 'BLACK', 'LONDON GDF'],
-  //   images: [
-  //     'https://i.ibb.co/b5rMtFy8/11.jpg',
-  //     'https://i.ibb.co/0RHTf8pm/10.jpg',
-  //     'https://i.ibb.co/KjxYN0jQ/9.jpg',
-  //     'https://i.ibb.co/ym0XQykd/8.jpg',
-  //     'https://i.ibb.co/GfCFwKst/7.jpg',
-  //   ],
-  //   description:
-  //     'Silk front open sherwani with pintucks and highlighted pocket centric design',
-  // };
+  extractGoogleDriveFileId(url: string): string | null {
+    const match = url.match(/\/d\/([^/]+)/);
+    return match ? match[1] : null;
+  }
+
+  setMainImage(image: string) {
+    this.mainImage = image;
+    this.showVideo = false;
+  }
+
+  showVideoPlayer() {
+    this.showVideo = true;
+  }
+
+  handleMouseMove(event: MouseEvent) {
+    if (!this.isZoomed) return;
+
+    const img = this.mainImg.nativeElement;
+    const rect = img.getBoundingClientRect();
+    
+    // Calculate cursor position relative to image
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    // Calculate zoom window position
+    const zoomWindowWidth = 150;
+    const zoomWindowHeight = 150;
+    
+    // Position zoom window relative to cursor
+    let zoomX = x - zoomWindowWidth / 2;
+    let zoomY = y - zoomWindowHeight / 2;
+
+    // Keep zoom window inside image bounds
+    zoomX = Math.max(0, Math.min(zoomX, rect.width - zoomWindowWidth));
+    zoomY = Math.max(0, Math.min(zoomY, rect.height - zoomWindowHeight));
+
+    // Calculate background position for zoomed image
+    const bgX = (x / rect.width) * 100;
+    const bgY = (y / rect.height) * 100;
+
+    this.zoomPosition = { x: zoomX, y: zoomY };
+    this.zoomStyle = {
+      transform: `translate(${zoomX}px, ${zoomY}px)`,
+      backgroundImage: `url(${this.mainImage})`,
+      backgroundPosition: `${bgX}% ${bgY}%`,
+      backgroundSize: `${this.zoomScale * 100}%`,
+    };
+  }
+
+  handleMouseEnter() {
+    this.isZoomed = true;
+  }
+
+  handleMouseLeave() {
+    this.isZoomed = false;
+  }
 
   quantity = 1;
 

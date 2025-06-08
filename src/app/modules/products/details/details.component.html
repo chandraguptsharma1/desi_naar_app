@@ -1,19 +1,64 @@
 <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-2 gap-10">
   <!-- Left: Product Image and Thumbnails -->
   <div>
-    <img
-      [src]="mainImage"
-      alt="Main product"
-      class="w-full object-cover border"
-    />
-
-    <div class="mt-4 flex space-x-2">
+    <!-- Main Image/Video Container -->
+    <div class="product-image-container border bg-gray-50">
+      <!-- Video Player -->
+      <iframe
+        *ngIf="showVideo && videoUrl"
+        [src]="videoUrl"
+        class="w-full h-[600px]"
+        allow="autoplay"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+      <!-- Main Image -->
       <img
-        *ngFor="let img of product.images"
-        [src]="img"
-        alt="Thumbnail"
-        class="w-20 h-28 object-cover border cursor-pointer hover:border-black"
+        #mainImg
+        *ngIf="!showVideo"
+        [src]="mainImage"
+        [alt]="product.title"
+        class="main-image max-h-[600px] object-contain cursor-zoom-in"
+        (mousemove)="handleMouseMove($event)"
+        (mouseenter)="handleMouseEnter()"
+        (mouseleave)="handleMouseLeave()"
       />
+      <!-- Zoom Window (only show for images) -->
+      <div 
+        *ngIf="!showVideo"
+        class="zoom-window" 
+        [class.active]="isZoomed"
+        [ngStyle]="zoomStyle"
+      ></div>
+    </div>
+
+    <!-- Thumbnails and Video Button -->
+    <div class="mt-4 grid grid-cols-7 gap-2">
+      <!-- Video Button -->
+      <div 
+        *ngIf="videoUrl"
+        class="aspect-[3/4] border cursor-pointer hover:bg-gray-100 relative bg-gray-50 flex items-center justify-center group"
+        [class.border-black]="showVideo"
+        (click)="showVideoPlayer()"
+      >
+        <div class="flex flex-col items-center">
+          <i class="fas fa-play-circle text-3xl" [class.text-gray-800]="showVideo" [class.text-gray-600]="!showVideo"></i>
+          <span class="text-[10px] mt-1" [class.text-gray-800]="showVideo" [class.text-gray-600]="!showVideo">Play Video</span>
+        </div>
+      </div>
+      <!-- Image Thumbnails -->
+      <div 
+        *ngFor="let img of allImages" 
+        class="aspect-[3/4] border cursor-pointer hover:border-black relative"
+        [class.border-black]="mainImage === img && !showVideo"
+        (click)="setMainImage(img)"
+      >
+        <img
+          [src]="img"
+          [alt]="product.title"
+          class="absolute inset-0 w-full h-full object-contain"
+        />
+      </div>
     </div>
   </div>
 
@@ -66,7 +111,7 @@
         class="flex justify-between items-center cursor-pointer"
         (click)="isDescriptionOpen = !isDescriptionOpen"
       >
-        <h3 class="text-sm  text-[#595858]">Product Description</h3>
+        <h3 class="text-sm text-[#595858]">Product Description</h3>
         <span class="text-sm text-[#595858]">
           <i
             class="fas"
@@ -79,17 +124,7 @@
         *ngIf="isDescriptionOpen"
         class="mt-4 text-sm text-[#595858] leading-relaxed"
       >
-        <p>
-          <strong>The Amara Anarkali Set</strong> is a celebration of grandeur
-          and timeless charm. Crafted from georgette in a vibrant red hue, this
-          anarkali features a gracefully flowing silhouette, designed to flatter
-          every body type. The long sheer sleeves are intricately adorned with
-          shimmering embellishments of sequins and beads. Paired with a matching
-          churidar, the ensemble is completed with a sheer net dupatta that is
-          beautifully embellished, adding a touch of ethereal elegance. The
-          Amara Anarkali Set is perfect for weddings, festive occasions, or
-          evening soirées.
-        </p>
+        <p>{{ product.description }}</p>
       </div>
     </div>
 
