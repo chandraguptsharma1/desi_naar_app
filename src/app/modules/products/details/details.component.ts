@@ -17,7 +17,7 @@ export class DetailsComponent implements OnInit {
   isDescriptionOpen: boolean = true;
   isDeliveryOpen: boolean = true;
   mainImage: string = '';
-  allImages: string[] = [];
+  detailImages: string[] = [];
   isZoomed: boolean = false;
   zoomPosition = { x: 0, y: 0 };
   zoomStyle = {};
@@ -32,18 +32,29 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit() {
     this.productData = sessionStorage.getItem('selectedProduct');
+    console.log("product data ",this.productData)
     if (this.productData) {
       this.product = JSON.parse(this.productData);
-      console.log('product details', this.product);
       
-      this.allImages = [
-        ...(this.product.imageUrls || []),
-        ...(this.product.detailImages || [])
-      ].filter(img => img);
-      
-      if (this.allImages.length > 0) {
-        this.mainImage = this.allImages[0];
+      // Set main image from imageUrls
+      if (this.product.imageUrls && this.product.imageUrls.length > 0) {
+        this.mainImage = this.product.imageUrls[0];
       }
+      
+      // Handle detail images separately
+      if (this.product.detailImages && this.product.detailImages.length > 0) {
+        // Sort detail images based on sequence number in filename
+        this.detailImages = [...this.product.detailImages].sort((a, b) => {
+          const getSequenceNumber = (url: string) => {
+            const match = url.match(/(\d+)(?=[^/]*$)/);
+            return match ? parseInt(match[1]) : 0;
+          };
+          return getSequenceNumber(a) - getSequenceNumber(b);
+        });
+      }
+      
+      // Filter out any undefined images
+      this.detailImages = this.detailImages.filter(img => img);
 
       // Handle video URL
       if (this.product.videoUrl) {

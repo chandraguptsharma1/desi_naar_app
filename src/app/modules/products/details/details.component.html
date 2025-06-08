@@ -32,9 +32,22 @@
       ></div>
     </div>
 
-    <!-- Thumbnails and Video Button -->
+    <!-- Detail Images and Video Button -->
     <div class="mt-4 grid grid-cols-7 gap-2">
-      <!-- Video Button -->
+      <!-- Detail Image Thumbnails -->
+      <div 
+        *ngFor="let img of detailImages" 
+        class="aspect-[3/4] border cursor-pointer hover:border-black relative"
+        [class.border-black]="mainImage === img && !showVideo"
+        (click)="setMainImage(img)"
+      >
+        <img
+          [src]="img"
+          [alt]="product.title"
+          class="absolute inset-0 w-full h-full object-contain"
+        />
+      </div>
+      <!-- Video Button (at the end) -->
       <div 
         *ngIf="videoUrl"
         class="aspect-[3/4] border cursor-pointer hover:bg-gray-100 relative bg-gray-50 flex items-center justify-center group"
@@ -45,19 +58,6 @@
           <i class="fas fa-play-circle text-3xl" [class.text-gray-800]="showVideo" [class.text-gray-600]="!showVideo"></i>
           <span class="text-[10px] mt-1" [class.text-gray-800]="showVideo" [class.text-gray-600]="!showVideo">Play Video</span>
         </div>
-      </div>
-      <!-- Image Thumbnails -->
-      <div 
-        *ngFor="let img of allImages" 
-        class="aspect-[3/4] border cursor-pointer hover:border-black relative"
-        [class.border-black]="mainImage === img && !showVideo"
-        (click)="setMainImage(img)"
-      >
-        <img
-          [src]="img"
-          [alt]="product.title"
-          class="absolute inset-0 w-full h-full object-contain"
-        />
       </div>
     </div>
   </div>
