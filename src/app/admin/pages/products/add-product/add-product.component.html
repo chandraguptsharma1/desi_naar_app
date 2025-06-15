@@ -4,290 +4,330 @@
 ></app-center-loader>
 
 <div class="max-w-4xl mx-auto p-6 bg-white mt-6">
-  <h2 class="text-2xl font-semibold text-gray-700 mb-6">Add New Product</h2>
+  <h2 class="text-2xl font-semibold text-gray-700 mb-6">
+    {{ isEditMode ? "Edit Product" : "Add New Product" }}
+  </h2>
 
   <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()" class="space-y-6">
-    <!-- Title -->
-    <div>
-      <label class="block mb-2 text-sm font-medium text-gray-700"
-        >Product Title</label
-      >
-      <input
-        type="text"
-        formControlName="title"
-        placeholder="Enter Product Title"
-        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-      />
-    </div>
-
-    <!-- SKU -->
-    <div>
-      <label class="block mb-2 text-sm font-medium text-gray-700">SKU</label>
-      <input
-        type="text"
-        formControlName="sku"
-        placeholder="Enter SKU"
-        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-      />
-    </div>
-
-    <!-- Price -->
-    <div>
-      <label class="block mb-2 text-sm font-medium text-gray-700">Price</label>
-      <input
-        type="number"
-        formControlName="price"
-        placeholder="Enter Price"
-        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-      />
-    </div>
-
-    <!-- Sizes -->
-    <div>
-      <label class="block mb-2 text-sm font-medium text-gray-700">Sizes</label>
-      <!-- <select formControlName="sizes" multiple
-        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400">
-        <option *ngFor="let size of sizeOptions" [value]="size">{{ size }}</option>
-      </select> -->
-      <ng-select
-        [items]="sizeOptions"
-        formControlName="sizes"
-        [multiple]="true"
-        placeholder="Select sizes"
-        class="w-full"
-      >
-      </ng-select>
-    </div>
-
-    <!-- Colors -->
-    <div>
-      <label class="block mb-2 text-sm font-medium text-gray-700">Colors</label>
-
-      <input
-        type="text"
-        formControlName="colors"
-        placeholder="e.g. Red"
-        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-      />
-    </div>
-
-    <!-- Fabric, Fit & Care Section -->
-    <div formGroupName="fabricCare" class="space-y-4">
-      <h3 class="text-lg font-semibold text-gray-800 mt-6">
-        Fabric, Fit & Care
-      </h3>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label class="block mb-1 text-sm font-medium text-gray-700"
-            >Fabric</label
-          >
-          <input
-            type="text"
-            formControlName="fabric"
-            placeholder="e.g. Crepe"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium text-gray-700"
-            >Color</label
-          >
-          <input
-            type="text"
-            formControlName="color"
-            placeholder="e.g. Orange"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium text-gray-700"
-            >Work Type</label
-          >
-          <input
-            type="text"
-            formControlName="workType"
-            placeholder="e.g. Pearl Embroidery"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium text-gray-700"
-            >Delivery Timeline</label
-          >
-          <input
-            type="text"
-            formControlName="deliveryTimeline"
-            placeholder="e.g. 20 Working Days"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium text-gray-700"
-            >Set Includes</label
-          >
-          <input
-            type="text"
-            formControlName="setIncludes"
-            placeholder="e.g. Anarkali, Pant, Dupatta"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium text-gray-700"
-            >Kurta Length</label
-          >
-          <input
-            type="text"
-            formControlName="kurtaLength"
-            placeholder="e.g. 48”"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium text-gray-700"
-            >Pants Length</label
-          >
-          <input
-            type="text"
-            formControlName="pantsLength"
-            placeholder="e.g. 36”"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium text-gray-700"
-            >Wash Care</label
-          >
-          <input
-            type="text"
-            formControlName="washCare"
-            placeholder="e.g. Dry Clean Only"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium text-gray-700"
-            >Style Code</label
-          >
-          <input
-            type="text"
-            formControlName="styleCode"
-            placeholder="e.g. KEOAR2507"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-        </div>
-      </div>
-
-      <div class="mt-4">
-        <label class="block mb-1 text-sm font-medium text-gray-700"
-          >Additional Notes</label
-        >
-        <textarea
-          formControlName="additionalNotes"
-          placeholder="e.g. In every size, the top and bottom lengths are an additional half inch."
-          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-        ></textarea>
-      </div>
-    </div>
-
-    <!-- Delivery & Returns Section -->
-    <div formGroupName="deliveryAndReturns" class="space-y-4 mt-8">
-      <h3 class="text-lg font-semibold text-gray-800">Delivery & Returns</h3>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label class="block mb-1 text-sm font-medium text-gray-700"
-            >Domestic Shipping</label
-          >
-          <input
-            type="text"
-            formControlName="domesticShipping"
-            placeholder="e.g. Free shipping in India"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium text-gray-700"
-            >International Shipping</label
-          >
-          <input
-            type="text"
-            formControlName="internationalShipping"
-            placeholder="e.g. INR 3,000 for international"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium text-gray-700"
-            >Domestic Delivery Time</label
-          >
-          <input
-            type="text"
-            formControlName="domesticTime"
-            placeholder="e.g. 2–3 Working Days"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium text-gray-700"
-            >International Delivery Time</label
-          >
-          <input
-            type="text"
-            formControlName="internationalTime"
-            placeholder="e.g. 5–7 Working Days"
-            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          />
-        </div>
-      </div>
-
-      <div class="mt-4">
-        <label class="block mb-1 text-sm font-medium text-gray-700"
-          >Return Policy</label
-        >
+    <!-- Basic Info -->
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Title</label>
         <input
           type="text"
-          formControlName="returnPolicy"
-          placeholder="e.g. No Returns/Exchanges"
+          formControlName="title"
+          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">SKU</label>
+        <input
+          type="text"
+          formControlName="sku"
+          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Price</label>
+        <input
+          type="number"
+          formControlName="price"
           class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
         />
       </div>
     </div>
 
-    <!-- Images -->
-    <!-- Images -->
-    <div>
-      <h3 class="mt-10 mb-1 text-lg font-semibold text-gray-800">
-        Product Images
-      </h3>
-
+    <!-- Main Images -->
+    <div class="space-y-4">
+      <label class="block text-sm font-medium text-gray-700"
+        >Main Product Images</label
+      >
       <input
+        #mainImagesInput
         type="file"
-        (change)="onImageChange($event)"
-        multiple
         accept="image/*"
-        class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
+        multiple
+        (change)="onMainImageChange($event)"
+        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
       />
-
-      <p *ngIf="imageError" class="text-sm text-red-600 mt-2">
-        {{ imageError }}
-      </p>
-
-      <!-- Preview -->
-      <div *ngIf="imagePreviews.length > 0" class="flex flex-wrap gap-4 mt-4">
+      <div class="grid grid-cols-4 gap-4 mt-4">
         <div
-          *ngFor="let img of imagePreviews; let i = index"
-          class="relative w-24 h-24 rounded-md overflow-hidden border"
+          *ngFor="let preview of mainImagePreviews; let i = index"
+          class="relative"
         >
-          <img [src]="img" alt="Preview" class="w-full h-full object-cover" />
+          <img [src]="preview" class="w-full h-32 object-cover rounded-md" />
           <button
             type="button"
-            (click)="removeImage(i)"
-            class="absolute top-1 right-1 w-5 h-5 flex items-center justify-center text-xs bg-red-600 text-white rounded-full hover:bg-red-700"
+            (click)="removeMainImage(i)"
+            class="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
           >
-            ×
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
           </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail Images -->
+    <div class="space-y-4">
+      <label class="block text-sm font-medium text-gray-700"
+        >Detail Images</label
+      >
+      <input
+        #detailImagesInput
+        type="file"
+        accept="image/*"
+        multiple
+        (change)="onDetailImageChange($event)"
+        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+      />
+      <div class="grid grid-cols-4 gap-4 mt-4">
+        <div
+          *ngFor="let preview of detailImagePreviews; let i = index"
+          class="relative"
+        >
+          <img [src]="preview" class="w-full h-32 object-cover rounded-md" />
+          <button
+            type="button"
+            (click)="removeDetailImage(i)"
+            class="absolute top-2 right-2 bg-red-500 text-white rounded-full p-1 hover:bg-red-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sizes and Colors -->
+    <div class="grid grid-cols-2 gap-6">
+      <!-- Sizes -->
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Sizes</label>
+        <div class="grid grid-cols-3 gap-2">
+          <div
+            *ngFor="let size of sizeOptions"
+            class="flex items-center space-x-2"
+          >
+            <input
+              type="checkbox"
+              [id]="'size-' + size"
+              [checked]="selectedSizes[size]"
+              (change)="onSizeChange(size, $event)"
+              class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+            />
+            <label [for]="'size-' + size" class="text-sm text-gray-700">{{
+              size
+            }}</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colors -->
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-gray-700">Color</label>
+        <input
+          type="text"
+          formControlName="colors"
+          placeholder="Enter a color"
+          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+        />
+      </div>
+    </div>
+
+    <!-- Fabric Care -->
+    <div formGroupName="fabricCare" class="space-y-4">
+      <h3 class="text-lg font-medium text-gray-700">Fabric Care Details</h3>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Fabric</label>
+          <input
+            type="text"
+            formControlName="fabric"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Color</label>
+          <input
+            type="text"
+            formControlName="color"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Work Type</label
+          >
+          <input
+            type="text"
+            formControlName="workType"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Delivery Timeline</label
+          >
+          <input
+            type="text"
+            formControlName="deliveryTimeline"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Set Includes</label
+          >
+          <input
+            type="text"
+            formControlName="setIncludes"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Kurta Length</label
+          >
+          <input
+            type="text"
+            formControlName="kurtaLength"
+            placeholder="e.g. 48"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Pants Length</label
+          >
+          <input
+            type="text"
+            formControlName="pantsLength"
+            placeholder="e.g. 36"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Wash Care</label
+          >
+          <input
+            type="text"
+            formControlName="washCare"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Style Code</label
+          >
+          <input
+            type="text"
+            formControlName="styleCode"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium text-gray-700"
+            >Additional Notes</label
+          >
+          <textarea
+            formControlName="additionalNotes"
+            rows="3"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delivery and Returns -->
+    <div formGroupName="deliveryAndReturns" class="space-y-4">
+      <h3 class="text-lg font-medium text-gray-700">Delivery & Returns</h3>
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Domestic Shipping</label
+          >
+          <input
+            type="text"
+            formControlName="domesticShipping"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >International Shipping</label
+          >
+          <input
+            type="text"
+            formControlName="internationalShipping"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >Domestic Delivery Time</label
+          >
+          <input
+            type="text"
+            formControlName="domesticTime"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700"
+            >International Delivery Time</label
+          >
+          <input
+            type="text"
+            formControlName="internationalTime"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div>
+
+        <div class="col-span-2">
+          <label class="block text-sm font-medium text-gray-700"
+            >Return Policy</label
+          >
+          <textarea
+            formControlName="returnPolicy"
+            rows="3"
+            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          ></textarea>
         </div>
       </div>
     </div>
@@ -296,10 +336,12 @@
     <div class="pt-4">
       <button
         type="submit"
-        [disabled]="addProductForm.invalid || loading"
+        [disabled]="loading"
         class="w-full flex justify-center items-center gap-2 bg-[#595858] text-white py-3 rounded-md focus:outline-none focus:ring-2"
       >
-        <span *ngIf="!loading">Submit Product</span>
+        <span *ngIf="!loading">{{
+          isEditMode ? "Update Product" : "Submit Product"
+        }}</span>
         <svg
           *ngIf="loading"
           class="w-5 h-5 animate-spin"

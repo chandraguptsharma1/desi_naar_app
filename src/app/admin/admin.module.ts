@@ -9,7 +9,6 @@ import { ListProductsComponent } from './pages/products/list-products/list-produ
 import { AddProductComponent } from './pages/products/add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({

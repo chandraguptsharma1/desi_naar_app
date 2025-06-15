@@ -42,17 +42,18 @@
         <i class="fas fa-search"></i>
       </button>
       <div class="relative">
-        <button class="hover:opacity-75" (click)="toggleUserMenu()">
+        <button (click)="Login()" class="hover:opacity-75" (click)="toggleUserMenu()">
           <i class="fas fa-user"></i>
         </button>
 
         <!-- Dropdown Menu -->
-        <div
+        <!-- <div
           *ngIf="isUserMenuOpen"
           class="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded shadow-lg z-50 text-sm"
         >
           <ng-container *ngIf="isLoggedIn; else notLoggedIn">
             <a
+            (click)="Login()"
               href="/profile"
               class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
             >
@@ -65,10 +66,10 @@
             >
               <i class="fas fa-sign-out-alt mr-2"></i>
               Logout
-            </button>
-          </ng-container>
+            </button> -->
+          <!-- </ng-container> -->
 
-          <ng-template #notLoggedIn>
+          <!-- <ng-template #notLoggedIn>
             <a
               (click)="Login()"
               class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
@@ -83,8 +84,8 @@
               <i class="fas fa-user-plus mr-2"></i>
               Sign Up
             </a>
-          </ng-template>
-        </div>
+          </ng-template> -->
+        <!-- </div> -->
       </div>
       <button (click)="cartPage()" class="hover:opacity-75">
         <i class="fas fa-shopping-cart"></i>

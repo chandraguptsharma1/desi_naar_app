@@ -6,7 +6,7 @@
     <!-- Image Wrapper -->
     <div class="relative w-full" (click)="productDetails(product)">
       <img
-        [src]="product.imageUrls[0]"
+        [src]="getImageUrl(product.imageUrls[0])"
         [alt]="product.title"
         class="w-full h-full object-cover"
       />

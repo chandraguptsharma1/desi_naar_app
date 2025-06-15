@@ -52,7 +52,8 @@ export class AuthComponent {
           if(response?.user?.role == "admin"){
              this.router.navigate(['/admin']);
           }else{
-            this.router.navigate(['/products']);
+             this.router.navigate(['/admin']);
+            // this.router.navigate(['/products']);
           }
 
           // Redirect to dashboard (example path)
@@ -68,5 +69,9 @@ export class AuthComponent {
         this.loading = false;
       },
     });
+  }
+
+   register(){
+    this.router.navigate(['/register'])
   }
 }

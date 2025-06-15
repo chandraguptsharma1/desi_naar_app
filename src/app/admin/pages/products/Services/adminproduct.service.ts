@@ -25,4 +25,11 @@ export class AdminproductService {
       ''
     );
   }
+
+  updateProduct(productId: string, productData: any) {
+    return this.http.post(
+      environment.baseUrl + `/products/updateProduct/${productId}`,
+      productData
+    );
+  }
 }
