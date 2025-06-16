@@ -30,7 +30,7 @@ export class AuthComponent {
 
   login() {
     if (this.loginForm.invalid) {
-      this.errorMessage = 'Please fill all fields correctly.';
+      this.errorMessage = 'Please fill all fields correctly .';
       return;
     }
 
@@ -65,7 +65,7 @@ export class AuthComponent {
       },
       error: (error) => {
         console.error('Login Error:', error);
-        this.toastr.error(error.error.message || 'Login failed.', 'Error');
+        this.toastr.error(error.error.message || 'Login failed.', 'Try Again Later');
         this.loading = false;
       },
     });
