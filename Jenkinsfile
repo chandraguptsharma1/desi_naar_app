@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'node:18'
+      args '-u root' // Run as root to allow Docker commands
+    }
+  }
 
   environment {
     IMAGE_NAME = 'desi_naar_app'
