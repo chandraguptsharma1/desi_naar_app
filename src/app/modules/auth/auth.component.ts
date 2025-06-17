@@ -65,7 +65,7 @@ export class AuthComponent {
       },
       error: (error) => {
         console.error('Login Error:', error);
-        this.toastr.error(error.error.message || 'Login failed.', 'Try Again');
+        this.toastr.error(error.error.message || 'Login failed.', 'Try Again Later');
         this.loading = false;
       },
     });
