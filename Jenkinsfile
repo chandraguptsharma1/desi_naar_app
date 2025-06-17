@@ -1,8 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'node:18'
-      args '-u root' // Run as root to allow Docker commands
+      image 'node:18'    
     }
   }
 
