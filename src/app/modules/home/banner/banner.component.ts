@@ -21,7 +21,7 @@ export class BannerComponent {
     },
     {
       desktopImage:
-        'https://i.ibb.co/cSrxJZSv/Whats-App-Image-2025-05-03-at-21-34-02.jpg',
+        'https://i.ibb.co/HL95VcNm/BANNER-2.png',
       mobileImage:
         'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/collageImages/Picture5.jpg',
       desktopTitle: 'Festive Styles',
@@ -30,7 +30,7 @@ export class BannerComponent {
     },
     {
       desktopImage:
-        'https://i.ibb.co/wZfgzZ4n/Whats-App-Image-2025-05-03-at-21-34-01.jpg',
+        'https://i.ibb.co/rDNyP3V/BANNER-3.png',
       mobileImage:
         'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/collageImages/Picture6.jpg',
       desktopTitle: 'Elegant Ethnicwear',
