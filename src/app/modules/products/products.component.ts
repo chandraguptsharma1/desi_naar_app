@@ -11,10 +11,12 @@ import { Router } from '@angular/router';
 export class ProductsComponent implements OnInit {
   products: any[] = [];
   collectionType: any;
+  loading: boolean = false;
 
-  constructor(private productServices: ProductService, private router: Router) {}
+  constructor(private productServices: ProductService, private router: Router) { }
 
   ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.collectionType = sessionStorage.getItem('collectionType');
     console.log('collectionType', this.collectionType);
     this.getAllProduct();
@@ -23,9 +25,17 @@ export class ProductsComponent implements OnInit {
   getAllProduct() {
     console.log('product list');
     let cleanCollectionType = this.collectionType?.replace(/"/g, '').trim();
-    this.productServices.getAllProduct(cleanCollectionType).subscribe((res: any) => {
-      console.log('Product list', res);
-      this.products = res.data;
+    this.loading = true; // loader start
+    this.productServices.getAllProduct(cleanCollectionType).subscribe({
+      next: (res: any) => {
+        console.log('Product list', res);
+        this.products = res.data;
+        this.loading = false; // loader stop
+      },
+      error: (err) => {
+        console.error(err);
+        this.loading = false; // loader stop even if error
+      }
     });
   }
 

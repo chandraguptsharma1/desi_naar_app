@@ -10,7 +10,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class DetailsComponent implements OnInit {
   @ViewChild('mainImg') mainImg!: ElementRef;
-  
+
   productData: any;
   product: any;
   isFabricOpen: boolean = true;
@@ -28,19 +28,20 @@ export class DetailsComponent implements OnInit {
   constructor(
     private productServices: ProductService,
     private sanitizer: DomSanitizer
-  ) {}
+  ) { }
 
   ngOnInit() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.productData = sessionStorage.getItem('selectedProduct');
-    console.log("product data ",this.productData)
+    console.log("product data ", this.productData)
     if (this.productData) {
       this.product = JSON.parse(this.productData);
-      
+
       // Set main image from imageUrls
       if (this.product.imageUrls && this.product.imageUrls.length > 0) {
         this.mainImage = this.product.imageUrls[0];
       }
-      
+
       // Handle detail images separately
       if (this.product.detailImages && this.product.detailImages.length > 0) {
         // Sort detail images based on sequence number in filename
@@ -52,7 +53,7 @@ export class DetailsComponent implements OnInit {
           return getSequenceNumber(a) - getSequenceNumber(b);
         });
       }
-      
+
       // Filter out any undefined images
       this.detailImages = this.detailImages.filter(img => img);
 
@@ -86,7 +87,7 @@ export class DetailsComponent implements OnInit {
 
     const img = this.mainImg.nativeElement;
     const rect = img.getBoundingClientRect();
-    
+
     // Calculate cursor position relative to image
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
@@ -94,7 +95,7 @@ export class DetailsComponent implements OnInit {
     // Calculate zoom window position
     const zoomWindowWidth = 150;
     const zoomWindowHeight = 150;
-    
+
     // Position zoom window relative to cursor
     let zoomX = x - zoomWindowWidth / 2;
     let zoomY = y - zoomWindowHeight / 2;
@@ -140,11 +141,11 @@ export class DetailsComponent implements OnInit {
     'description' | 'extraDetails' | 'visitStore' | 'additionalInfo',
     boolean
   > = {
-    description: true,
-    extraDetails: false,
-    visitStore: false,
-    additionalInfo: false,
-  };
+      description: true,
+      extraDetails: false,
+      visitStore: false,
+      additionalInfo: false,
+    };
 
   toggleSection(section: keyof typeof this.isOpen) {
     this.isOpen[section] = !this.isOpen[section];

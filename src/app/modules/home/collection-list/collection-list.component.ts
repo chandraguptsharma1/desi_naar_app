@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   styleUrl: './collection-list.component.scss',
 })
 export class CollectionListComponent {
-Riwayat: any;
-  constructor(private router: Router) {}
+  Riwayat: any;
+  constructor(private router: Router) { }
 
   collections = [
     {
@@ -30,7 +30,7 @@ Riwayat: any;
     },
   ];
 
-  productpage(collectionType:any) {
+  productpage(collectionType: any) {
     sessionStorage.setItem('collectionType', JSON.stringify(collectionType));
     console.log('product page');
     this.router.navigate(['/products']);

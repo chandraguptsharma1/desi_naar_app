@@ -57,51 +57,35 @@
 
 <section class="py-10 bg-w sm:py-16 lg:py-24 z-40 relative">
   <div class="container mx-auto">
-    <h2
-      class="text-center text-[#595858] font-bahnschrift text-sm font-semibold uppercase tracking-widest mb-12"
-    >
+    <h2 class="text-center text-[#595858] font-bahnschrift text-sm font-semibold uppercase tracking-widest mb-12">
       Shop By Collection
     </h2>
 
     <div class="grid grid-cols-1 gap-6 justify-items-center lg:grid-cols-2">
       <!-- Card 1 -->
       <a (click)="productpage('Rutuba')" class="relative">
-        <div class=" w-[440px] relative overflow-hidden group">
-          <img
-            src="https://i.ibb.co/XfQ1sPRk/10.jpg"
-            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            alt="Rutuba"
-          />
-           <div
-          class="absolute inset-0 flex items-center justify-center  bg-opacity-20 group-hover:bg-opacity-30 transition"
-        >
-          <span
-            class="text-white text-2xl sm:text-base font-bold tracking-widest text-center"
-            >Rutuba</span
-          >
-        </div>
+        <div class=" cursor-pointer w-[440px] relative overflow-hidden group">
+          <img src="https://i.ibb.co/XfQ1sPRk/10.jpg"
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" alt="Rutuba" />
+          <div
+            class="absolute inset-0 flex items-center justify-center  bg-opacity-20 group-hover:bg-opacity-30 transition">
+            <span
+              class="text-white cursor-pointer text-2xl sm:text-base font-bold tracking-widest text-center">Rutuba</span>
+          </div>
         </div>
       </a>
 
       <!-- Card 2 -->
       <a (click)="productpage('Riwayat')" class="relative">
-        <div class=" w-[440px] relative overflow-hidden group">
-          <img
-            src="https://i.ibb.co/Pzrs4tC6/5.jpg"
-            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            alt="Riwayat"
-          />
-           <div
-          class="absolute inset-0 flex items-center justify-center  bg-opacity-20 group-hover:bg-opacity-30 transition"
-        >
-          <span
-            class="text-white text-2xl sm:text-base font-bold tracking-widest text-center"
-            >Riwayat</span
-          >
-        </div>
+        <div class="cursor-pointer w-[440px] relative overflow-hidden group">
+          <img src="https://i.ibb.co/Pzrs4tC6/5.jpg"
+            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" alt="Riwayat" />
+          <div
+            class="absolute inset-0 flex items-center justify-center  bg-opacity-20 group-hover:bg-opacity-30 transition">
+            <span class="text-white text-2xl sm:text-base font-bold tracking-widest text-center">Riwayat</span>
+          </div>
         </div>
       </a>
     </div>
   </div>
 </section>
-
