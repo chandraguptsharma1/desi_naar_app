@@ -14,7 +14,7 @@ export class BannerComponent {
       desktopImage:
         'https://i.ibb.co/prn045mk/Gray-Minimalist-New-Collection-Banner.png',
       mobileImage:
-        'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/collageImages/Picture4.jpg',
+        'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/detailImages/red1.jpg',
       desktopTitle: '',
       mobileTitle: '',
       buttonText: 'Explore Now',
@@ -23,7 +23,7 @@ export class BannerComponent {
       desktopImage:
         'https://i.ibb.co/HL95VcNm/BANNER-2.png',
       mobileImage:
-        'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/collageImages/Picture5.jpg',
+        'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/detailImages/yellow2.jpg',
       desktopTitle: 'Festive Styles',
       mobileTitle: 'Festive Looks',
       buttonText: 'Shop Festive',
@@ -32,7 +32,7 @@ export class BannerComponent {
       desktopImage:
         'https://i.ibb.co/rDNyP3V/BANNER-3.png',
       mobileImage:
-        'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/collageImages/Picture6.jpg',
+        'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/detailImages/blue5.jpg',
       desktopTitle: 'Elegant Ethnicwear',
       mobileTitle: 'Ethnic Looks',
       buttonText: 'View Collection',
