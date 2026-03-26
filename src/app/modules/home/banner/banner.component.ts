@@ -12,7 +12,7 @@ export class BannerComponent {
   carouselItems = [
     {
       desktopImage:
-        'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774517047/mens-festive-kurta-collection-india.png_ykludi.png',
+        'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774517366/desinaar-ethnic-kurta-new-collection_y3z6zm.png',
       mobileImage:
         'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/detailImages/red1.jpg',
       desktopTitle: '',
@@ -21,7 +21,7 @@ export class BannerComponent {
     },
     {
       desktopImage:
-        'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774517040/desinaar-ethnic-kurta-new-collection.png_qijo0k.png',
+        'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774517383/mens-festive-kurta-collection-india_eop4yj.png',
       mobileImage:
         'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/detailImages/yellow2.jpg',
       desktopTitle: 'Festive Styles',
@@ -30,7 +30,7 @@ export class BannerComponent {
     },
     {
       desktopImage:
-        'https://i.ibb.co/rDNyP3V/BANNER-3.png',
+        'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774517361/designer-embroidered-kurta-for-men_bve76k.png',
       mobileImage:
         'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774517047/mens-festive-kurta-collection-india.png_ykludi.png',
       desktopTitle: 'Elegant Ethnicwear',
