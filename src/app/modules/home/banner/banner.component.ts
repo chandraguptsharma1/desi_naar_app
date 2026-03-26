@@ -12,7 +12,7 @@ export class BannerComponent {
   carouselItems = [
     {
       desktopImage:
-        'https://i.ibb.co/prn045mk/Gray-Minimalist-New-Collection-Banner.png',
+        'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774517047/mens-festive-kurta-collection-india.png_ykludi.png',
       mobileImage:
         'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/detailImages/red1.jpg',
       desktopTitle: '',
@@ -21,7 +21,7 @@ export class BannerComponent {
     },
     {
       desktopImage:
-        'https://i.ibb.co/HL95VcNm/BANNER-2.png',
+        'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774517040/desinaar-ethnic-kurta-new-collection.png_qijo0k.png',
       mobileImage:
         'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/detailImages/yellow2.jpg',
       desktopTitle: 'Festive Styles',
@@ -32,7 +32,7 @@ export class BannerComponent {
       desktopImage:
         'https://i.ibb.co/rDNyP3V/BANNER-3.png',
       mobileImage:
-        'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/detailImages/blue5.jpg',
+        'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774517047/mens-festive-kurta-collection-india.png_ykludi.png',
       desktopTitle: 'Elegant Ethnicwear',
       mobileTitle: 'Ethnic Looks',
       buttonText: 'View Collection',
