@@ -7,12 +7,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeModule } from './modules/home/home.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { LookbookAboutusComponent } from './modules/lookbook-aboutus/lookbook-aboutus.component';
 
 
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LookbookAboutusComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -88,4 +88,8 @@ export class HeaderComponent {
   cartPage() {
     this.router.navigate(['/cart'])
   }
+
+  aboutuspage() {
+    this.router.navigate(['/about_us'])
+  }
 }
