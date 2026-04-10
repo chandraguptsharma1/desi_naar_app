@@ -183,7 +183,7 @@ export class DetailsComponent implements OnInit {
       return;
     }
 
-    const phone = '917488325096';
+    const phone = '919113307494';
     const productLink = window.location.href;
 
     const message = `Hello Desi Naar,
