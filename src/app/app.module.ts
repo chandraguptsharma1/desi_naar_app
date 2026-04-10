@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeModule } from './modules/home/home.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
@@ -15,6 +15,7 @@ import { LookbookAboutusComponent } from './modules/lookbook-aboutus/lookbook-ab
 @NgModule({
   declarations: [AppComponent, LookbookAboutusComponent],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -31,4 +32,4 @@ import { LookbookAboutusComponent } from './modules/lookbook-aboutus/lookbook-ab
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ProductService } from '../Services/product.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { EnquiryService } from './services/enquiry.service';
 
 @Component({
   selector: 'app-details',
@@ -25,47 +26,184 @@ export class DetailsComponent implements OnInit {
   videoUrl: SafeResourceUrl | null = null;
   showVideo: boolean = false;
 
+  quantity = 1;
+  selectedSize: string = '';
+  selectedColor: string = '';
+
+  // enquiry popup
+  showEnquiryPopup = false;
+  enquiryLoading = false;
+  enquirySuccessMessage = '';
+  enquiryErrorMessage = '';
+
+  enquiryForm = {
+    name: '',
+    mobile: '',
+    message: '',
+  };
+
   constructor(
     private productServices: ProductService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private enquiryService: EnquiryService
   ) { }
 
   ngOnInit() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     this.productData = sessionStorage.getItem('selectedProduct');
-    console.log("product data ", this.productData)
+    console.log('product data ', this.productData);
+
     if (this.productData) {
       this.product = JSON.parse(this.productData);
 
-      // Set main image from imageUrls
       if (this.product.imageUrls && this.product.imageUrls.length > 0) {
         this.mainImage = this.product.imageUrls[0];
       }
 
-      // Handle detail images separately
       if (this.product.detailImages && this.product.detailImages.length > 0) {
-        // Sort detail images based on sequence number in filename
         this.detailImages = [...this.product.detailImages].sort((a, b) => {
           const getSequenceNumber = (url: string) => {
             const match = url.match(/(\d+)(?=[^/]*$)/);
-            return match ? parseInt(match[1]) : 0;
+            return match ? parseInt(match[1], 10) : 0;
           };
           return getSequenceNumber(a) - getSequenceNumber(b);
         });
       }
 
-      // Filter out any undefined images
-      this.detailImages = this.detailImages.filter(img => img);
+      this.detailImages = this.detailImages.filter((img) => img);
 
-      // Handle video URL
       if (this.product.videoUrl) {
         const videoId = this.extractGoogleDriveFileId(this.product.videoUrl);
         if (videoId) {
           const embedUrl = `https://drive.google.com/file/d/${videoId}/preview`;
-          this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+          this.videoUrl =
+            this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
         }
       }
     }
+  }
+
+  increaseQuantity() {
+    this.quantity++;
+  }
+
+  decreaseQuantity() {
+    if (this.quantity > 1) {
+      this.quantity--;
+    }
+  }
+
+  openEnquiryPopup() {
+    this.showEnquiryPopup = true;
+    this.enquiryErrorMessage = '';
+    this.enquirySuccessMessage = '';
+  }
+
+  closeEnquiryPopup() {
+    this.showEnquiryPopup = false;
+    this.enquiryLoading = false;
+    this.enquiryErrorMessage = '';
+    this.enquirySuccessMessage = '';
+  }
+
+  submitEnquiry() {
+    this.enquiryErrorMessage = '';
+    this.enquirySuccessMessage = '';
+
+    const name = this.enquiryForm.name.trim();
+    const mobile = this.enquiryForm.mobile.trim();
+    const message = this.enquiryForm.message.trim();
+
+    if (!name) {
+      this.enquiryErrorMessage = 'Please enter your name.';
+      return;
+    }
+
+    if (!mobile) {
+      this.enquiryErrorMessage = 'Please enter your mobile number.';
+      return;
+    }
+
+    const mobileRegex = /^[6-9]\d{9}$/;
+    if (!mobileRegex.test(mobile)) {
+      this.enquiryErrorMessage = 'Please enter a valid 10-digit mobile number.';
+      return;
+    }
+
+    const payload = {
+      name,
+      mobile,
+      message,
+      productId: this.product?._id || null,
+      productTitle: this.product?.title || '',
+      productPrice: this.product?.price || 0,
+      productImage: this.mainImage || '',
+      productLink: window.location.href,
+      sku: this.product?.sku || '',
+      size: this.selectedSize || '',
+      color: this.selectedColor || '',
+      quantity: this.quantity || 1,
+    };
+
+    this.enquiryLoading = true;
+
+    this.enquiryService.createEnquiry(payload).subscribe({
+      next: (res) => {
+        this.enquiryLoading = false;
+        this.enquirySuccessMessage =
+          res?.message ||
+          'Request saved successfully. Our designer will connect with you on WhatsApp or call as soon as possible.';
+
+        this.enquiryForm = {
+          name: '',
+          mobile: '',
+          message: '',
+        };
+
+        setTimeout(() => {
+          this.closeEnquiryPopup();
+        }, 2500);
+      },
+      error: (err) => {
+        this.enquiryLoading = false;
+        this.enquiryErrorMessage =
+          err?.error?.message || 'Failed to save enquiry. Please try again.';
+      },
+    });
+  }
+
+  orderOnWhatsApp() {
+    if (!this.selectedSize) {
+      alert('Please select size');
+      return;
+    }
+
+    if (!this.selectedColor) {
+      alert('Please select color');
+      return;
+    }
+
+    const phone = '917488325096';
+    const productLink = window.location.href;
+
+    const message = `Hello Desi Naar,
+
+I want to talk to a designer regarding this product.
+
+Product: ${this.product?.title || ''}
+Price: Rs. ${this.product?.price || ''}
+SKU: ${this.product?.sku || ''}
+Size: ${this.selectedSize}
+Color: ${this.selectedColor}
+Quantity: ${this.quantity}
+
+Product Link:
+${productLink}
+
+Please help me with more details.`;
+
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
   }
 
   extractGoogleDriveFileId(url: string): string | null {
@@ -88,23 +226,18 @@ export class DetailsComponent implements OnInit {
     const img = this.mainImg.nativeElement;
     const rect = img.getBoundingClientRect();
 
-    // Calculate cursor position relative to image
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
 
-    // Calculate zoom window position
     const zoomWindowWidth = 150;
     const zoomWindowHeight = 150;
 
-    // Position zoom window relative to cursor
     let zoomX = x - zoomWindowWidth / 2;
     let zoomY = y - zoomWindowHeight / 2;
 
-    // Keep zoom window inside image bounds
     zoomX = Math.max(0, Math.min(zoomX, rect.width - zoomWindowWidth));
     zoomY = Math.max(0, Math.min(zoomY, rect.height - zoomWindowHeight));
 
-    // Calculate background position for zoomed image
     const bgX = (x / rect.width) * 100;
     const bgY = (y / rect.height) * 100;
 
@@ -123,18 +256,6 @@ export class DetailsComponent implements OnInit {
 
   handleMouseLeave() {
     this.isZoomed = false;
-  }
-
-  quantity = 1;
-
-  increaseQuantity() {
-    this.quantity++;
-  }
-
-  decreaseQuantity() {
-    if (this.quantity > 1) {
-      this.quantity--;
-    }
   }
 
   isOpen: Record<
@@ -192,7 +313,6 @@ export class DetailsComponent implements OnInit {
     const token = localStorage.getItem('token');
 
     if (token) {
-      // ✅ Logged in user — send to backend
       this.productServices.addCart(this.product._id).subscribe({
         next: (res) => {
           console.log('🛒 Cart added for logged-in user:', res);
@@ -202,13 +322,9 @@ export class DetailsComponent implements OnInit {
         },
       });
     } else {
-      // ❌ Guest user — Save in sessionStorage
-
-      // Check existing guest cart
       const guestCart = sessionStorage.getItem('guestCart');
       let guestItems = guestCart ? JSON.parse(guestCart) : [];
 
-      // Check if product already exists (avoid duplicates)
       const exists = guestItems.find(
         (item: any) => item._id === this.product._id
       );

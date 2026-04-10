@@ -44,31 +44,35 @@
       </p>
     </div>
 
-    <div class="text-sm text-[#595858]">
-      <p><strong>SKU:</strong> {{ product.sku }}</p>
-    </div>
-
     <div>
-      <label class="block text-[#595858]  mb-1">Size:</label>
+      <label class="block text-[#595858] mb-1">Size:</label>
       <div class="flex space-x-2">
-        <button *ngFor="let size of product.sizes" class="px-3 py-1 border hover:bg-gray-100">
+        <button *ngFor="let size of product.sizes" type="button" class="px-3 py-1 border hover:bg-gray-100"
+          [class.bg-black]="selectedSize === size" [class.text-white]="selectedSize === size"
+          (click)="selectedSize = size">
           {{ size }}
         </button>
       </div>
     </div>
 
     <div>
-      <label class="block text-[#595858]  mb-1">Color:</label>
+      <label class="block text-[#595858] mb-1">Color:</label>
       <div class="flex space-x-2">
-        <button *ngFor="let color of product.colors" class="px-3 py-1 border hover:bg-gray-100">
+        <button *ngFor="let color of product.colors" type="button" class="px-3 py-1 border hover:bg-gray-100"
+          [class.bg-black]="selectedColor === color" [class.text-white]="selectedColor === color"
+          (click)="selectedColor = color">
           {{ color }}
         </button>
       </div>
     </div>
 
     <div class="flex flex-col space-y-3">
-      <button (click)="addToCart()" class="bg-black text-white px-6 py-2">Add to Cart</button>
-      <button class="border px-6 py-2 hover:bg-gray-100">Buy It Now</button>
+      <button (click)="openEnquiryPopup()" class="border px-6 py-2 hover:bg-gray-100">
+        📝 Send Enquiry
+      </button>
+      <button (click)="orderOnWhatsApp()" class="border px-6 py-2 hover:bg-gray-100">
+        💬 Talk to Designer
+      </button>
     </div>
 
     <!-- Icon Section -->
@@ -139,5 +143,49 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<div *ngIf="showEnquiryPopup" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
+  <div class="bg-white w-full max-w-md rounded-lg shadow-xl p-6 relative">
+    <button type="button" class="absolute top-3 right-3 text-gray-500 hover:text-black text-xl"
+      (click)="closeEnquiryPopup()">
+      ×
+    </button>
+
+    <h3 class="text-xl font-semibold mb-4">Send Enquiry</h3>
+
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm mb-1 text-gray-700">Name</label>
+        <input type="text" [(ngModel)]="enquiryForm.name" class="w-full border px-3 py-2 rounded outline-none"
+          placeholder="Enter your name" />
+      </div>
+
+      <div>
+        <label class="block text-sm mb-1 text-gray-700">Mobile Number</label>
+        <input type="text" maxlength="10" [(ngModel)]="enquiryForm.mobile"
+          class="w-full border px-3 py-2 rounded outline-none" placeholder="Enter your mobile number" />
+      </div>
+
+      <div>
+        <label class="block text-sm mb-1 text-gray-700">Message (optional)</label>
+        <textarea [(ngModel)]="enquiryForm.message" rows="3" class="w-full border px-3 py-2 rounded outline-none"
+          placeholder="Write your requirement"></textarea>
+      </div>
+
+      <div *ngIf="enquiryErrorMessage" class="text-red-600 text-sm">
+        {{ enquiryErrorMessage }}
+      </div>
+
+      <div *ngIf="enquirySuccessMessage" class="text-green-600 text-sm">
+        {{ enquirySuccessMessage }}
+      </div>
+
+      <button type="button" (click)="submitEnquiry()" [disabled]="enquiryLoading"
+        class="w-full bg-black text-white py-2 rounded disabled:opacity-60">
+        {{ enquiryLoading ? 'Saving...' : 'Submit Enquiry' }}
+      </button>
+    </div>
   </div>
 </div>

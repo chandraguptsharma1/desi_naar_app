@@ -7,9 +7,10 @@ import { DetailsComponent } from './details/details.component';
 import { ProductsComponent } from './products.component';
 import { HomeModule } from '../home/home.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ListComponent, DetailsComponent, ProductsComponent],
-  imports: [CommonModule, ProductsRoutingModule,HttpClientModule],
+  imports: [FormsModule, CommonModule, ProductsRoutingModule, HttpClientModule],
 })
-export class ProductsModule {}
+export class ProductsModule { }
