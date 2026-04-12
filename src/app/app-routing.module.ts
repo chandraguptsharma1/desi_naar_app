@@ -44,6 +44,11 @@ const routes: Routes = [
   },
 
   {
+    path: 'category',
+    loadChildren: () =>
+      import('./modules/category/category.module').then((m) => m.CategoryModule),
+  },
+  {
     path: 'admin',
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),

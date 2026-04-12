@@ -92,4 +92,8 @@ export class HeaderComponent {
   aboutuspage() {
     this.router.navigate(['/about_us'])
   }
+
+  categorypage() {
+    this.router.navigate(['/category'])
+  }
 }
