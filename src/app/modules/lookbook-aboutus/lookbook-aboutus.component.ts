@@ -8,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class LookbookAboutusComponent {
 
+  heroImageUrl = 'https://i.ibb.co/B2cCTDGD/Untitled-design-8-1.png';
+  imageLoaded = false;
+
+  onImageLoad(): void {
+    this.imageLoaded = true;
+  }
+
+  onImageError(): void {
+    this.imageLoaded = true;
+  }
+
 }
