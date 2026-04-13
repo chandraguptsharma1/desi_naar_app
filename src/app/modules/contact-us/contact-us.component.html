@@ -1,0 +1,203 @@
+<div class="ct-page">
+
+    <!-- HERO -->
+    <div class="ct-hero">
+        <div>
+            <div class="ct-eyebrow">Get in Touch</div>
+            <div class="ct-title">Contact <em>Us</em></div>
+        </div>
+        <div class="ct-hero-sub">We'd love to hear<br>from you</div>
+    </div>
+    <div class="ct-divider"></div>
+
+    <!-- BODY -->
+    <div class="ct-body">
+
+        <!-- LEFT: CONTACT LINKS -->
+        <div class="ct-info">
+
+            <div class="ct-info-label">Reach Us Directly</div>
+            <div class="ct-info-desc">Click any option below to connect instantly</div>
+
+            <!-- WHATSAPP -->
+            <a class="ct-contact-card" [href]="whatsappUrl" target="_blank">
+                <div class="cc-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
+                    </svg>
+                </div>
+                <div class="cc-text">
+                    <span class="cc-label">WhatsApp</span>
+                    <span class="cc-value">+91 9113307494</span>
+                </div>
+                <span class="cc-arrow">↗</span>
+            </a>
+
+            <!-- CALL -->
+            <a class="ct-contact-card" href="tel:+919113307494">
+                <div class="cc-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <path
+                            d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.01 1.18 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+                    </svg>
+                </div>
+                <div class="cc-text">
+                    <span class="cc-label">Call Us</span>
+                    <span class="cc-value">+91 9113307494</span>
+                </div>
+                <span class="cc-arrow">↗</span>
+            </a>
+
+            <!-- EMAIL -->
+            <a class="ct-contact-card" href="mailto:desinaardesignstudio@gmail.com">
+                <div class="cc-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                </div>
+                <div class="cc-text">
+                    <span class="cc-label">Email</span>
+                    <span class="cc-value">desinaardesignstudio&#64;gmail.com</span>
+                </div>
+                <span class="cc-arrow">↗</span>
+            </a>
+
+            <!-- INSTAGRAM -->
+            <a class="ct-contact-card" [href]="instagramUrl" target="_blank">
+                <div class="cc-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                </div>
+                <div class="cc-text">
+                    <span class="cc-label">Instagram</span>
+                    <span class="cc-value">&#64;desinaar</span>
+                </div>
+                <span class="cc-arrow">↗</span>
+            </a>
+
+            <!-- FACEBOOK -->
+            <a class="ct-contact-card" [href]="facebookUrl" target="_blank">
+                <div class="cc-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                    </svg>
+                </div>
+                <div class="cc-text">
+                    <span class="cc-label">Facebook</span>
+                    <span class="cc-value">Desi Naar</span>
+                </div>
+                <span class="cc-arrow">↗</span>
+            </a>
+
+            <!-- HOURS -->
+            <div class="ct-hours">
+                <div class="ct-hours-row">
+                    <span class="ct-hours-day">Mon – Fri</span>
+                    <span class="ct-hours-time">10:00 AM – 7:00 PM</span>
+                </div>
+                <div class="ct-hours-row">
+                    <span class="ct-hours-day">Saturday</span>
+                    <span class="ct-hours-time">11:00 AM – 5:00 PM</span>
+                </div>
+                <div class="ct-hours-row">
+                    <span class="ct-hours-day">Sunday</span>
+                    <span class="ct-hours-time">Closed</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT: FORM -->
+        <div class="ct-form-wrap">
+            <div class="ct-form-title">Send a Message</div>
+            <div class="ct-form-sub">For custom orders, queries or collaborations</div>
+
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+                <div class="ct-field-row">
+                    <div class="ct-field">
+                        <label>First Name</label>
+                        <input type="text" formControlName="firstName" placeholder="Arjun" />
+                        <span class="ct-error"
+                            *ngIf="contactForm.get('firstName')?.invalid && contactForm.get('firstName')?.touched">
+                            Required
+                        </span>
+                    </div>
+                    <div class="ct-field">
+                        <label>Last Name</label>
+                        <input type="text" formControlName="lastName" placeholder="Sharma" />
+                    </div>
+                </div>
+
+                <div class="ct-field">
+                    <label>Email Address</label>
+                    <input type="email" formControlName="email" placeholder="arjun@email.com" />
+                    <span class="ct-error"
+                        *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+                        Valid email required
+                    </span>
+                </div>
+
+                <div class="ct-field">
+                    <label>Phone Number</label>
+                    <input type="tel" formControlName="phone" placeholder="+91 98765 43210" />
+                </div>
+
+                <div class="ct-field">
+                    <label>Subject</label>
+                    <select formControlName="subject">
+                        <option value="">Select a subject</option>
+                        <option value="custom_order">Custom Order</option>
+                        <option value="product_query">Product Query</option>
+                        <option value="bulk_order">Bulk Order</option>
+                        <option value="collaboration">Collaboration</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="ct-field">
+                    <label>Message</label>
+                    <textarea formControlName="message" placeholder="Tell us about your requirement..."></textarea>
+                    <span class="ct-error"
+                        *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
+                        Message is required
+                    </span>
+                </div>
+
+                <!-- SUCCESS MESSAGE -->
+                <div class="ct-success" *ngIf="submitted && !submitError">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#2c4a3e" stroke-width="2" width="16" height="16">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Message sent successfully! We'll get back to you soon.
+                </div>
+
+                <!-- ERROR MESSAGE -->
+                <div class="ct-error-msg" *ngIf="submitError">
+                    Something went wrong. Please try again or contact us directly.
+                </div>
+
+                <button type="submit" class="ct-submit" [disabled]="submitting">
+                    <span *ngIf="!submitting">Send Message</span>
+                    <span *ngIf="submitting" class="ct-btn-loading">
+                        <span></span><span></span><span></span>
+                    </span>
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="ct-map-strip">
+        <span class="ct-map-text">Desi Naar Design Studio · Bengaluru</span>
+        <a class="ct-map-link" href="https://maps.google.com" target="_blank">View on Map</a>
+    </div>
+
+</div>

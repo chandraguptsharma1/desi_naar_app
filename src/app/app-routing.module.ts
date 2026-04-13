@@ -50,6 +50,18 @@ const routes: Routes = [
   },
 
   {
+    path: 'collection',
+    loadChildren: () =>
+      import('./modules/collection/collection.module').then((m) => m.CollectionModule),
+  },
+
+  {
+    path: 'contact-us',
+    loadChildren: () =>
+      import('./modules/contact-us/contact-us.module').then((m) => m.ContactUsModule),
+  },
+
+  {
     path: 'new_arrival',
     loadChildren: () =>
       import('./modules/new-arrival/new-arrival.module').then((m) => m.NewArrivalModule),

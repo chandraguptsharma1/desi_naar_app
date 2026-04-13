@@ -1,72 +1,112 @@
-<footer class="bg-white pt-10">
-  <!-- Newsletter -->
-  <div class="container mx-auto px-4 text-center mb-10">
-    <h2 class="text-lg text-[#595858] font-semibold mb-4 tracking-wider">
-      NEWSLETTER
-    </h2>
-    <div class="flex justify-center items-center">
-      <div class="overflow-hidden">
-        <input type="email" placeholder="Email address"
-          class="px-4 pt-[1rem] pb-[1rem] w-50 mr-4 border border-gray-300 text-sm focus:outline-none" />
-        <button class="bg-[#595858] text-white px-4 py-[1.2rem] text-xs font-semibold uppercase">
-          Subscribe
-        </button>
-      </div>
+<footer class="ft">
+
+  <!-- NEWSLETTER -->
+  <div class="ft-newsletter">
+    <div class="ft-nl-left">
+      <div class="ft-nl-eyebrow">Stay Connected</div>
+      <div class="ft-nl-title">Join Our <em>Inner Circle</em></div>
+    </div>
+    <div class="ft-nl-right">
+      <input class="ft-nl-input" type="email" placeholder="Your email address" />
+      <button class="ft-nl-btn" (click)="subscribeNewsletter()">Subscribe</button>
     </div>
   </div>
 
-  <!-- Footer Links -->
-  <div class="border-t border-b border-gray-300 py-0">
-    <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row text-center md:text-left h-full">
-      <!-- Column 1 -->
-      <div class="flex-1 px-6 py-10">
-        <p class="text-sm text-[#595858] uppercase mb-2">
-          Your customized order is just a text away!
-        </p>
-        <p class="text-sm text-[#595858] mb-2">
-          <a href="tel:+918287000645" class="hover:underline">
-            +91 9113307494
-          </a>
-        </p>
-        <p class="text-sm text-[#595858]">
-          <a href="mailto:vaishdesigns@gmail.com" class="hover:underline">
-            {{emailId}}
-          </a>
-        </p>
-      </div>
+  <!-- LINKS SECTION -->
+  <div class="ft-links">
 
-      <!-- Column 2 with horizontal borders on mobile and vertical borders on desktop -->
-      <div
-        class="flex-1 border-t border-b md:border-t-0 md:border-b-0 md:border-l md:border-r border-gray-300 px-6 py-10">
-        <div class="space-y-2 uppercase text-[#595858]">
-          <a href="#" class="block text-sm hover:underline">Contact</a>
-          <a href="#" class="block text-sm hover:underline">Stockists</a>
-          <a href="#" class="block text-sm hover:underline">About Us</a>
+    <!-- COL 1: CONTACT -->
+    <div class="ft-col">
+      <div class="ft-col-label">Contact Us</div>
+      <span class="ft-contact-highlight">Your custom order is just a text away</span>
+
+      <div class="ft-contact-item">
+        <div class="ft-contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+            <path
+              d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.01 1.18 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+          </svg>
+        </div>
+        <div class="ft-contact-text">
+          <a href="tel:+919113307494">+91 9113307494</a>
         </div>
       </div>
 
-      <!-- Column 3 -->
-      <div class="flex-1 px-6 py-10">
-        <div class="space-y-2 uppercase text-[#595858]">
-          <a href="#" class="block text-sm hover:underline">Size Chart</a>
-          <a href="#" class="block text-sm hover:underline">Shipping & Returns</a>
-          <a href="#" class="block text-sm hover:underline">Privacy Policy</a>
-          <a href="#" class="block text-sm hover:underline">Terms and Conditions</a>
+      <div class="ft-contact-item">
+        <div class="ft-contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+        </div>
+        <div class="ft-contact-text">
+          <a href="mailto:desinaardesignstudio@gmail.com">desinaardesignstudio&#64;gmail.com</a>
         </div>
       </div>
+
+      <div class="ft-contact-item">
+        <div class="ft-contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </div>
+        <div class="ft-contact-text">Bengaluru, Karnataka</div>
+      </div>
     </div>
+
+    <!-- COL 2: QUICK LINKS -->
+    <div class="ft-col">
+      <div class="ft-col-label">Quick Links</div>
+      <a routerLink="/contact_us" class="ft-nav-link">Contact</a>
+      <a href="#" class="ft-nav-link">Stockists</a>
+      <a routerLink="/about_us" class="ft-nav-link">About Us</a>
+      <a routerLink="/new_arrival" class="ft-nav-link">New Arrivals</a>
+      <a routerLink="/category" class="ft-nav-link">Collections</a>
+    </div>
+
+    <!-- COL 3: POLICIES -->
+    <div class="ft-col">
+      <div class="ft-col-label">Policies</div>
+      <a href="#" class="ft-nav-link">Size Chart</a>
+      <a href="#" class="ft-nav-link">Shipping &amp; Returns</a>
+      <a href="#" class="ft-nav-link">Privacy Policy</a>
+      <a href="#" class="ft-nav-link">Terms &amp; Conditions</a>
+    </div>
+
   </div>
 
-  <!-- Social Media & Copyright -->
-  <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between py-6">
-    <div class="flex space-x-4 mb-4 md:mb-0">
-      <a href="#" class="hover:opacity-75">
-        <i class="fab fa-facebook-f text-2xl"></i>
+  <!-- BOTTOM BAR -->
+  <div class="ft-bottom">
+    <div class="ft-brand">DESI NAAR</div>
+
+    <div class="ft-social">
+      <a class="ft-social-btn" [href]="instagramUrl" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5" />
+          <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+        </svg>
       </a>
-      <a href="#" class="hover:opacity-75">
-        <i class="fab fa-instagram text-2xl"></i>
+      <a class="ft-social-btn" [href]="facebookUrl" target="_blank" title="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+        </svg>
+      </a>
+      <a class="ft-social-btn" [href]="whatsappUrl" target="_blank" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+          <path
+            d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
+        </svg>
       </a>
     </div>
-    <!-- <div class="text-sm text-center md:text-right">Powered by Ra</div> -->
+
+    <div class="ft-copy">&#169; 2025 Desi Naar. All rights reserved.</div>
   </div>
+
+  <!-- ACCENT STRIP -->
+  <div class="ft-strip">
+    <div class="ft-strip-inner"></div>
+  </div>
+
 </footer>

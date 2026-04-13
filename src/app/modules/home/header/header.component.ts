@@ -100,4 +100,12 @@ export class HeaderComponent {
   newarrivalPage() {
     this.router.navigate(['/new_arrival']);
   }
+
+  collectionPage() {
+    this.router.navigate(['/collection']);
+  }
+
+  contactus() {
+    this.router.navigate(['/contact-us'])
+  }
 }
