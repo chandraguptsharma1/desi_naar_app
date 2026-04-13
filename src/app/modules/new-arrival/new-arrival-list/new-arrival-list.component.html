@@ -1,0 +1,64 @@
+<div class="na-page">
+
+    <!-- HERO -->
+    <div class="na-hero">
+        <div>
+            <div class="na-eyebrow">Just Arrived</div>
+            <div class="na-title">New <em>Arrivals</em></div>
+        </div>
+        <div class="na-hero-right">
+            <div class="na-season">Festive 2025</div>
+            <div class="na-count">{{ filteredProducts.length.toString().padStart(2, '0') }}</div>
+        </div>
+    </div>
+
+    <!-- FILTER -->
+    <div class="na-filter">
+        <span class="filter-label">Filter</span>
+        <button class="filter-chip" *ngFor="let f of filters" [class.active]="activeFilter === f"
+            (click)="setFilter(f)">
+            {{ f }}
+        </button>
+    </div>
+    <div class="na-filter-divider"></div>
+
+    <!-- GRID -->
+    <div class="na-grid">
+        <div class="na-card" *ngFor="let product of filteredProducts">
+
+            <div class="na-card-img">
+                <div class="img-skeleton" [class.hidden]="product.loaded">
+                    <div class="skeleton-icon"></div>
+                </div>
+                <img [src]="product.image" [alt]="product.name" loading="eager" (load)="product.loaded = true"
+                    (error)="product.loaded = true" [class.loaded]="product.loaded" />
+                <div class="na-tag" [class.limited]="product.badge === 'Limited'">{{ product.badge }}</div>
+                <div class="na-card-actions">
+                    <button class="na-action-btn primary">Add to Cart</button>
+                    <button class="na-action-btn secondary">Wishlist</button>
+                </div>
+            </div>
+
+            <div class="na-card-info">
+                <div class="na-card-collection">{{ product.collection }}</div>
+                <div class="na-card-name">{{ product.name }}</div>
+                <div class="na-card-fabric">{{ product.fabric }}</div>
+                <div class="na-card-footer">
+                    <div class="na-card-price">₹{{ product.price | number }}</div>
+                    <div class="na-card-colors">
+                        <div class="color-dot" *ngFor="let c of product.colors" [style.background]="c"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="na-bottom">
+        <span class="na-view-all" routerLink="/all">View All Products</span>
+        <div class="na-strip-line"></div>
+        <span class="na-strip-text">Desi Naar · Festive 2025</span>
+    </div>
+
+</div>

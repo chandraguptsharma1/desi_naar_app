@@ -8,7 +8,7 @@ import { BannerComponent } from './banner/banner.component';
 import { FeaturedProductsComponent } from './featured-products/featured-products.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { NewArrivalsComponent } from './new-arrivals/new-arrivals.component';
-import { NewArrivalNaayabComponent } from './new-arrival-naayab/new-arrival-naayab.component';
+
 import { CollectionListComponent } from './collection-list/collection-list.component';
 import { ShopRewayatComponent } from './components/shop-rewayat/shop-rewayat.component';
 import { ClassicMirrorKurtasComponent } from './components/classic-mirror-kurtas/classic-mirror-kurtas.component';
@@ -23,7 +23,6 @@ import { FooterComponent } from './components/footer/footer.component';
     FeaturedProductsComponent,
     CategoriesComponent,
     NewArrivalsComponent,
-    NewArrivalNaayabComponent,
     CollectionListComponent,
     ShopRewayatComponent,
     ClassicMirrorKurtasComponent,
@@ -33,4 +32,4 @@ import { FooterComponent } from './components/footer/footer.component';
   imports: [CommonModule, HomeRoutingModule],
   exports: [HeaderComponent, FooterComponent],
 })
-export class HomeModule {}
+export class HomeModule { }

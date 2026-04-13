@@ -96,4 +96,8 @@ export class HeaderComponent {
   categorypage() {
     this.router.navigate(['/category'])
   }
+
+  newarrivalPage() {
+    this.router.navigate(['/new_arrival']);
+  }
 }

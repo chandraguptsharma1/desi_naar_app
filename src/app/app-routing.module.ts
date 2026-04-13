@@ -48,6 +48,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/category/category.module').then((m) => m.CategoryModule),
   },
+
+  {
+    path: 'new_arrival',
+    loadChildren: () =>
+      import('./modules/new-arrival/new-arrival.module').then((m) => m.NewArrivalModule),
+  },
   {
     path: 'admin',
     loadChildren: () =>

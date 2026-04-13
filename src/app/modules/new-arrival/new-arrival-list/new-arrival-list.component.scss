@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+
+:host {
+    display: block;
+    width: 100%;
+}
+
+.na-page {
+    font-family: 'Jost', sans-serif;
+    background: #fff;
+}
+
+// HERO
+.na-hero {
+    background: #1a1208;
+    padding: 48px 48px 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    .na-eyebrow {
+        font-size: 10px;
+        letter-spacing: 4px;
+        color: #8b7355;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+    }
+
+    .na-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 52px;
+        font-weight: 600;
+        color: #f5f0e8;
+        line-height: 1;
+        letter-spacing: -1px;
+
+        em {
+            font-style: italic;
+            color: #c9a96e;
+        }
+    }
+
+    .na-hero-right {
+        text-align: right;
+
+        .na-season {
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: rgba(245, 240, 232, 0.35);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .na-count {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: rgba(245, 240, 232, 0.12);
+            font-weight: 600;
+            line-height: 1;
+        }
+    }
+}
+
+// FILTER
+.na-filter {
+    background: #1a1208;
+    padding: 0 48px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    .filter-label {
+        font-size: 9px;
+        letter-spacing: 3px;
+        color: rgba(245, 240, 232, 0.45);
+        text-transform: uppercase;
+        margin-right: 6px;
+    }
+
+    .filter-chip {
+        font-size: 9px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 8px 18px;
+        border: 0.5px solid rgba(245, 240, 232, 0.3);
+        color: rgba(245, 240, 232, 0.7);
+        font-family: 'Jost', sans-serif;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &.active {
+            background: #c9a96e;
+            color: #1a1208;
+            border-color: #c9a96e;
+            font-weight: 500;
+        }
+
+        &:hover:not(.active) {
+            border-color: rgba(245, 240, 232, 0.7);
+            color: #f5f0e8;
+        }
+    }
+}
+
+.na-filter-divider {
+    height: 0.5px;
+    background: #2e2416;
+}
+
+// GRID
+.na-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    padding: 2px;
+    background: #e8e0d4;
+}
+
+// CARD
+.na-card {
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+        .na-card-img img {
+            transform: scale(1.05);
+            filter: brightness(0.88);
+        }
+
+        .na-card-actions {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+.na-card-img {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background: #f5f0e8;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+        opacity: 0;
+        transition: transform 0.5s ease, filter 0.4s ease, opacity 0.5s ease;
+
+        &.loaded {
+            opacity: 1;
+        }
+    }
+}
+
+// SKELETON
+.img-skeleton {
+    position: absolute;
+    inset: 0;
+    background: #ede8de;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+
+    &.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .skeleton-icon {
+        width: 36px;
+        height: 36px;
+        border: 2px solid rgba(139, 115, 85, 0.2);
+        border-top-color: #8b7355;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// BADGE
+.na-tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #c9a96e;
+    color: #1a1208;
+    font-size: 7px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    z-index: 2;
+
+    &.limited {
+        background: #3a3028;
+        color: #f5f0e8;
+    }
+}
+
+// HOVER ACTIONS
+.na-card-actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 3;
+    display: flex;
+    gap: 6px;
+
+    .na-action-btn {
+        flex: 1;
+        padding: 10px 0;
+        font-size: 8px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-family: 'Jost', sans-serif;
+        cursor: pointer;
+        border: none;
+
+        &.primary {
+            background: #1a1208;
+            color: #f5f0e8;
+        }
+
+        &.secondary {
+            background: rgba(245, 240, 232, 0.92);
+            color: #1a1208;
+        }
+    }
+}
+
+// CARD INFO
+.na-card-info {
+    padding: 16px 16px 20px;
+
+    .na-card-collection {
+        font-size: 8px;
+        letter-spacing: 3px;
+        color: #8b7355;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+    }
+
+    .na-card-name {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 20px;
+        font-weight: 600;
+        color: #1a1208;
+        margin-bottom: 4px;
+    }
+
+    .na-card-fabric {
+        font-size: 10px;
+        color: #9a8878;
+        font-weight: 300;
+        margin-bottom: 10px;
+    }
+
+    .na-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .na-card-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: #1a1208;
+            font-weight: 600;
+        }
+
+        .na-card-colors {
+            display: flex;
+            gap: 5px;
+
+            .color-dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                border: 0.5px solid rgba(0, 0, 0, 0.15);
+            }
+        }
+    }
+}
+
+// BOTTOM
+.na-bottom {
+    background: #f5f0e8;
+    padding: 28px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .na-view-all {
+        font-size: 9px;
+        letter-spacing: 3px;
+        color: #1a1208;
+        text-transform: uppercase;
+        border-bottom: 0.5px solid #1a1208;
+        padding-bottom: 2px;
+        cursor: pointer;
+    }
+
+    .na-strip-line {
+        flex: 1;
+        height: 0.5px;
+        background: #c9b89a;
+        margin: 0 24px;
+    }
+
+    .na-strip-text {
+        font-size: 9px;
+        letter-spacing: 3px;
+        color: #8b7355;
+        text-transform: uppercase;
+    }
+}
+
+// RESPONSIVE
+@media (max-width: 900px) {
+    .na-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .na-hero {
+        padding: 32px 24px 28px;
+
+        .na-title {
+            font-size: 36px;
+        }
+    }
+
+    .na-filter {
+        padding: 0 24px 20px;
+    }
+
+    .na-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .na-bottom {
+        padding: 24px;
+    }
+}
