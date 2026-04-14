@@ -1,146 +1,140 @@
-<header class="border-b w-full bg-gradient-to-r text-gray-700 py-4 px-2 top-0 z-50">
-  <div class="max-w-screen-2xl mx-auto flex items-center justify-between">
-    <!-- Left: Logo & Hamburger -->
-    <div class="flex items-center space-x-4">
-      <button class="lg:hidden text-xl" (click)="toggleDrawer()">
-        <i class="fas fa-bars text-[#c2c1c1]"></i>
-      </button>
+<header class="nb">
+  <div class="nb-inner">
 
-      <div (click)="homePage()" class="text-2xl font-bold font-bahnschrift cursor-pointer tracking-tight uppercase">
-        DESI NAAR
-      </div>
-    </div>
+    <!-- HAMBURGER (mobile only) -->
+    <button class="nb-hamburger" (click)="toggleDrawer()">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
 
-    <!-- Center Navigation (Desktop) -->
-    <nav class="hidden lg:flex space-x-6 text-xs tracking-wider font-medium uppercase">
-      <a (click)="productpage()" class="hover:opacity-80 cursor-pointer">ALL</a>
-      <a (click)="newarrivalPage()" class="hover:opacity-80 cursor-pointer">NEW ARRIVAL</a>
-      <a (click)="categorypage()" class="hover:opacity-80 cursor-pointer">CATEGORY</a>
-      <a (click)="collectionPage()" class="hover:opacity-80 cursor-pointer">COLLECTION</a>
-      <a (click)="contactus()" class="hover:opacity-80 cursor-pointer">CONTACT US</a>
-      <a (click)="aboutuspage()" class="hover:opacity-80 cursor-pointer">About US</a>
+    <!-- LOGO -->
+    <div class="nb-logo" (click)="homePage()">DESI <span>NAAR</span></div>
+
+    <!-- CENTER NAV (desktop) -->
+    <nav class="nb-nav">
+      <a class="nb-link" (click)="productpage()" [class.active]="activeRoute === 'products'">All</a>
+      <a class="nb-link" (click)="newarrivalPage()" [class.active]="activeRoute === 'new_arrival'">New Arrival</a>
+      <a class="nb-link" (click)="categorypage()" [class.active]="activeRoute === 'category'">Category</a>
+      <a class="nb-link" (click)="collectionPage()" [class.active]="activeRoute === 'collection'">Collection</a>
+      <a class="nb-link" (click)="contactus()" [class.active]="activeRoute === 'contact-us'">Contact Us</a>
+      <a class="nb-link" (click)="aboutuspage()" [class.active]="activeRoute === 'about_us'">About Us</a>
     </nav>
 
-    <!-- Right Icons -->
-    <div class="flex items-center space-x-4 text-[#c2c1c1] text-lg">
-      <!-- Social Icons (Desktop only) -->
-      <div class="hidden lg:flex space-x-4">
-        <a href="#" class="hover:text-black">
-          <i class="fab fa-facebook-square"></i>
+    <!-- RIGHT ICONS -->
+    <div class="nb-right">
+
+      <!-- Social (desktop only) -->
+      <div class="nb-social">
+        <a class="nb-icon-btn" [href]="facebookUrl" target="_blank" title="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+          </svg>
         </a>
-        <a href="#" class="hover:text-black">
-          <i class="fab fa-instagram"></i>
+        <a class="nb-icon-btn" [href]="instagramUrl" target="_blank" title="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
         </a>
-        <div class="h-5 w-px bg-[#b9b9b9] mx-2"></div>
       </div>
+      <div class="nb-divider"></div>
 
-      <!-- Always-visible Icons -->
-      <button class="hover:opacity-75" (click)="toggleSearch()">
-        <i class="fas fa-search"></i>
+      <!-- Search -->
+      <button class="nb-icon-btn" (click)="toggleSearch()" title="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
       </button>
-      <div class="relative">
-        <button (click)="Login()" class="hover:opacity-75" (click)="toggleUserMenu()">
-          <i class="fas fa-user"></i>
-        </button>
 
-        <!-- Dropdown Menu -->
-        <!-- <div
-          *ngIf="isUserMenuOpen"
-          class="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded shadow-lg z-50 text-sm"
-        >
-          <ng-container *ngIf="isLoggedIn; else notLoggedIn">
-            <a
-            (click)="Login()"
-              href="/profile"
-              class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
-            >
-              <i class="fas fa-user-circle mr-2"></i>
-              Profile
-            </a>
-            <button
-              (click)="logout()"
-              class="flex items-center w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
-            >
-              <i class="fas fa-sign-out-alt mr-2"></i>
-              Logout
-            </button> -->
-        <!-- </ng-container> -->
-
-        <!-- <ng-template #notLoggedIn>
-            <a
-              (click)="Login()"
-              class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
-            >
-              <i class="fas fa-sign-in-alt mr-2"></i>
-              Sign In
-            </a>
-            <a
-              (click)="register()"
-              class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100"
-            >
-              <i class="fas fa-user-plus mr-2"></i>
-              Sign Up
-            </a>
-          </ng-template> -->
-        <!-- </div> -->
-      </div>
-      <button (click)="cartPage()" class="hover:opacity-75">
-        <i class="fas fa-shopping-cart"></i>
+      <!-- Account -->
+      <button class="nb-icon-btn" (click)="Login()" title="Account">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
       </button>
-    </div>
-  </div>
 
-  <!-- Drawer Overlay -->
-  <div *ngIf="isDrawerOpen" class="fixed inset-0 z-50 flex">
-    <!-- Drawer -->
-    <div class="w-4/5 bg-white p-6 flex flex-col h-full transform transition-transform duration-300" [ngClass]="{
-        '-translate-x-full': !isDrawerVisible,
-        'translate-x-0': isDrawerVisible
-      }">
-      <!-- Close Button -->
-      <div class="flex justify-between items-center mb-6">
-        <button (click)="toggleDrawer()" class="text-2xl text-gray-700">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-
-      <!-- Drawer Content -->
-      <div class="flex flex-col justify-between flex-1">
-        <!-- Menu Links -->
-        <nav class="flex flex-col space-y-4 text-sm font-semibold uppercase">
-          <a (click)="productpage()" class="hover:opacity-80 block">All</a>
-          <a href="#" class="hover:opacity-80 block">New Arrival</a>
-          <a href="#" class="hover:opacity-80 block">Category</a>
-          <a href="#" class="hover:opacity-80 block">Collection</a>
-          <a href="#" class="hover:opacity-80 block">Contact Us</a>
-        </nav>
-
-        <!-- Social Icons (Mobile Bottom) -->
-        <div class="pt-6 flex space-x-4">
-          <a href="#" class="text-gray-700 text-2xl">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="#" class="text-gray-700 text-2xl">
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Backdrop -->
-    <div class="flex-1 bg-slate-500 bg-opacity-40" (click)="toggleDrawer()"></div>
-  </div>
-
-  <!-- Search Overlay -->
-  <div *ngIf="isSearchOpen" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-start justify-center pt-6">
-    <div
-      class="w-full max-w-xl bg-white rounded-lg mx-4 flex items-center px-4 py-3 shadow-lg relative animate-slide-down">
-      <i class="fas fa-search text-gray-400 text-lg mr-3"></i>
-      <input type="text" placeholder="What are you looking for?"
-        class="flex-grow outline-none text-base text-gray-800 placeholder-gray-400" autofocus />
-      <button (click)="toggleSearch()" class="absolute right-4 top-3 text-gray-400 text-xl">
-        <i class="fas fa-times"></i>
+      <!-- Cart -->
+      <button class="nb-icon-btn cart" (click)="cartPage()" title="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 01-8 0" />
+        </svg>
+        <div class="nb-cart-badge" *ngIf="cartCount > 0">{{ cartCount }}</div>
       </button>
+
     </div>
   </div>
 </header>
+
+<!-- SEARCH OVERLAY -->
+<div class="nb-search-overlay" *ngIf="isSearchOpen" (click)="closeSearchOnBackdrop($event)">
+  <div class="nb-search-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+    <input #searchInput class="nb-search-input" type="text" placeholder="What are you looking for?"
+      (keyup.enter)="onSearch()" (input)="searchQuery = searchInput.value" autofocus />
+    <button class="nb-search-close" (click)="toggleSearch()">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<!-- MOBILE DRAWER -->
+<div class="nb-drawer-overlay" *ngIf="isDrawerOpen">
+  <div class="nb-drawer" [class.open]="isDrawerVisible">
+
+    <div class="nb-drawer-header">
+      <div class="nb-drawer-logo">DESI <span>NAAR</span></div>
+      <button class="nb-drawer-close" (click)="toggleDrawer()">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+
+    <nav class="nb-drawer-nav">
+      <a class="nb-drawer-link" (click)="productpage(); toggleDrawer()">All</a>
+      <a class="nb-drawer-link" (click)="newarrivalPage(); toggleDrawer()">New Arrival</a>
+      <a class="nb-drawer-link" (click)="categorypage(); toggleDrawer()">Category</a>
+      <a class="nb-drawer-link" (click)="collectionPage(); toggleDrawer()">Collection</a>
+      <a class="nb-drawer-link" (click)="contactus(); toggleDrawer()">Contact Us</a>
+      <a class="nb-drawer-link" (click)="aboutuspage(); toggleDrawer()">About Us</a>
+    </nav>
+
+    <div class="nb-drawer-social">
+      <a class="nb-drawer-social-btn" [href]="instagramUrl" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5" />
+          <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+        </svg>
+      </a>
+      <a class="nb-drawer-social-btn" [href]="facebookUrl" target="_blank" title="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+        </svg>
+      </a>
+      <a class="nb-drawer-social-btn" [href]="whatsappUrl" target="_blank" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
+          <path
+            d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+  <div class="nb-backdrop" (click)="toggleDrawer()"></div>
+</div>

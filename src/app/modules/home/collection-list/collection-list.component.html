@@ -1,92 +1,40 @@
-<!-- <section class="py-12 bg-white border-t mt-4 sm:border-t-0 border-gray-300">
-  <div class="container mx-auto px-4 ">
+<section class="cl-section">
 
-    <h2
-      class="text-center text-[#595858] font-bahnschrift text-sm font-semibold uppercase tracking-widest mb-12"
-    >
-      Shop By Collection
-    </h2>
+  <!-- HEADER -->
+  <div class="cl-header">
+    <div class="cl-header-left">
+      <div class="cl-eyebrow">Explore</div>
+      <div class="cl-title">Shop by <em>Collection</em></div>
+    </div>
+    <div class="cl-view-all" (click)="goToCategory()">View All</div>
+  </div>
+  <div class="cl-divider"></div>
 
- 
-   <div class="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-y-1 sm:gap-y-2">
- 
-        <div
-          (click)="productpage('Rutuba')"
-          class="relative group w-[260px] sm:w-[220px] md:w-[260px] lg:w-[300px] overflow-hidden mb-4 md:mb-0"
-        >
+  <!-- GRID -->
+  <div class="cl-grid">
 
-        <img
-          src="https://i.ibb.co/XfQ1sPRk/10.jpg"
-          alt="Sherwani"
-          class="w-full h-[360px] object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-        <div
-          class="absolute inset-0 flex items-center justify-center  bg-opacity-20 group-hover:bg-opacity-30 transition"
-        >
-          <span
-            class="text-white text-lg sm:text-base font-bold tracking-widest text-center"
-            >Rutuba</span
-          >
+    <div class="cl-card" *ngFor="let col of collections" (click)="productpage(col.name)">
+      <div class="cl-img-wrap">
+        <div class="img-skeleton" [class.hidden]="col.loaded">
+          <div class="skeleton-icon"></div>
+        </div>
+        <img [src]="col.image" [alt]="col.name" loading="eager" (load)="col.loaded = true" (error)="col.loaded = true"
+          [class.loaded]="col.loaded" />
+        <div class="cl-img-tag">Festive 2025</div>
+        <div class="cl-img-num">{{ col.number }}</div>
+        <div class="cl-explore">Explore Collection →</div>
+      </div>
+      <div class="cl-card-info">
+        <div class="cl-card-collection">Collection {{ col.number }}</div>
+        <div class="cl-card-name">{{ col.name }}</div>
+        <div class="cl-card-desc">{{ col.description }}</div>
+        <div class="cl-card-footer">
+          <span class="cl-card-count">{{ col.itemCount }} Pieces</span>
+          <span class="cl-card-arrow">→</span>
         </div>
       </div>
-
-
-      <div
-      (click)="productpage('Riwayat')"
-        class="relative group w-[260px] sm:w-[220px] md:w-[260px] lg:w-[300px] overflow-hidden"
-      >
-        <img
-          src="https://i.ibb.co/Pzrs4tC6/5.jpg"
-          alt="Bandhgala"
-          class="w-full h-[360px] object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-        <div
-          class="absolute inset-0 flex items-center justify-center  bg-opacity-20 group-hover:bg-opacity-30 transition"
-        >
-          <span
-            class="text-white text-lg sm:text-base font-bold tracking-widest text-center"
-            >Riwayat</span
-          >
-        </div>
-      </div>
-
-     
     </div>
+
   </div>
-</section> -->
 
-<section class="py-10 bg-w sm:py-16 lg:py-24 z-40 relative">
-  <div class="container mx-auto">
-    <h2 class="text-center text-[#595858] font-bahnschrift text-sm font-semibold uppercase tracking-widest mb-12">
-      Shop By Collection
-    </h2>
-
-    <div class="grid grid-cols-1 gap-6 justify-items-center lg:grid-cols-2">
-      <!-- Card 1 -->
-      <a (click)="productpage('Rutuba')" class="relative">
-        <div class=" cursor-pointer w-[440px] relative overflow-hidden group">
-          <img src="https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774280281/AMAAN_YELLOW_KURTA_SET_3_mhfbj8.jpg"
-            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" alt="Rutuba" />
-          <div
-            class="absolute inset-0 flex items-center justify-center  bg-opacity-20 group-hover:bg-opacity-30 transition">
-            <span
-              class="text-white cursor-pointer text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-bold tracking-widest text-center">RUTUBA</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 2 -->
-      <a (click)="productpage('Riwayat')" class="relative">
-        <div class="cursor-pointer w-[440px] relative overflow-hidden group">
-          <img src="https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774280280/VYOM_BLACK_KURTA_SET_g76pem.jpg"
-            class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" alt="Riwayat" />
-          <div
-            class="absolute inset-0 flex items-center justify-center  bg-opacity-20 group-hover:bg-opacity-30 transition">
-            <span
-              class="text-white text-3xl sm:text-5xl md:text-6xl lg:text-5xl font-bold tracking-widest text-center">RIWAYAT</span>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
 </section>

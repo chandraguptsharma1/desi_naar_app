@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+
+:host {
+    display: block;
+    width: 100%;
+}
+
+.cl-section {
+    font-family: 'Jost', sans-serif;
+    background: #f5f0e8;
+    padding: 64px 120px; // zyada padding = cards narrow honge
+
+    @media (max-width: 1200px) {
+        padding: 48px 80px;
+    }
+
+    @media (max-width: 1024px) {
+        padding: 48px 48px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 40px 20px;
+    }
+}
+
+// HEADER
+.cl-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 28px;
+
+    .cl-header-left {
+        .cl-eyebrow {
+            font-size: 9px;
+            letter-spacing: 5px;
+            color: #8b7355;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .cl-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            font-weight: 600;
+            color: #1a1208;
+            letter-spacing: -0.5px;
+            line-height: 1;
+
+            em {
+                font-style: italic;
+                color: #c9a96e;
+            }
+        }
+    }
+
+    .cl-view-all {
+        font-size: 9px;
+        letter-spacing: 3px;
+        color: #8b7355;
+        text-transform: uppercase;
+        border-bottom: 0.5px solid #8b7355;
+        padding-bottom: 2px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: color 0.2s;
+
+        &:hover {
+            color: #1a1208;
+            border-bottom-color: #1a1208;
+        }
+    }
+}
+
+.cl-divider {
+    height: 0.5px;
+    background: #c9b89a;
+    margin-bottom: 32px;
+}
+
+// GRID
+.cl-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+// CARD
+.cl-card {
+    background: #fff;
+    cursor: pointer;
+    overflow: hidden;
+
+    &:hover {
+        .cl-img-wrap img {
+            transform: scale(1.04);
+            filter: brightness(0.7);
+        }
+
+        .cl-explore {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cl-card-name {
+            color: #8b7355;
+        }
+
+        .cl-card-arrow {
+            transform: translateX(4px);
+            color: #8b7355;
+        }
+    }
+}
+
+// IMAGE
+.cl-img-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 480px;
+    background: #e8e4dc;
+
+    @media (max-width: 1024px) {
+        height: 400px;
+    }
+
+    @media (max-width: 768px) {
+        height: 300px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 15%; // 15% — face top pe nahi katega, thoda neeche se dikhega
+        display: block;
+        opacity: 0;
+        filter: brightness(0.88);
+        transition: transform 0.5s ease, filter 0.4s ease, opacity 0.5s ease;
+
+        &.loaded {
+            opacity: 1;
+        }
+    }
+}
+
+// SKELETON
+.img-skeleton {
+    position: absolute;
+    inset: 0;
+    background: #ddd8ce;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+
+    &.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .skeleton-icon {
+        width: 36px;
+        height: 36px;
+        border: 2px solid rgba(139, 115, 85, 0.2);
+        border-top-color: #8b7355;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// IMAGE TAGS
+.cl-img-tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: #c9a96e;
+    color: #1a1208;
+    font-size: 7px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500;
+    z-index: 2;
+}
+
+.cl-img-num {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.12);
+    line-height: 1;
+    z-index: 2;
+}
+
+// HOVER EXPLORE
+.cl-explore {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(26, 18, 8, 0.88);
+    color: #f5f0e8;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px;
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 3;
+}
+
+// CARD INFO
+.cl-card-info {
+    padding: 18px 20px 20px;
+    border-top: 0.5px solid #e8e0d4;
+
+    .cl-card-collection {
+        font-size: 8px;
+        letter-spacing: 3px;
+        color: #8b7355;
+        text-transform: uppercase;
+        margin-bottom: 6px;
+    }
+
+    .cl-card-name {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 26px;
+        font-weight: 600;
+        color: #1a1208;
+        margin-bottom: 4px;
+        transition: color 0.3s;
+    }
+
+    .cl-card-desc {
+        font-size: 11px;
+        color: #9a8878;
+        font-weight: 300;
+        line-height: 1.6;
+    }
+
+    .cl-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 12px;
+
+        .cl-card-count {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: #8b7355;
+            text-transform: uppercase;
+        }
+
+        .cl-card-arrow {
+            font-size: 16px;
+            color: #c9b89a;
+            transition: transform 0.2s, color 0.2s;
+        }
+    }
+}

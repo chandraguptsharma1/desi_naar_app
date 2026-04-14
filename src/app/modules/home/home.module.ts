@@ -14,6 +14,7 @@ import { ShopRewayatComponent } from './components/shop-rewayat/shop-rewayat.com
 import { ClassicMirrorKurtasComponent } from './components/classic-mirror-kurtas/classic-mirror-kurtas.component';
 import { ShopTheLookComponent } from './components/shop-the-look/shop-the-look.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ShopTheLookComponent,
     FooterComponent,
   ],
-  imports: [CommonModule, HomeRoutingModule],
+  imports: [CommonModule, HomeRoutingModule, FormsModule, ReactiveFormsModule],
   exports: [HeaderComponent, FooterComponent],
 })
 export class HomeModule { }
