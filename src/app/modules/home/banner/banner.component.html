@@ -1,46 +1,68 @@
-<div class="carousel-wrapper" (mouseleave)="startAutoPlay()">
+<div class="carousel-wrapper" (mouseleave)="startAutoPlay()" (mouseenter)="pauseAutoPlay()">
 
-  <!-- Slides -->
+  <!-- SLIDES -->
   <div class="carousel-track">
     <div *ngFor="let item of carouselItems; let i = index" class="carousel-slide" [class.active]="activeIndex === i">
-      <!-- Image with fast loading -->
+      <!-- SKELETON while loading -->
+      <div class="slide-skeleton" [class.hidden]="item.loaded"></div>
+
       <picture>
         <source [srcset]="item.mobileImage" media="(max-width: 768px)" />
         <img [src]="item.desktopImage" [alt]="item.desktopTitle || 'Desinaar Banner'" class="slide-img"
-          [attr.loading]="i === 0 ? 'eager' : 'lazy'" [attr.fetchpriority]="i === 0 ? 'high' : 'auto'" width="1440"
-          height="600" />
+          [class.loaded]="item.loaded" [attr.loading]="i === 0 ? 'eager' : 'lazy'"
+          [attr.fetchpriority]="i === 0 ? 'high' : 'auto'" (load)="item.loaded = true" (error)="item.loaded = true"
+          width="1440" height="600" />
       </picture>
 
-      <!-- Desktop Overlay (text on image) -->
+      <!-- DESKTOP OVERLAY -->
       <div class="desktop-overlay">
+        <div class="overlay-eyebrow">Desi Naar · Festive 2025</div>
         <h2 class="overlay-title" *ngIf="item.desktopTitle">{{ item.desktopTitle }}</h2>
-        <button class="overlay-btn">{{ item.buttonText }}</button>
+        <button class="overlay-btn" (click)="onBannerClick(item)">
+          {{ item.buttonText }}
+          <span class="overlay-btn-arrow">→</span>
+        </button>
+      </div>
+
+      <!-- SLIDE NUMBER -->
+      <div class="slide-num">
+        <span class="slide-num-current">{{ (i + 1).toString().padStart(2, '0') }}</span>
+        <span class="slide-num-sep">/</span>
+        <span class="slide-num-total">{{ carouselItems.length.toString().padStart(2, '0') }}</span>
       </div>
     </div>
   </div>
 
-  <!-- Mobile Text Section (below image) -->
+  <!-- MOBILE TEXT -->
   <div class="mobile-text">
+    <div class="mobile-eyebrow">Festive 2025</div>
     <h2 class="mobile-title">{{ carouselItems[activeIndex].mobileTitle }}</h2>
-    <button class="mobile-btn">{{ carouselItems[activeIndex].buttonText }}</button>
+    <button class="mobile-btn" (click)="onBannerClick(carouselItems[activeIndex])">
+      {{ carouselItems[activeIndex].buttonText }} →
+    </button>
   </div>
 
-  <!-- Prev / Next Controls -->
+  <!-- PREV / NEXT -->
   <button class="ctrl ctrl-prev" (click)="prevSlide()" aria-label="Previous">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
       <polyline points="15 18 9 12 15 6"></polyline>
     </svg>
   </button>
   <button class="ctrl ctrl-next" (click)="nextSlide()" aria-label="Next">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
       <polyline points="9 18 15 12 9 6"></polyline>
     </svg>
   </button>
 
-  <!-- Indicator Dots -->
+  <!-- DOTS -->
   <div class="dots">
     <button *ngFor="let item of carouselItems; let j = index" class="dot" [class.active]="activeIndex === j"
       (click)="goToSlide(j)" [attr.aria-label]="'Go to slide ' + (j + 1)"></button>
+  </div>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar">
+    <div class="progress-fill" [style.animation-duration]="'3s'" [class.running]="isPlaying"></div>
   </div>
 
 </div>
