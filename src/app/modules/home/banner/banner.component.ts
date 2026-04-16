@@ -16,7 +16,7 @@ export class BannerComponent implements OnInit, OnDestroy {
   carouselItems = [
     {
       desktopImage: 'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774517366/desinaar-ethnic-kurta-new-collection_y3z6zm.png',
-      mobileImage: 'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/detailImages/red1.jpg',
+      mobileImage: 'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1775212537/NORAIZ_KURTA_SET_tlt1h2.png',
       desktopTitle: 'New Collection',
       mobileTitle: 'New Arrivals',
       buttonText: 'Explore Now',
@@ -25,7 +25,7 @@ export class BannerComponent implements OnInit, OnDestroy {
     },
     {
       desktopImage: 'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774517383/mens-festive-kurta-collection-india_eop4yj.png',
-      mobileImage: 'https://ewppyeqhqylgauppwvjd.supabase.co/storage/v1/object/public/3gContent/desinaar/detailImages/yellow2.jpg',
+      mobileImage: 'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1775212894/AMAAN_KURTA_SET_uezjbp.png',
       desktopTitle: 'Festive Styles',
       mobileTitle: 'Festive Looks',
       buttonText: 'Shop Festive',
@@ -34,7 +34,7 @@ export class BannerComponent implements OnInit, OnDestroy {
     },
     {
       desktopImage: 'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774517361/designer-embroidered-kurta-for-men_bve76k.png',
-      mobileImage: 'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1774517047/mens-festive-kurta-collection-india.png_ykludi.png',
+      mobileImage: 'https://res.cloudinary.com/dcrcp8a3d/image/upload/v1775213455/VYOM_KURTA_SET_iasn1t.png',
       desktopTitle: 'Elegant Ethnicwear',
       mobileTitle: 'Ethnic Looks',
       buttonText: 'View Collection',
