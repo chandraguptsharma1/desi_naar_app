@@ -1,0 +1,19 @@
+/* category.component.scss */
+
+:host {
+    display: block;
+}
+
+/* Smooth card transition on hover */
+.group {
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+    }
+}
+
+/* Image scale effect */
+img {
+    will-change: transform;
+}

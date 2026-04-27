@@ -1,1 +1,187 @@
-<p>categories works!</p>
+<section class="bg-[#0A0A0A] min-h-screen">
+
+    <!-- Hero Header -->
+    <div class="relative bg-[#111111] py-16 px-6 overflow-hidden">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-0 left-0 w-full h-full"
+                style="background-image: repeating-linear-gradient(0deg, #C9A96E 0px, #C9A96E 1px, transparent 1px, transparent 60px),
+                                   repeating-linear-gradient(90deg, #C9A96E 0px, #C9A96E 1px, transparent 1px, transparent 60px);">
+            </div>
+        </div>
+
+        <div class="container mx-auto relative z-10">
+            <p class="text-[#C9A96E] tracking-[0.4em] text-xs font-light mb-3 uppercase">Explore Our</p>
+            <h1 class="text-5xl md:text-7xl font-serif text-white">
+                <span class="font-light">Our </span>
+                <span class="italic text-[#C9A96E]">Categories</span>
+            </h1>
+            <div class="w-20 h-[1px] bg-[#C9A96E] mt-6 opacity-60"></div>
+        </div>
+
+        <!-- Decorative number -->
+        <div
+            class="absolute right-8 bottom-8 text-[120px] font-serif text-white opacity-[0.03] leading-none select-none">
+            03
+        </div>
+    </div>
+
+    <!-- Category Cards -->
+    <div class="container mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <!-- KURTA SET -->
+            <div class="group relative cursor-pointer" (click)="navigateTo('kurta-set')">
+                <div class="relative overflow-hidden bg-[#F8F5EE]" style="height: 580px;">
+
+                    <!-- NEW Badge -->
+                    <div class="absolute top-4 left-4 z-20">
+                        <span
+                            class="bg-[#C9A96E] text-white text-[10px] tracking-[0.3em] font-medium px-3 py-1 uppercase">
+                            New
+                        </span>
+                    </div>
+
+                    <!-- Image -->
+                    <img src="assets/categories/kurta-set.jpg" alt="Kurta Set"
+                        class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+
+                    <!-- Gradient Overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+
+                    <!-- Hover CTA -->
+                    <div class="absolute bottom-6 left-0 right-0 flex justify-center
+                      translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100
+                      transition-all duration-500">
+                        <button class="bg-[#C9A96E] text-white text-xs tracking-[0.3em] uppercase px-8 py-3 font-medium
+                           hover:bg-white hover:text-[#0A0A0A] transition-colors duration-300">
+                            Explore
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Label -->
+                <div class="bg-[#111111] py-5 px-4 border-b border-[#C9A96E]/20
+                    group-hover:border-[#C9A96E] transition-colors duration-300">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-white font-serif text-xl tracking-wider">KURTA SET</h2>
+                            <p class="text-[#C9A96E]/60 text-xs tracking-[0.2em] mt-1 uppercase">Classic Elegance</p>
+                        </div>
+                        <div class="w-8 h-8 border border-[#C9A96E]/40 rounded-full flex items-center justify-center
+                        group-hover:border-[#C9A96E] group-hover:bg-[#C9A96E]/10 transition-all duration-300">
+                            <svg class="w-3 h-3 text-[#C9A96E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STOLE SET -->
+            <div class="group relative cursor-pointer" (click)="navigateTo('stole-set')">
+                <div class="relative overflow-hidden bg-[#F8F5EE]" style="height: 580px;">
+
+                    <div class="absolute top-4 left-4 z-20">
+                        <span
+                            class="bg-[#C9A96E] text-white text-[10px] tracking-[0.3em] font-medium px-3 py-1 uppercase">
+                            New
+                        </span>
+                    </div>
+
+                    <img src="assets/categories/stole-set.jpg" alt="Stole Set"
+                        class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+
+                    <div class="absolute bottom-6 left-0 right-0 flex justify-center
+                      translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100
+                      transition-all duration-500">
+                        <button class="bg-[#C9A96E] text-white text-xs tracking-[0.3em] uppercase px-8 py-3 font-medium
+                           hover:bg-white hover:text-[#0A0A0A] transition-colors duration-300">
+                            Explore
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-[#111111] py-5 px-4 border-b border-[#C9A96E]/20
+                    group-hover:border-[#C9A96E] transition-colors duration-300">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-white font-serif text-xl tracking-wider">STOLE SET</h2>
+                            <p class="text-[#C9A96E]/60 text-xs tracking-[0.2em] mt-1 uppercase">Royal Drape</p>
+                        </div>
+                        <div class="w-8 h-8 border border-[#C9A96E]/40 rounded-full flex items-center justify-center
+                        group-hover:border-[#C9A96E] group-hover:bg-[#C9A96E]/10 transition-all duration-300">
+                            <svg class="w-3 h-3 text-[#C9A96E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BUNDI SET -->
+            <div class="group relative cursor-pointer" (click)="navigateTo('bundi-set')">
+                <div class="relative overflow-hidden bg-[#F8F5EE]" style="height: 580px;">
+
+                    <div class="absolute top-4 left-4 z-20">
+                        <span
+                            class="bg-[#C9A96E] text-white text-[10px] tracking-[0.3em] font-medium px-3 py-1 uppercase">
+                            New
+                        </span>
+                    </div>
+
+                    <img src="assets/categories/bundi-set.jpg" alt="Bundi Set"
+                        class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+
+                    <div class="absolute bottom-6 left-0 right-0 flex justify-center
+                      translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100
+                      transition-all duration-500">
+                        <button class="bg-[#C9A96E] text-white text-xs tracking-[0.3em] uppercase px-8 py-3 font-medium
+                           hover:bg-white hover:text-[#0A0A0A] transition-colors duration-300">
+                            Explore
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-[#111111] py-5 px-4 border-b border-[#C9A96E]/20
+                    group-hover:border-[#C9A96E] transition-colors duration-300">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-white font-serif text-xl tracking-wider">BUNDI SET</h2>
+                            <p class="text-[#C9A96E]/60 text-xs tracking-[0.2em] mt-1 uppercase">Heritage Craft</p>
+                        </div>
+                        <div class="w-8 h-8 border border-[#C9A96E]/40 rounded-full flex items-center justify-center
+                        group-hover:border-[#C9A96E] group-hover:bg-[#C9A96E]/10 transition-all duration-300">
+                            <svg class="w-3 h-3 text-[#C9A96E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bottom Divider -->
+    <div class="container mx-auto px-4 pb-16">
+        <div class="flex items-center gap-4">
+            <div class="flex-1 h-[1px] bg-[#C9A96E]/20"></div>
+            <p class="text-[#C9A96E]/40 text-xs tracking-[0.4em] uppercase">Desi Naar</p>
+            <div class="flex-1 h-[1px] bg-[#C9A96E]/20"></div>
+        </div>
+    </div>
+
+</section>

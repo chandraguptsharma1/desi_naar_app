@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -10,5 +11,9 @@ import { Component } from '@angular/core';
 })
 export class CategoryListComponent {
 
+  constructor(private router: Router) { }
 
+  navigateTo(category: string): void {
+    this.router.navigate(['/category', category]);
+  }
 }
