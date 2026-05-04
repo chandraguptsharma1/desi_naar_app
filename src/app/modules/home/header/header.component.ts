@@ -39,7 +39,10 @@ export class HeaderComponent implements OnInit {
 
   // NAVIGATION
   homePage() { this.router.navigate(['/']); }
-  productpage() { this.router.navigate(['/products']); }
+  productpage() {
+    sessionStorage.removeItem('collectionType');
+    this.router.navigate(['/products']);
+  }
   newarrivalPage() { this.router.navigate(['/new_arrival']); }
   categorypage() { this.router.navigate(['/category']); }
   collectionPage() { this.router.navigate(['/collection']); }

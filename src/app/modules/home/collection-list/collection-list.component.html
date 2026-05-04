@@ -8,22 +8,28 @@
     </div>
     <div class="cl-view-all" (click)="goToCategory()">View All</div>
   </div>
+
   <div class="cl-divider"></div>
 
   <!-- GRID -->
   <div class="cl-grid">
 
-    <div class="cl-card" *ngFor="let col of collections" (click)="productpage(col.name)">
+    <div class="cl-card" *ngFor="let col of collections; let i = index; trackBy: trackByCollection"
+      (click)="productpage(col.name)">
+      <!-- IMAGE -->
       <div class="cl-img-wrap">
         <div class="img-skeleton" [class.hidden]="col.loaded">
           <div class="skeleton-icon"></div>
         </div>
-        <img [src]="col.image" [alt]="col.name" loading="eager" (load)="col.loaded = true" (error)="col.loaded = true"
-          [class.loaded]="col.loaded" />
+        <img [src]="col.image" [alt]="col.name" [attr.loading]="i === 0 ? 'eager' : 'lazy'"
+          [attr.fetchpriority]="i === 0 ? 'high' : 'auto'" decoding="async" (load)="col.loaded = true"
+          (error)="col.loaded = true" [class.loaded]="col.loaded" />
         <div class="cl-img-tag">Festive 2025</div>
         <div class="cl-img-num">{{ col.number }}</div>
         <div class="cl-explore">Explore Collection →</div>
       </div>
+
+      <!-- INFO -->
       <div class="cl-card-info">
         <div class="cl-card-collection">Collection {{ col.number }}</div>
         <div class="cl-card-name">{{ col.name }}</div>

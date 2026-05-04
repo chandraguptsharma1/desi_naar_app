@@ -37,4 +37,8 @@ export class CollectionListComponent {
       loaded: false
     }
   ];
+
+  trackByCollection(index: number, collection: Collections): string {
+    return collection.slug || index.toString();
+  }
 }

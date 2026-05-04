@@ -101,14 +101,14 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     this.collectionType = sessionStorage.getItem('collectionType');
+    this.collectionType = this.collectionType?.replace(/"/g, '').trim() || '';
     this.getAllProduct();
   }
 
   getAllProduct() {
-    let cleanCollectionType = this.collectionType?.replace(/"/g, '').trim();
     this.loading = true;
 
-    this.productServices.getAllProduct(cleanCollectionType).subscribe({
+    this.productServices.getAllProduct(this.collectionType).subscribe({
       next: (res: any) => {
         this.products = res.data?.length ? res.data : this.staticProducts;
         this.loading = false;
@@ -120,6 +120,10 @@ export class ProductsComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  trackByProduct(index: number, product: any): string {
+    return product?._id || product?.id || product?.title || index.toString();
   }
 
   getImageUrl(imageUrl: string): string {

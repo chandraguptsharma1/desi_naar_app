@@ -5,30 +5,44 @@
     width: 100%;
 }
 
+// ─── SECTION ───────────────────────────────────────────────
 .cl-section {
+    --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
     font-family: 'Jost', sans-serif;
     background: #f5f0e8;
-    padding: 64px 120px; // zyada padding = cards narrow honge
+    padding: clamp(22px, 3.4vh, 38px) 120px;
+
+    // Viewport fit — pura screen cover kare
+    height: calc(100dvh - 92px);
+    min-height: 620px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 
     @media (max-width: 1200px) {
-        padding: 48px 80px;
+        padding: clamp(20px, 3vh, 34px) 80px;
     }
 
     @media (max-width: 1024px) {
-        padding: 48px 48px;
+        padding: 28px 48px;
     }
 
     @media (max-width: 768px) {
-        padding: 40px 20px;
+        height: auto;
+        min-height: 100svh;
+        overflow: visible;
+        padding: 28px 20px; // Safari ke liye
     }
 }
 
-// HEADER
+// ─── HEADER ────────────────────────────────────────────────
 .cl-header {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    margin-bottom: 28px;
+    margin-bottom: clamp(14px, 2vh, 20px);
+    flex-shrink: 0; // header compress nahi hoga
 
     .cl-header-left {
         .cl-eyebrow {
@@ -36,16 +50,20 @@
             letter-spacing: 5px;
             color: #8b7355;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .cl-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 40px;
+            font-size: 38px;
             font-weight: 600;
             color: #1a1208;
             letter-spacing: -0.5px;
             line-height: 1;
+
+            @media (max-width: 768px) {
+                font-size: 30px;
+            }
 
             em {
                 font-style: italic;
@@ -63,7 +81,7 @@
         padding-bottom: 2px;
         cursor: pointer;
         white-space: nowrap;
-        transition: color 0.2s;
+        transition: color 0.45s ease, border-color 0.45s ease;
 
         &:hover {
             color: #1a1208;
@@ -72,32 +90,45 @@
     }
 }
 
+// ─── DIVIDER ───────────────────────────────────────────────
 .cl-divider {
     height: 0.5px;
     background: #c9b89a;
-    margin-bottom: 32px;
+    margin-bottom: clamp(14px, 2vh, 20px);
+    flex-shrink: 0;
 }
 
-// GRID
+// ─── GRID ──────────────────────────────────────────────────
 .cl-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 16px;
+    flex: 1; // baaki saari height grid le legi
+    min-height: 0;
+    overflow: hidden;
 
     @media (max-width: 640px) {
         grid-template-columns: 1fr;
+        gap: 12px;
+        overflow: visible;
     }
 }
 
-// CARD
+// ─── CARD ──────────────────────────────────────────────────
 .cl-card {
     background: #fff;
     cursor: pointer;
     overflow: hidden;
+    display: flex; // card bhi flex column hoga
+    flex-direction: column;
+    min-height: 0;
+    contain: layout paint;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 
     &:hover {
         .cl-img-wrap img {
-            transform: scale(1.04);
+            transform: scale(1.045) translateZ(0);
             filter: brightness(0.7);
         }
 
@@ -111,44 +142,46 @@
         }
 
         .cl-card-arrow {
-            transform: translateX(4px);
+            transform: translateX(6px);
             color: #8b7355;
         }
     }
 }
 
-// IMAGE
+// ─── IMAGE WRAP ────────────────────────────────────────────
 .cl-img-wrap {
     position: relative;
     overflow: hidden;
-    height: 480px;
+    flex: 1; // baaki card height image le legi
+    min-height: 0; // fallback — bahut chhoti na ho
     background: #e8e4dc;
-
-    @media (max-width: 1024px) {
-        height: 400px;
-    }
-
-    @media (max-width: 768px) {
-        height: 300px;
-    }
+    transform: translateZ(0);
 
     img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center 15%; // 15% — face top pe nahi katega, thoda neeche se dikhega
+        object-position: center 15%;
         display: block;
         opacity: 0;
         filter: brightness(0.88);
-        transition: transform 0.5s ease, filter 0.4s ease, opacity 0.5s ease;
+        transform: scale(1.01) translateZ(0);
+        transform-origin: center top;
+        transition: transform 1.15s var(--ease-luxury), filter 0.9s var(--ease-luxury), opacity 0.8s ease;
+        backface-visibility: hidden;
+        will-change: transform, filter;
 
         &.loaded {
             opacity: 1;
         }
     }
+
+    @media (max-width: 640px) {
+        min-height: clamp(340px, 68svh, 560px);
+    }
 }
 
-// SKELETON
+// ─── SKELETON ──────────────────────────────────────────────
 .img-skeleton {
     position: absolute;
     inset: 0;
@@ -156,7 +189,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.75s ease;
     z-index: 1;
 
     &.hidden {
@@ -165,12 +198,12 @@
     }
 
     .skeleton-icon {
-        width: 36px;
-        height: 36px;
+        width: 32px;
+        height: 32px;
         border: 2px solid rgba(139, 115, 85, 0.2);
         border-top-color: #8b7355;
         border-radius: 50%;
-        animation: spin 1s linear infinite;
+        animation: spin 1.4s linear infinite;
     }
 }
 
@@ -180,7 +213,7 @@
     }
 }
 
-// IMAGE TAGS
+// ─── IMAGE TAGS ────────────────────────────────────────────
 .cl-img-tag {
     position: absolute;
     top: 14px;
@@ -208,7 +241,7 @@
     z-index: 2;
 }
 
-// HOVER EXPLORE
+// ─── HOVER EXPLORE ─────────────────────────────────────────
 .cl-explore {
     position: absolute;
     bottom: 0;
@@ -223,31 +256,36 @@
     text-align: center;
     font-family: 'Jost', sans-serif;
     opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateY(12px);
+    transition: opacity 0.65s var(--ease-luxury), transform 0.75s var(--ease-luxury);
     z-index: 3;
 }
 
-// CARD INFO
+// ─── CARD INFO ─────────────────────────────────────────────
 .cl-card-info {
-    padding: 18px 20px 20px;
+    padding: clamp(12px, 2vh, 16px) 18px;
     border-top: 0.5px solid #e8e0d4;
+    flex-shrink: 0; // info compress nahi hogi, sirf image stretch hogi
 
     .cl-card-collection {
         font-size: 8px;
         letter-spacing: 3px;
         color: #8b7355;
         text-transform: uppercase;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
     }
 
     .cl-card-name {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 26px;
+        font-size: 24px;
         font-weight: 600;
         color: #1a1208;
-        margin-bottom: 4px;
-        transition: color 0.3s;
+        margin-bottom: 3px;
+        transition: color 0.5s ease;
+
+        @media (max-width: 768px) {
+            font-size: 20px;
+        }
     }
 
     .cl-card-desc {
@@ -261,7 +299,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-top: 12px;
+        margin-top: 10px;
 
         .cl-card-count {
             font-size: 9px;
@@ -273,7 +311,7 @@
         .cl-card-arrow {
             font-size: 16px;
             color: #c9b89a;
-            transition: transform 0.2s, color 0.2s;
+            transition: transform 0.55s var(--ease-luxury), color 0.45s ease;
         }
     }
 }

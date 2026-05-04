@@ -36,6 +36,10 @@ export class CollectionListComponent {
   }
 
   goToCategory() {
-    this.router.navigate(['/category']);
+    this.router.navigate(['/collection']);
+  }
+
+  trackByCollection(index: number, collection: any): string {
+    return collection.name || index.toString();
   }
 }

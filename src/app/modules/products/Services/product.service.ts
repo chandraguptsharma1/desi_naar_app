@@ -10,7 +10,12 @@ export class ProductService {
   constructor(private http:HttpClient) { }
 
   getAllProduct(collectionType:any){
-    return this.http.get(environment.baseUrl + `/products/getProduct?collectionType=${collectionType}`);
+    const cleanCollectionType = typeof collectionType === 'string' ? collectionType.trim() : '';
+    const url = cleanCollectionType
+      ? `${environment.baseUrl}/products/getProduct?collectionType=${encodeURIComponent(cleanCollectionType)}`
+      : `${environment.baseUrl}/products/getProduct`;
+
+    return this.http.get(url);
   }
 
   addCart(productID:any){

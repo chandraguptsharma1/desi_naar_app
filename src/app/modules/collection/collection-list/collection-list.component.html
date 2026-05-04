@@ -13,11 +13,12 @@
     </div>
 
     <div class="cat-grid">
-        <div class="cat-card" *ngFor="let cat of categories; let i = index">
+        <div class="cat-card" *ngFor="let cat of categories; let i = index; trackBy: trackByCollection">
             <div class="img-skeleton" [class.hidden]="cat.loaded">
                 <div class="skeleton-icon"></div>
             </div>
-            <img [src]="cat.image" [alt]="cat.name" loading="eager" (load)="cat.loaded = true"
+            <img [src]="cat.image" [alt]="cat.name" [attr.loading]="i === 0 ? 'eager' : 'lazy'"
+                [attr.fetchpriority]="i === 0 ? 'high' : 'auto'" decoding="async" (load)="cat.loaded = true"
                 (error)="cat.loaded = true" [class.loaded]="cat.loaded" />
             <div class="cat-badge" *ngIf="cat.badge">{{ cat.badge }}</div>
             <div class="cat-count">{{ cat.itemCount }} Pieces</div>

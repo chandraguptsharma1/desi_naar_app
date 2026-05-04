@@ -30,15 +30,18 @@
 
   <!-- GRID -->
   <div class="na-grid" *ngIf="!loading">
-    <div class="na-card" *ngFor="let product of products" (click)="productDetails(product)">
+    <div class="na-card" *ngFor="let product of products; let i = index; trackBy: trackByProduct"
+      (click)="productDetails(product)">
 
       <!-- IMAGE -->
       <div class="na-card-img">
         <div class="img-skeleton" [class.hidden]="product._loaded">
           <div class="skeleton-icon"></div>
         </div>
-        <img [src]="getImageUrl(product.imageUrls[0])" [alt]="product.title" loading="eager"
-          (load)="product._loaded = true" (error)="product._loaded = true" [class.loaded]="product._loaded" />
+        <img [src]="getImageUrl(product.imageUrls[0])" [alt]="product.title"
+          [attr.loading]="i < 4 ? 'eager' : 'lazy'" [attr.fetchpriority]="i < 4 ? 'high' : 'auto'"
+          decoding="async" (load)="product._loaded = true" (error)="product._loaded = true"
+          [class.loaded]="product._loaded" />
         <div class="na-tag" *ngIf="product.badge" [class.limited]="product.badge === 'Limited'"
           [class.exclusive]="product.badge === 'Exclusive'">
           {{ product.badge }}

@@ -104,12 +104,15 @@
 .na-page {
   font-family: 'Jost', sans-serif;
   background: #fff;
+  min-height: calc(100dvh - 92px);
+  overflow: visible;
+  scroll-behavior: smooth;
 }
 
 // HERO
 .na-hero {
   background: #1a1208;
-  padding: 48px 48px 40px;
+  padding: clamp(18px, 3vh, 32px) 48px clamp(14px, 2.4vh, 26px);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -124,7 +127,7 @@
 
   .na-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 52px;
+    font-size: clamp(38px, 4vw, 52px);
     font-weight: 600;
     color: #f5f0e8;
     line-height: 1;
@@ -149,7 +152,7 @@
 
     .na-count {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 48px;
+      font-size: clamp(34px, 3.6vw, 48px);
       color: rgba(245, 240, 232, 0.12);
       font-weight: 600;
       line-height: 1;
@@ -165,10 +168,11 @@
 // GRID
 .na-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2px;
   padding: 2px;
   background: #e8e0d4;
+  align-items: start;
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
@@ -181,6 +185,11 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  contain: layout paint;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 
   &:hover {
     .na-card-img img {
@@ -198,9 +207,10 @@
 // IMAGE
 .na-card-img {
   position: relative;
-  aspect-ratio: 3/4;
+  height: clamp(320px, 34vw, 460px);
   overflow: hidden;
   background: #f5f0e8;
+  transform: translateZ(0);
 
   img {
     width: 100%;
@@ -210,6 +220,8 @@
     display: block;
     opacity: 0;
     transition: transform 0.5s ease, filter 0.4s ease, opacity 0.5s ease;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 
     &.loaded {
       opacity: 1;
@@ -289,7 +301,7 @@
 
   .na-action-btn {
     flex: 1;
-    padding: 10px 0;
+    padding: 9px 0;
     font-size: 8px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -311,15 +323,15 @@
 
 // DESKTOP CARD INFO
 .na-card-info {
-  padding: 14px 16px 18px;
+  padding: 11px 14px 13px;
 
   @media (max-width: 768px) {
     display: none;
   }
 
   .na-card-collection {
-    font-size: 8px;
-    letter-spacing: 3px;
+    font-size: 7px;
+    letter-spacing: 2.4px;
     color: #8b7355;
     text-transform: uppercase;
     margin-bottom: 5px;
@@ -327,17 +339,17 @@
 
   .na-card-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     color: #1a1208;
     margin-bottom: 3px;
   }
 
   .na-card-fabric {
-    font-size: 10px;
+    font-size: 9px;
     color: #9a8878;
     font-weight: 300;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     letter-spacing: 0.5px;
   }
 
@@ -348,7 +360,7 @@
 
     .na-card-price {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 17px;
+      font-size: 16px;
       color: #1a1208;
       font-weight: 600;
     }
@@ -434,7 +446,7 @@
 // BOTTOM
 .na-bottom {
   background: #f5f0e8;
-  padding: 28px 48px;
+  padding: clamp(14px, 2vh, 22px) 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -466,5 +478,10 @@
 
   .na-bottom {
     padding: 24px;
+  }
+
+  .na-card-img {
+    height: auto;
+    aspect-ratio: 3/4;
   }
 }
