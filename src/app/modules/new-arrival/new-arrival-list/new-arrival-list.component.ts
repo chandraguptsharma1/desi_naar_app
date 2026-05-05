@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NewArrivalApiItem, NewArrivalService } from '../Services/new-arrival.service';
 
 interface Product {
+  id?: string;
   name: string;
   collection: string;
   fabric: string;
@@ -9,6 +11,7 @@ interface Product {
   badge: string;
   colors: string[];
   loaded: boolean;
+  raw?: NewArrivalApiItem;
 }
 
 @Component({
@@ -17,13 +20,15 @@ interface Product {
   templateUrl: './new-arrival-list.component.html',
   styleUrl: './new-arrival-list.component.scss'
 })
-export class NewArrivalListComponent {
-
-  filters = ['All', 'Rutuba', 'Riwayat', 'Kurta Set', 'Under ₹20K'];
+export class NewArrivalListComponent implements OnInit {
+  filters = ['All'];
   activeFilter = 'All';
   filteredProducts: Product[] = [];
+  products: Product[] = [];
+  loading = false;
+  errorMessage = '';
 
-  products: Product[] = [
+  private readonly fallbackProducts: Product[] = [
     {
       name: 'Noraiz',
       collection: 'Rutuba',
@@ -86,8 +91,34 @@ export class NewArrivalListComponent {
     }
   ];
 
+  constructor(private newArrivalService: NewArrivalService) { }
+
   ngOnInit(): void {
-    this.filteredProducts = [...this.products];
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.getNewArrivals();
+  }
+
+  getNewArrivals(): void {
+    this.loading = true;
+    this.errorMessage = '';
+
+    this.newArrivalService.getNewArrivals().subscribe({
+      next: (res) => {
+        const apiProducts = (res.data || []).map((item) => this.mapApiItemToProduct(item));
+        this.products = apiProducts.length ? apiProducts : this.cloneFallbackProducts();
+        this.buildFilters();
+        this.setFilter(this.activeFilter);
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('New arrival API error:', err);
+        this.errorMessage = 'Unable to load live new arrivals right now. Showing featured picks.';
+        this.products = this.cloneFallbackProducts();
+        this.buildFilters();
+        this.setFilter('All');
+        this.loading = false;
+      }
+    });
   }
 
   setFilter(filter: string): void {
@@ -102,5 +133,59 @@ export class NewArrivalListComponent {
     } else {
       this.filteredProducts = this.products.filter(p => p.collection === filter);
     }
+  }
+
+  trackByProduct(index: number, product: Product): string {
+    return product.id || product.name || index.toString();
+  }
+
+  private mapApiItemToProduct(item: NewArrivalApiItem): Product {
+    return {
+      id: item._id,
+      name: item.title || 'Untitled',
+      collection: item.collectionType || 'New Arrival',
+      fabric: this.getFabricLabel(item),
+      price: Number(item.price || 0),
+      image: this.getPrimaryImage(item),
+      badge: item.isActive === false ? 'Inactive' : 'New',
+      colors: this.getColorCodes(item.colors),
+      loaded: false,
+      raw: item
+    };
+  }
+
+  private getFabricLabel(item: NewArrivalApiItem): string {
+    const details = [item.fabric, item.workType].filter(Boolean);
+    return details.length ? details.join(' · ') : item.description || 'Desi Naar edit';
+  }
+
+  private getPrimaryImage(item: NewArrivalApiItem): string {
+    return item.imageUrls?.[0] || item.detailImages?.[0] || this.placeholderImage();
+  }
+
+  private getColorCodes(colors: NewArrivalApiItem['colors']): string[] {
+    if (!colors?.length) return ['#c9a96e'];
+
+    return colors
+      .map((color) => typeof color === 'string' ? color : color?.code)
+      .filter((code): code is string => !!code);
+  }
+
+  private buildFilters(): void {
+    const collectionFilters = Array.from(new Set(
+      this.products
+        .map((product) => product.collection)
+        .filter((collection) => !!collection && collection !== 'New Arrival')
+    ));
+
+    this.filters = ['All', ...collectionFilters, 'Kurta Set', 'Under ₹20K'];
+  }
+
+  private cloneFallbackProducts(): Product[] {
+    return this.fallbackProducts.map((product) => ({ ...product, colors: [...product.colors], loaded: false }));
+  }
+
+  private placeholderImage(): string {
+    return 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 800%22%3E%3Crect width=%22600%22 height=%22800%22 fill=%22%23f5f0e8%22/%3E%3Ctext x=%22300%22 y=%22400%22 text-anchor=%22middle%22 fill=%22%238b7355%22 font-family=%22serif%22 font-size=%2232%22%3EDesi Naar%3C/text%3E%3C/svg%3E';
   }
 }

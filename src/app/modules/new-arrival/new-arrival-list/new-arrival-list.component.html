@@ -1,3 +1,18 @@
+<!-- LOADER OVERLAY -->
+<div *ngIf="loading" class="na-loader">
+    <div class="na-loader-box">
+        <div class="na-loader-logo">Desi Naar</div>
+        <div class="na-loader-bars">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <p class="na-loader-text">Loading New Arrivals...</p>
+    </div>
+</div>
+
 <div class="na-page">
 
     <!-- HERO -->
@@ -22,9 +37,11 @@
     </div>
     <div class="na-filter-divider"></div>
 
+    <div class="na-notice" *ngIf="!loading && errorMessage">{{ errorMessage }}</div>
+
     <!-- GRID -->
-    <div class="na-grid">
-        <div class="na-card" *ngFor="let product of filteredProducts">
+    <div class="na-grid" *ngIf="!loading && filteredProducts.length">
+        <div class="na-card" *ngFor="let product of filteredProducts; trackBy: trackByProduct">
 
             <div class="na-card-img">
                 <div class="img-skeleton" [class.hidden]="product.loaded">
@@ -52,6 +69,10 @@
             </div>
 
         </div>
+    </div>
+
+    <div class="na-empty" *ngIf="!loading && !filteredProducts.length">
+        No new arrivals found for this filter.
     </div>
 
     <!-- BOTTOM -->
