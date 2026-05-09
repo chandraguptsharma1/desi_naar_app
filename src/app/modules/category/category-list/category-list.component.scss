@@ -35,7 +35,8 @@
 }
 
 .category-image {
-    height: clamp(280px, calc(100dvh - 360px), 470px);
+    aspect-ratio: 1122 / 1402;
+    height: auto;
 }
 
 .category-divider {
@@ -74,11 +75,6 @@ img {
 
     .category-grid {
         height: auto;
-    }
-
-    .category-image {
-        height: min(58svh, 420px);
-        min-height: 300px;
     }
 
     .category-divider {
